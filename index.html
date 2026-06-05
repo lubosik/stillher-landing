@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road to Her Smile | StillHer Foundation</title>
+  <meta name="description" content="A documentary about Leah Spriggs. Produced by the StillHer Foundation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Playfair Display: high-contrast editorial serif, Vogue/Hilton level -->
+  <!-- Barlow: geometric humanist sans, premium, clean -->
+  <!-- Source Serif 4: refined body serif, editorial readability -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── COLOUR SYSTEM: White · Navy · Green ──────────── */
+      --navy:      #0B1D33;   /* Deep navy - hero, dark sections */
+      --navy-mid:  #122640;   /* Mid navy - about section */
+      --white:     #FFFFFF;   /* Pure white - light sections */
+      --offwhite:  #F5F8FA;   /* Pale blue-white - alternate light */
+      --green:     #00553A;   /* Forest green - Rolex-heritage accent */
+      --green-lt:  #006B4A;   /* Hover green */
+      --blue:      #003F7F;   /* Royal blue - CTA primary */
+      --blue-lt:   #0052A3;   /* Hover blue */
+      --gold:      #B89550;   /* Restrained gold - thin rules only */
+      --text-dark: #0F1923;   /* Near-black body text on light */
+      --text-mid:  #3D5166;   /* Mid-tone text, captions */
+      --text-muted:#7A8EA0;   /* Muted - labels on light bg */
+      --border-lt: rgba(0,63,127,0.12);   /* Blue-tinted border on white */
+      --border-dk: rgba(255,255,255,0.12);/* Light border on navy */
+      --max:       1280px;
+      --pad-v:     120px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCROLL ANIMATIONS ──────────────────────────────── */
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.85s cubic-bezier(.22,1,.36,1),
+                  transform 0.85s cubic-bezier(.22,1,.36,1);
+    }
+    .fade.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.22s; }
+    .d3 { transition-delay: 0.34s; }
+    .d4 { transition-delay: 0.46s; }
+
+    /* ── TYPOGRAPHY SCALE ───────────────────────────────── */
+    /* Display - Playfair Display, italic, large */
+    .t-display {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+    }
+    /* Heading - Playfair Display, upright */
+    .t-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: normal;
+    }
+    /* Label - Barlow, uppercase, tracked */
+    .t-label {
+      font-family: 'Barlow', system-ui, sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+    /* UI - Barlow for buttons, nav */
+    .t-ui {
+      font-family: 'Barlow', system-ui, sans-serif;
+    }
+
+    /* ── UTILITY ────────────────────────────────────────── */
+    .label-green {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+    .label-blue {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--blue-lt);
+      margin-bottom: 18px;
+    }
+    .label-white {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 18px;
+    }
+    .rule-green {
+      width: 48px; height: 2px;
+      background: var(--green);
+      border: none;
+      display: block;
+      margin: 28px 0;
+    }
+    .rule-gold {
+      width: 100%; height: 1px;
+      background: rgba(184,149,80,0.25);
+      border: none;
+      display: block;
+    }
+
+    /* ── BUTTONS ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    /* Primary: solid green */
+    .btn-primary {
+      padding: 14px 36px;
+      height: 50px;
+      background: var(--green);
+      border: 1.5px solid var(--green);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover { background: var(--green-lt); border-color: var(--green-lt); }
+    /* Secondary: outline blue */
+    .btn-outline-blue {
+      padding: 14px 36px;
+      height: 50px;
+      background: transparent;
+      border: 1.5px solid var(--blue);
+      color: var(--blue);
+    }
+    .btn-outline-blue:hover { background: var(--blue); color: #FFFFFF; }
+    /* Ghost white (on dark) */
+    .btn-ghost-white {
+      padding: 13px 34px;
+      height: 48px;
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: #FFFFFF;
+    }
+    .btn-ghost-white:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #FFFFFF;
+    }
+    /* Solid blue */
+    .btn-solid-blue {
+      padding: 0 40px;
+      height: 50px;
+      background: var(--blue);
+      border: 1.5px solid var(--blue);
+      color: #FFFFFF;
+    }
+    .btn-solid-blue:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+    /* Text link */
+    .link-arrow {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .link-arrow:hover { color: #FFFFFF; border-color: rgba(255,255,255,0.8); }
+    .link-arrow.dark {
+      color: var(--text-mid);
+      border-color: rgba(61,81,102,0.3);
+    }
+    .link-arrow.dark:hover { color: var(--text-dark); border-color: var(--text-mid); }
+
+    /* ════════════════════════════════════════════
+       NAVIGATION
+    ════════════════════════════════════════════ */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 56px;
+      height: 72px;
+      transition: background 0.4s ease, height 0.3s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.solid {
+      background: rgba(11,29,51,0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom-color: var(--border-dk);
+      height: 64px;
+    }
+    /* Brand */
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-brand-logo {
+      height: 38px;
+      width: auto;
+      flex-shrink: 0;
+      display: block;
+    }
+    .nav-brand-text {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      white-space: nowrap;
+    }
+    /* Nav centre links */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      margin: 0 auto;
+    }
+    .nav-links a {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: #FFFFFF; }
+    /* Nav CTA */
+    .nav-cta {
+      flex-shrink: 0;
+    }
+    /* Hamburger */
+    .nav-ham {
+      display: none;
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-ham span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #FFFFFF;
+      transition: 0.3s;
+    }
+    /* Mobile drawer */
+    #drawer {
+      display: none;
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: 320px;
+      background: var(--navy);
+      z-index: 910;
+      flex-direction: column;
+      padding: 96px 48px 48px;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+      border-left: 1px solid var(--border-dk);
+    }
+    #drawer.open { transform: none; }
+    #drawer a {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    #drawer a:hover { color: #FFFFFF; }
+    #overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 905;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    /* ════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero.png');
+      background-size: cover;
+      background-position: center 20%;
+      transform: scale(1.05);
+      transition: transform 9s ease-out;
+    }
+    #hero.loaded .hero-img { transform: scale(1); }
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(11,29,51,0.92) 0%,
+        rgba(11,29,51,0.70) 45%,
+        rgba(11,29,51,0.30) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 56px;
+      max-width: 780px;
+      margin-top: 72px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 1.05;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.65;
+      margin-bottom: 48px;
+      max-width: 540px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    /* Scroll line */
+    .scroll-line {
+      position: absolute;
+      bottom: 48px;
+      left: 56px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .scroll-line::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 56px;
+      background: rgba(255,255,255,0.35);
+      animation: linepulse 2.5s ease-in-out infinite;
+    }
+    .scroll-line span {
+      font-family: 'Barlow', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+    }
+    @keyframes linepulse {
+      0%,100% { opacity: 0.35; }
+      50% { opacity: 0.75; }
+    }
+
+    /* ════════════════════════════════════════════
+       OPENING - NAVY + WHITE SPLIT
+    ════════════════════════════════════════════ */
+    #opening {
+      background: var(--white);
+      padding: var(--pad-v) 56px;
+    }
+    .opening-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 96px;
+      align-items: center;
+    }
+    .opening-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.35;
+      color: var(--navy);
+      margin-bottom: 32px;
+    }
+    .opening-body {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.88;
+      color: var(--text-mid);
+    }
+    .opening-body p + p { margin-top: 20px; }
+    .opening-photo {
+      border-radius: 1px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: 0 24px 80px rgba(11,29,51,0.16);
+    }
+    .opening-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ════════════════════════════════════════════
+       LEAH-YOUNG - FULL-BLEED INTERLUDE
+    ════════════════════════════════════════════ */
+    #interlude {
+      position: relative;
+      height: 65vh;
+      min-height: 480px;
+      overflow: hidden;
+    }
+    .interlude-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/leah-young.png');
+      background-size: cover;
+      background-position: center 15%;
+    }
+    .interlude-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(11,29,51,0.92) 0%,
+        rgba(11,29,51,0.55) 45%,
+        rgba(11,29,51,0.1) 100%
+      );
+    }
+    .interlude-text {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 56px;
+      max-width: 560px;
+    }
+    .interlude-text blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(22px, 2.8vw, 34px);
+      line-height: 1.45;
+      color: #FFFFFF;
+      margin-top: 14px;
+    }
+
+    /* ════════════════════════════════════════════
+       TIMELINE - OFF-WHITE
+    ════════════════════════════════════════════ */
+    #timeline {
+      background: var(--offwhite);
+      padding: var(--pad-v) 56px;
+    }
+    .tl-head {
+      max-width: var(--max);
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+    .tl-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: clamp(44px, 5vw, 64px);
+      color: var(--navy);
+      line-height: 1.05;
+    }
+    .tl-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .tl-spine {
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: rgba(0,85,58,0.22);
+      transform: translateX(-50%);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      margin-bottom: 72px;
+      align-items: start;
+      position: relative;
+    }
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background: var(--green);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      border: 2px solid var(--offwhite);
+      box-shadow: 0 0 0 4px rgba(0,85,58,0.15);
+    }
+    .tl-content { position: relative; }
+    .tl-num {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 100px;
+      line-height: 1;
+      color: rgba(0,63,127,0.05);
+      top: -14px; right: -6px;
+      pointer-events: none;
+    }
+    .tl-item:nth-child(even) .tl-num { left: -6px; right: auto; }
+    .tl-inner { position: relative; z-index: 1; }
+    .tl-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 21px;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.28;
+    }
+    .tl-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.82;
+      color: var(--text-mid);
+    }
+    .tl-spacer { display: block; }
+
+    /* ════════════════════════════════════════════
+       TEASER - DARK NAVY + HANDS IMAGE
+    ════════════════════════════════════════════ */
+    #teaser {
+      position: relative;
+      padding: var(--pad-v) 56px;
+      text-align: center;
+      background: var(--navy);
+      overflow: hidden;
+    }
+    .teaser-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hands.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .teaser-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(11,29,51,0.78);
+    }
+    .teaser-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .teaser-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(40px, 5.5vw, 72px);
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 26px;
+    }
+    .teaser-inner p {
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.76);
+      margin-bottom: 48px;
+    }
+    .teaser-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+
+    /* ════════════════════════════════════════════
+       THREE PILLARS - WHITE
+    ════════════════════════════════════════════ */
+    #pillars {
+      background: var(--white);
+      padding: var(--pad-v) 56px;
+    }
+    .pillars-head {
+      max-width: var(--max);
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .pillars-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: clamp(32px, 3.8vw, 52px);
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .pillars-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      border: 1px solid var(--border-lt);
+    }
+    .pillar {
+      padding: 52px 44px 56px;
+      background: var(--white);
+      border-right: 1px solid var(--border-lt);
+      transition: background 0.35s ease;
+    }
+    .pillar:last-child { border-right: none; }
+    .pillar:hover { background: var(--offwhite); }
+    .pillar-icon { width: 40px; height: 40px; margin-bottom: 28px; }
+    .pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .pillar p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-mid);
+    }
+    /* Green accent bar at top on hover */
+    .pillar {
+      border-top: 3px solid transparent;
+      transition: background 0.35s ease, border-top-color 0.35s ease;
+    }
+    .pillar:hover { border-top-color: var(--green); }
+
+    /* ════════════════════════════════════════════
+       ABOUT - NAVY
+    ════════════════════════════════════════════ */
+    #about {
+      background: var(--navy-mid);
+      padding: var(--pad-v) 56px;
+    }
+    .about-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(24px, 2.8vw, 36px);
+      line-height: 1.45;
+      color: #FFFFFF;
+      margin-bottom: 30px;
+    }
+    .about-body {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 36px;
+    }
+    .about-logo-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-logo-area img {
+      max-width: 100%;
+      max-height: 240px;
+      object-fit: contain;
+      border-radius: 4px;
+      opacity: 0.82;
+    }
+
+    /* ════════════════════════════════════════════
+       SUPPORT CTA - OFF-WHITE
+    ════════════════════════════════════════════ */
+    #support {
+      background: var(--offwhite);
+      padding: 160px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative ring */
+    #support::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,85,58,0.08);
+      pointer-events: none;
+    }
+    #support::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,85,58,0.06);
+      pointer-events: none;
+    }
+    .support-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .support-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(44px, 6vw, 80px);
+      color: var(--navy);
+      line-height: 1.05;
+      margin-bottom: 26px;
+    }
+    .support-body {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.82;
+      color: var(--text-mid);
+      margin-bottom: 52px;
+    }
+    .support-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+
+    /* ════════════════════════════════════════════
+       FOOTER - DEEP NAVY
+    ════════════════════════════════════════════ */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border-dk);
+      padding: 80px 56px 56px;
+    }
+    .footer-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 64px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      text-decoration: none;
+    }
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.38);
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      font-family: 'Barlow', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 22px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.48);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .footer-col a:hover { color: rgba(255,255,255,0.88); }
+    .social-row { display: flex; gap: 18px; margin-bottom: 40px; }
+    .social-row a { color: rgba(255,255,255,0.38); transition: color 0.25s; }
+    .social-row a:hover { color: rgba(255,255,255,0.88); }
+    .footer-copy {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.24);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════════
+       RESPONSIVE — FULL BREAKPOINT SYSTEM
+    ════════════════════════════════════════════ */
+
+    /* Large tablet */
+    @media (max-width: 1100px) {
+      .opening-grid { grid-template-columns: 1fr 300px; gap: 64px; }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; }
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      :root { --pad-v: 96px; }
+      .opening-grid { grid-template-columns: 1fr 260px; gap: 48px; }
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .about-logo-area { display: flex; justify-content: flex-start; max-width: 200px; }
+      .about-logo-area img { max-height: 160px; }
+      .pillars-head h2 { font-size: clamp(28px, 3.5vw, 46px); }
+    }
+
+    /* Mobile landscape / large phone */
+    @media (max-width: 840px) {
+      :root { --pad-v: 80px; }
+      #nav { padding: 0 24px; }
+      #drawer { width: min(320px, 100vw); }
+      .nav-links, .nav-cta { display: none; }
+      .nav-ham { display: flex; }
+      .hero-content { padding: 0 24px; max-width: 100%; }
+      .scroll-line { left: 24px; }
+      .opening-grid { grid-template-columns: 1fr; }
+      .opening-photo { display: none; }
+      .opening-body { font-size: 17px; }
+      .interlude-text { padding: 0 24px; max-width: 100%; }
+      .tl-spine { left: 16px; }
+      .tl-item { grid-template-columns: 1fr; padding-left: 44px; gap: 0; margin-bottom: 52px; }
+      .tl-item:nth-child(even) .tl-spacer { display: none; }
+      .tl-dot { left: 16px; }
+      .tl-num { display: none; }
+      .pillars-grid { grid-template-columns: 1fr; border: none; gap: 12px; }
+      .pillar { border: 1px solid var(--border-lt); border-top: 3px solid transparent; }
+      .about-logo-area { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      #opening, #timeline, #teaser, #pillars, #about { padding: var(--pad-v) 24px; }
+      #support { padding: 100px 24px; }
+      footer { padding: 60px 24px 44px; }
+    }
+
+    /* Mobile portrait */
+    @media (max-width: 600px) {
+      :root { --pad-v: 72px; }
+      .hero-title { font-size: clamp(40px, 11vw, 64px); line-height: 1.08; }
+      .hero-sub { font-size: 16px; margin-bottom: 36px; }
+      .opening-quote { font-size: clamp(22px, 6vw, 34px); }
+      .opening-body { font-size: 16px; line-height: 1.78; }
+      .tl-head h2 { font-size: clamp(32px, 8vw, 48px); }
+      .teaser-inner h2 { font-size: clamp(32px, 9vw, 52px); }
+      .teaser-inner p { font-size: 16px; }
+      .about-quote { font-size: clamp(20px, 5.5vw, 28px); }
+      .about-body { font-size: 16px; }
+      .support-title { font-size: clamp(36px, 9.5vw, 56px); }
+      .support-body { font-size: 16px; }
+      #support::before { width: 90vw; height: 90vw; }
+      #support::after { width: 65vw; height: 65vw; }
+      .interlude-text blockquote { font-size: clamp(18px, 5vw, 26px); }
+    }
+
+    /* Small phone */
+    @media (max-width: 480px) {
+      :root { --pad-v: 64px; }
+      #nav { padding: 0 16px; height: 64px; }
+      #nav.solid { height: 56px; }
+      .nav-brand-logo { height: 32px; }
+      #drawer { width: 100vw; border-left: none; padding: 80px 32px 48px; }
+      .hero-content { padding: 0 20px; margin-top: 64px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+      .hero-ctas .btn { justify-content: center; width: 100%; }
+      .scroll-line { display: none; }
+      #opening, #timeline, #teaser, #pillars, #about { padding: var(--pad-v) 20px; }
+      #support { padding: 72px 20px; }
+      footer { padding: 48px 20px 36px; }
+      .teaser-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+      .teaser-ctas .btn { text-align: center; justify-content: center; width: 100%; }
+      .teaser-ctas .link-arrow { text-align: center; display: block; }
+      .support-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+      .support-ctas .btn, .support-ctas button { width: 100%; justify-content: center; }
+      .pillar { padding: 36px 24px 40px; }
+      .pillar h3 { font-size: 20px; }
+      .pillar p { font-size: 15px; }
+      .tl-item { padding-left: 36px; margin-bottom: 44px; }
+      .tl-spine { left: 12px; }
+      .tl-dot { left: 12px; width: 8px; height: 8px; }
+      .tl-title { font-size: 18px; }
+      .tl-body { font-size: 14px; }
+      .interlude-text { padding: 0 20px; }
+      #interlude { height: 72vh; min-height: 400px; }
+      .interlude-text blockquote { font-size: clamp(17px, 4.8vw, 24px); }
+      .about-body { font-size: 15px; }
+      .support-body { font-size: 15px; }
+      .footer-tagline { font-size: 13px; max-width: 100%; }
+      .footer-copy { font-size: 11px; }
+      .opening-body { font-size: 15px; }
+      .pillars-head h2 { font-size: clamp(24px, 7vw, 36px); }
+      .tl-head { margin-bottom: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav id="nav">
+    <a href="#" class="nav-brand">
+      <img src="images/logo-dark.svg" alt="StillHer Foundation" class="nav-brand-logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#opening">The Story</a></li>
+      <li><a href="#timeline">Her Road</a></li>
+      <li><a href="#teaser">The Documentary</a></li>
+      <li><a href="#support">Support</a></li>
+    </ul>
+    <a href="#support" class="btn btn-primary nav-cta" style="font-size:10px; height:40px; padding:0 24px;">Donate Now</a>
+    <button class="nav-ham" id="ham" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div id="overlay"></div>
+  <nav id="drawer">
+    <a href="#opening" onclick="closeDrawer()">The Story</a>
+    <a href="#timeline" onclick="closeDrawer()">Her Road</a>
+    <a href="#teaser" onclick="closeDrawer()">The Documentary</a>
+    <a href="#support" onclick="closeDrawer()">Support</a>
+    <a href="#support" onclick="closeDrawer()" class="btn btn-primary" style="margin-top:8px; justify-content:center;">Donate Now</a>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-img"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <span class="label-white fade">A StillHer Foundation Documentary</span>
+      <h1 class="hero-title fade d1">Road to<br>Her Smile</h1>
+      <hr class="rule-green fade d2">
+      <p class="hero-sub fade d2">A story the world was never supposed to hear.</p>
+      <div class="hero-ctas fade d3">
+        <a href="#teaser" class="btn btn-primary">Watch the Trailer</a>
+        <a href="#opening" class="btn btn-ghost-white">Read Her Story</a>
+      </div>
+    </div>
+    <div class="scroll-line">
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <hr class="rule-gold">
+
+  <!-- ═══ OPENING STATEMENT ═══ -->
+  <section id="opening">
+    <div class="opening-grid">
+      <div>
+        <span class="label-green fade">Her Story</span>
+        <blockquote class="opening-quote fade d1">
+          "Leah Spriggs was not always the woman the world would later overlook."
+        </blockquote>
+        <hr class="rule-green fade d1" style="margin-bottom: 30px;">
+        <div class="opening-body fade d2">
+          <p>Before the silence. Before the suffering. Before the system failed her, she was a woman of presence. Born in Verona, Italy, she carried a natural elegance that luxury brands spend millions trying to replicate. At the height of her early life, Leah was a model. She stood in rooms where aesthetics mattered, where presence was currency.</p>
+          <p>Then she met a man on a military post in Vicenza. He promised her love, America, a white picket fence. She left everything: her country, her language, her familiarity. And followed him across the ocean. Over the course of their twelve-year marriage, she discovered he had been unfaithful for nearly the entirety of it.</p>
+        </div>
+      </div>
+      <div class="opening-photo fade d3">
+        <img src="images/portrait.png" alt="Portrait, Verona, Italy" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LEAH YOUNG INTERLUDE ═══ -->
+  <section id="interlude">
+    <div class="interlude-img"></div>
+    <div class="interlude-scrim"></div>
+    <div class="interlude-text">
+      <span class="label-white fade">Verona · Italy</span>
+      <blockquote class="fade d1">"She stood in rooms where presence was currency. And she had both."</blockquote>
+    </div>
+  </section>
+
+  <hr class="rule-gold">
+
+  <!-- ═══ TIMELINE ═══ -->
+  <section id="timeline">
+    <div class="tl-head">
+      <span class="label-blue fade" style="display:block; text-align:center;">A Life Dismantled</span>
+      <h2 class="fade d1">Her Road</h2>
+    </div>
+    <div class="tl-wrap">
+      <div class="tl-spine"></div>
+
+      <div class="tl-item fade">
+        <div class="tl-content">
+          <div class="tl-num">1</div>
+          <div class="tl-inner">
+            <h3 class="tl-title">Born in Verona, Italy</h3>
+            <p class="tl-body">A woman of natural elegance. A future that looked expansive. She modelled. She stood in rooms where presence was currency and beauty opened doors.</p>
+          </div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <div class="tl-item fade">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-num">2</div>
+          <div class="tl-inner">
+            <h3 class="tl-title">She Met a Man in Uniform</h3>
+            <p class="tl-body">Vicenza military post. A promise of love, America, a white picket fence. She believed him, as people believe those who speak with certainty.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item fade">
+        <div class="tl-content">
+          <div class="tl-num">3</div>
+          <div class="tl-inner">
+            <h3 class="tl-title">She Left Everything Behind</h3>
+            <p class="tl-body">Crossed an ocean. Left her country, her language, her familiarity. Built a life from scratch in a country that was never quite hers. A twelve-year marriage.</p>
+          </div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <div class="tl-item fade">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-num">4</div>
+          <div class="tl-inner">
+            <h3 class="tl-title">Betrayal, Layered and Relentless</h3>
+            <p class="tl-body">Infidelity spanning nearly the entirety of their marriage. A single immigrant mother. Two children. No safety net. Then an eviction notice, final.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item fade">
+        <div class="tl-content">
+          <div class="tl-num">5</div>
+          <div class="tl-inner">
+            <h3 class="tl-title">A Doctor Removed 13 Teeth</h3>
+            <p class="tl-body">Referred by her church. Trusted the process. Johns Hopkins Hospital. Thirteen teeth extracted. When she returned, the doctor had disappeared. No follow-up. No implants. Left toothless.</p>
+          </div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <div class="tl-item fade">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-num">6</div>
+          <div class="tl-inner">
+            <h3 class="tl-title">The Church: $7.2M Renovation</h3>
+            <p class="tl-body">While Leah sat in aftermath, toothless, sick, without recourse, the church gave her a $25 grocery gift card. Days later: a $7.2 million renovation announced from the pulpit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-gold">
+
+  <!-- ═══ TEASER ═══ -->
+  <section id="teaser">
+    <div class="teaser-img"></div>
+    <div class="teaser-scrim"></div>
+    <div class="teaser-inner">
+      <span class="label-white fade">Road to Her Smile</span>
+      <h2 class="fade d1">This is not<br>just a story.</h2>
+      <p class="fade d2">This is what happens when vulnerable women, especially immigrant mothers, fall through the cracks of systems that were never built to protect them.</p>
+      <div class="teaser-ctas fade d3">
+        <a href="#support" class="btn btn-primary">Join the Movement</a>
+        <a href="#about" class="link-arrow">About the Foundation</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-gold">
+
+  <!-- ═══ THREE PILLARS ═══ -->
+  <section id="pillars">
+    <div class="pillars-head">
+      <span class="label-blue fade">What We Stand For</span>
+      <h2 class="fade d1">Why This Documentary Matters</h2>
+    </div>
+    <div class="pillars-grid fade d1">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#00553A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 5 C14 5 10 10 10 16 C10 21 12 25 16 27 L20 36 L24 27 C28 25 30 21 30 16 C30 10 26 5 20 5Z"/>
+          <path d="M16 12 C16 12 18 8 20 8 C22 8 24 12 24 12"/>
+          <line x1="20" y1="36" x2="20" y2="39"/>
+          <line x1="16" y1="39" x2="24" y2="39"/>
+        </svg>
+        <h3>Dignity</h3>
+        <p>This is about more than teeth. When systems strip a woman of her ability to eat, speak, and smile, they strip her identity. Dignity is not a luxury. It is the baseline.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#00553A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="20" y1="3" x2="20" y2="37"/>
+          <line x1="11" y1="7" x2="29" y2="7"/>
+          <line x1="11" y1="7" x2="4" y2="19"/> <line x1="4" y1="19" x2="18" y2="19"/>
+          <path d="M4 19 C4 24 11 26 11 26 C11 26 18 24 18 19"/>
+          <line x1="29" y1="7" x2="22" y2="19"/> <line x1="22" y1="19" x2="36" y2="19"/>
+          <path d="M22 19 C22 24 29 26 29 26 C29 26 36 24 36 19"/>
+          <line x1="14" y1="37" x2="26" y2="37"/>
+        </svg>
+        <h3>Justice</h3>
+        <p>A doctor disappeared. A church stayed silent. This documentary names what happened and demands accountability for the systems that failed Leah, and women like her.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#00553A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 25 C8 21 7 14 11 10 C15 6 20 9 20 9"/>
+          <path d="M28 25 C32 21 33 14 29 10 C25 6 20 9 20 9"/>
+          <path d="M6 27 C6 27 12 22 20 28 C28 22 34 27 34 27"/>
+          <path d="M10 32 C10 32 14 28 20 33 C26 28 30 32 30 32"/>
+          <circle cx="20" cy="5" r="3"/>
+        </svg>
+        <h3>Restoration</h3>
+        <p>Road to Her Smile is Leah's road back. And with your support, she won't walk it alone. We believe in restoration not just of health, but of dignity, voice, and belonging.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-gold">
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="fade">
+        <span class="label-white">The Foundation</span>
+        <p class="about-quote">"Still Her Foundation exists to restore dignity to women who have been abandoned by the systems meant to protect them."</p>
+        <p class="about-body">We document, advocate, and fund the restoration of women failed by medical institutions, religious organizations, and family structures. Our work begins with Leah. It will not end with her.</p>
+        <a href="#support" class="link-arrow">Learn More →</a>
+      </div>
+      <div class="about-logo-area fade d2">
+        <img src="images/logo-generated.png" alt="StillHer Foundation" loading="lazy"
+          style="mix-blend-mode: screen; opacity: 0.75;">
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-gold">
+
+  <!-- ═══ SUPPORT CTA ═══ -->
+  <section id="support">
+    <div class="support-inner">
+      <span class="label-blue fade">Support the Documentary</span>
+      <h2 class="support-title fade d1">Help us tell<br>this story.</h2>
+      <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution.<br>This is how we make sure Leah's voice is finally heard.</p>
+      <div class="support-ctas fade d3">
+        <a href="https://stillherfoundation.org/donate" class="btn btn-solid-blue">Donate to Road to Her Smile</a>
+        <button class="btn btn-outline-blue" onclick="shareStory()">Share Her Story</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="footer-brand">
+          <img src="images/logo-dark.svg" alt="StillHer Foundation" style="height:36px; width:auto; display:block; margin-bottom:4px;">
+        </a>
+        <p class="footer-tagline">A nonprofit dedicated to restoring dignity to women who have been abandoned by the systems meant to protect them.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#opening">The Story</a></li>
+          <li><a href="#timeline">Her Road</a></li>
+          <li><a href="#teaser">The Documentary</a></li>
+          <li><a href="#support">Donate</a></li>
+          <li><a href="#about">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="X / Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+        <p class="footer-copy">© 2025 StillHer Foundation.<br>All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 60);
+    }, { passive: true });
+    window.addEventListener('load', () => document.getElementById('hero').classList.add('loaded'));
+
+    // ── MOBILE DRAWER ──
+    const ham = document.getElementById('ham');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    overlay.style.transition = 'opacity 0.4s ease';
+
+    function openDrawer() {
+      drawer.style.display = 'flex';
+      overlay.style.display = 'block';
+      requestAnimationFrame(() => { drawer.classList.add('open'); overlay.style.opacity = '1'; });
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.style.opacity = '0';
+      setTimeout(() => { drawer.style.display = 'none'; overlay.style.display = 'none'; }, 400);
+    }
+    ham.addEventListener('click', openDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    // ── INTERSECTION OBSERVER ──
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+    // ── SHARE ──
+    function shareStory() {
+      if (navigator.share) {
+        navigator.share({ title: 'Road to Her Smile', text: 'A story the world was never supposed to hear.', url: location.href });
+      } else {
+        navigator.clipboard.writeText(location.href).then(() => alert('Link copied. Share Leah\'s story.'));
+      }
+    }
+  </script>
+</body>
+</html>
