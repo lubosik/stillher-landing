@@ -109,7 +109,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=85&fit=crop');
+      background-image: url('images/hero.png');
       background-size: cover; background-position: center 20%;
       transition: opacity 400ms ease;
     }
@@ -211,17 +211,86 @@
     }
     .tl-head { max-width: var(--max); margin: 0 auto 80px; padding: 0 56px; text-align: center; }
     .tl-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(38px, 5vw, 60px); color: var(--off-white); line-height: 1.05; }
-    .tl-wrap { max-width: 860px; margin: 0 auto; padding: 0 56px; position: relative; }
-    .tl-spine { position: absolute; left: calc(50% + 56px); top: 8px; bottom: 8px; width: 1px; background: var(--gold); opacity: 0.35; transform: translateX(-50%); }
-    .tl-item { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-bottom: 72px; align-items: start; position: relative; }
-    .tl-dot { position: absolute; left: 50%; top: 8px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; transform: translateX(-50%); border: 2px solid var(--bg-dark); box-shadow: 0 0 12px rgba(201,169,110,0.55); }
-    .tl-content { position: relative; }
-    .tl-num { position: absolute; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 100px; line-height: 1; color: var(--gold); opacity: 0.04; top: -14px; right: -6px; pointer-events: none; }
-    .tl-item:nth-child(even) .tl-num { left: -6px; right: auto; }
-    .tl-inner { position: relative; z-index: 1; }
-    .tl-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; color: var(--off-white); margin-bottom: 10px; line-height: 1.28; }
-    .tl-body { font-family: 'Lora', serif; font-size: 15px; font-weight: 400; line-height: 1.88; color: rgba(250,250,247,0.65); }
-    .tl-spacer { display: block; }
+
+    /* Left-aligned single-column timeline   no overlap possible */
+    .tl-wrap { max-width: 680px; margin: 0 auto; padding: 0 56px; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 28px;
+      margin-bottom: 0;
+      position: relative;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .tl-item.in { opacity: 1; transform: none; }
+    .tl-item.d1 { transition-delay: 0.08s; }
+    .tl-item.d2 { transition-delay: 0.16s; }
+    .tl-item.d3 { transition-delay: 0.24s; }
+    .tl-item.d4 { transition-delay: 0.32s; }
+    .tl-item.d5 { transition-delay: 0.40s; }
+
+    /* Left column: dot + connector line */
+    .tl-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .tl-dot {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--bg-dark);
+      box-shadow: 0 0 14px rgba(201,169,110,0.7);
+      flex-shrink: 0;
+      margin-top: 6px;
+      transform: scale(0);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+      z-index: 2;
+    }
+    .tl-item.in .tl-dot { transform: scale(1); }
+    .tl-connector {
+      flex: 1;
+      width: 1px;
+      min-height: 48px;
+      background: linear-gradient(to bottom, rgba(201,169,110,0.45), rgba(201,169,110,0.15));
+      margin-top: 8px;
+    }
+    .tl-item:last-child .tl-connector { display: none; }
+
+    /* Right column: content */
+    .tl-content {
+      padding-bottom: 52px;
+      position: relative;
+    }
+    .tl-chapter {
+      position: absolute;
+      right: 0; top: -16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 88px;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.05;
+      pointer-events: none;
+      user-select: none;
+    }
+    .tl-tag {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .tl-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: var(--off-white); margin-bottom: 12px; line-height: 1.2; }
+    .tl-body { font-family: 'Lora', serif; font-size: 15px; font-weight: 400; line-height: 1.9; color: rgba(250,250,247,0.62); }
 
     /* ═══════════════════════════════════════════
        SECTION 4: THREE PILLARS   WHITE
@@ -341,11 +410,10 @@
       .about-grid { grid-template-columns: 1fr; }
       .about-logo-col { display: none; }
       .tl-head { padding: 0 24px; } .tl-wrap { padding: 0 24px; }
-      .tl-spine { left: 50%; }
-      .tl-item { grid-template-columns: 1fr; padding-left: 36px; gap: 0; margin-bottom: 48px; }
-      .tl-item:nth-child(even) .tl-spacer { display: none; }
-      .tl-dot { left: 0; transform: none; }
-      .tl-num { display: none; }
+      .tl-item { gap: 16px; }
+      .tl-content { padding-bottom: 36px; }
+      .tl-chapter { font-size: 56px; }
+      .tl-connector { min-height: 32px; }
       .email-form { flex-direction: column; } .email-form button { width: 100%; }
     }
     @media (max-width: 480px) {
@@ -376,7 +444,7 @@
       <li><span class="nav-sep"></span></li>
       <li><a href="press.html">Press</a></li>
     </ul>
-    <a href="stillher-donation/index.html" class="nav-donate">Donate Now</a>
+    <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
   <div id="overlay"></div>
@@ -386,7 +454,7 @@
     <a href="#pillars" onclick="closeDrawer()">The Film</a>
     <a href="#support" onclick="closeDrawer()">Support</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
-    <a href="stillher-donation/index.html" style="color:var(--gold);margin-top:8px;">Donate Now</a>
+    <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
 
   <!-- ═══ SECTION 1: HERO (cinematic, dark) ═══ -->
@@ -424,17 +492,17 @@
 
     <div class="hero-stills">
       <p class="stills-label">Stills</p>
-      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1920&q=85&fit=crop">
-        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=480&q=85&fit=crop" alt="Verona, Italy">
+      <div class="still-thumb" data-full-src="images/portrait.png">
+        <img src="images/portrait.png" alt="Leah   Verona, Italy">
         <span class="still-caption">Verona, Italy</span>
       </div>
-      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1920&q=85&fit=crop">
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=480&q=85&fit=crop" alt="A Life Transformed">
-        <span class="still-caption">A Life Transformed</span>
+      <div class="still-thumb" data-full-src="images/leah-young.png">
+        <img src="images/leah-young.png" alt="Leah   Young">
+        <span class="still-caption">Young Leah</span>
       </div>
-      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1920&q=85&fit=crop">
-        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=480&q=85&fit=crop" alt="The Church">
-        <span class="still-caption">The Church</span>
+      <div class="still-thumb" data-full-src="images/hands.png">
+        <img src="images/hands.png" alt="Her Hands">
+        <span class="still-caption">Her Road Back</span>
       </div>
       <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=1920&q=85&fit=crop">
         <img src="https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=480&q=85&fit=crop" alt="Johns Hopkins">
@@ -456,7 +524,7 @@
         </div>
       </div>
       <div class="opening-img-wrap fade d3">
-        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=85&fit=crop" alt="Her Story" loading="lazy">
+        <img src="images/leah-young.png" alt="Leah Spriggs   Verona, Italy" loading="lazy">
       </div>
     </div>
   </section>
@@ -467,56 +535,68 @@
       <span class="section-label-gold fade" style="text-align:center;">A Life Dismantled</span>
       <h2 class="fade d1">Her Road</h2>
     </div>
-    <div class="tl-wrap">
-      <div class="tl-spine"></div>
+    <div class="tl-wrap" id="tl-wrap">
 
-      <div class="tl-item fade">
-        <div class="tl-content"><div class="tl-num">1</div><div class="tl-inner">
+      <div class="tl-item">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">1</div>
+          <span class="tl-tag">Chapter One</span>
           <h3 class="tl-title">Born in Verona, Italy</h3>
           <p class="tl-body">A woman of presence. A future that looked expansive. She modelled. She stood in rooms where presence was currency and beauty opened doors.</p>
-        </div></div>
-        <div class="tl-dot"></div><div class="tl-spacer"></div>
+        </div>
       </div>
 
-      <div class="tl-item fade">
-        <div class="tl-spacer"></div><div class="tl-dot"></div>
-        <div class="tl-content"><div class="tl-num">2</div><div class="tl-inner">
+      <div class="tl-item d1">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">2</div>
+          <span class="tl-tag">Chapter Two</span>
           <h3 class="tl-title">Vicenza, Italy</h3>
           <p class="tl-body">She met a man in uniform. A promise of love and America. She believed him, as people believe those who speak with certainty.</p>
-        </div></div>
+        </div>
       </div>
 
-      <div class="tl-item fade">
-        <div class="tl-content"><div class="tl-num">3</div><div class="tl-inner">
+      <div class="tl-item d2">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">3</div>
+          <span class="tl-tag">Chapter Three</span>
           <h3 class="tl-title">The Marriage</h3>
           <p class="tl-body">Twelve years. Infidelity running through almost all of them. A single immigrant mother. Two children. No safety net.</p>
-        </div></div>
-        <div class="tl-dot"></div><div class="tl-spacer"></div>
+        </div>
       </div>
 
-      <div class="tl-item fade">
-        <div class="tl-spacer"></div><div class="tl-dot"></div>
-        <div class="tl-content"><div class="tl-num">4</div><div class="tl-inner">
+      <div class="tl-item d3">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">4</div>
+          <span class="tl-tag">Chapter Four</span>
           <h3 class="tl-title">Rock Bottom</h3>
           <p class="tl-body">An eviction notice, final. She dropped to her knees in front of her children. Then she found Grace Covenant Church and placed her trust there.</p>
-        </div></div>
+        </div>
       </div>
 
-      <div class="tl-item fade">
-        <div class="tl-content"><div class="tl-num">5</div><div class="tl-inner">
+      <div class="tl-item d4">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">5</div>
+          <span class="tl-tag">Chapter Five</span>
           <h3 class="tl-title">Johns Hopkins</h3>
           <p class="tl-body">Thirteen teeth removed. A doctor who then disappeared. No follow-up. No implants. No answers. Left toothless, indefinitely. Her body then developed an autoimmune disease.</p>
-        </div></div>
-        <div class="tl-dot"></div><div class="tl-spacer"></div>
+        </div>
       </div>
 
-      <div class="tl-item fade">
-        <div class="tl-spacer"></div><div class="tl-dot"></div>
-        <div class="tl-content"><div class="tl-num">6</div><div class="tl-inner">
+      <div class="tl-item d5">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">6</div>
+          <span class="tl-tag">Chapter Six</span>
           <h3 class="tl-title">The Church</h3>
           <p class="tl-body">A $25 grocery gift card. Days later from the pulpit: a $7.2 million renovation announcement. This is the story this documentary tells.</p>
-        </div></div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -566,7 +646,7 @@
         <p class="about-quote">"StillHer Foundation exists to restore dignity to women abandoned by the systems meant to protect them."</p>
         <hr class="section-rule">
         <p class="about-body">We document the stories the world was never supposed to hear. We build the communities that make sure they are heard anyway. Road to Her Smile is our first documentary, and Leah's story is only the beginning.</p>
-        <a href="stillher-donation/index.html" class="about-link">Support the Foundation</a>
+        <a href="https://stillher-donation-production.up.railway.app/" class="about-link">Support the Foundation</a>
       </div>
       <div class="about-logo-col fade d2">
         <img src="images/logo-generated.png" alt="StillHer Foundation">
@@ -597,7 +677,7 @@
       <hr class="support-rule fade d2">
       <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution. This is how we make sure Leah's voice is finally heard.</p>
       <div class="support-ctas fade d3">
-        <a href="stillher-donation/index.html" class="support-btn-1">Donate to Road to Her Smile</a>
+        <a href="https://stillher-donation-production.up.railway.app/" class="support-btn-1">Donate to Road to Her Smile</a>
         <button class="support-btn-2" onclick="shareStory()">Share Her Story</button>
       </div>
     </div>
@@ -660,9 +740,20 @@
       });
       thumb.addEventListener('mouseleave', () => {
         heroBg.style.opacity = '0';
-        setTimeout(() => { heroBg.style.backgroundImage = "url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=85&fit=crop')"; heroBg.style.opacity = '1'; }, 200);
+        setTimeout(() => { heroBg.style.backgroundImage = "url('images/hero.png')"; heroBg.style.opacity = '1'; }, 200);
       });
     });
+
+    // ── TIMELINE SCROLL ANIMATION ────────────────────
+    const tlObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          tlObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.tl-item').forEach(el => tlObserver.observe(el));
 
     // ── MOBILE DRAWER ───────────────────────────────
     const hamBtn = document.getElementById('ham-btn');
