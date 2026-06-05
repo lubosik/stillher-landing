@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Road to Her Smile | StillHer Foundation Documentary</title>
-  <meta name="description" content="A cinematic documentary about Leah Spriggs. Produced by the StillHer Foundation.">
+  <meta name="description" content="Road to Her Smile is a documentary by StillHer Foundation about Leah Spriggs, an Italian immigrant failed by a doctor, a church, and a healthcare system in America.">
+  <meta property="og:title" content="Road to Her Smile | A StillHer Foundation Documentary">
+  <meta property="og:description" content="An Italian immigrant. A broken promise. A doctor who disappeared. A church that stayed silent. This documentary demands accountability.">
+  <meta property="og:type" content="video.movie">
+  <meta property="og:url" content="https://stillher-landing.vercel.app">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=85&fit=crop">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Road to Her Smile | A StillHer Foundation Documentary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,47 +20,48 @@
 
     :root {
       --bg-deep:  #05050C;
-      --bg-dark:  #080810;
-      --bg-mid:   #0D0D12;
+      --bg-dark:  #0D0D12;
+      --cream:    #F5F0E8;
+      --white:    #FFFFFF;
+      --off-white:#FAFAF7;
       --gold:     #C9A96E;
       --gold-lt:  #E8D5A3;
-      --white:    #FFFFFF;
-      --max:      1280px;
+      --ink:      #1A1A1A;
+      --warm-ink: #3A3530;
+      --muted:    #888888;
+      --max:      1100px;
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
       font-family: 'Lora', Georgia, serif;
-      background: var(--bg-deep);
-      color: var(--white);
+      background: var(--white);
+      color: var(--ink);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── FADE ANIMATIONS ─────────────────────── */
+    /* ── SHARED LAYOUT ──────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 56px; }
+
+    /* ── FADE ANIMATIONS ────────────────────────── */
     .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.85s cubic-bezier(.22,1,.36,1), transform 0.85s cubic-bezier(.22,1,.36,1); }
     .fade.in { opacity: 1; transform: none; }
     .d1 { transition-delay: 0.10s; }
     .d2 { transition-delay: 0.22s; }
     .d3 { transition-delay: 0.34s; }
-    .d4 { transition-delay: 0.46s; }
 
-    /* ── NAV ─────────────────────────────────── */
+    /* ── NAV ────────────────────────────────────── */
     .main-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 900;
-      height: 68px;
-      padding: 0 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 68px; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
       background: transparent;
       transition: background 350ms ease, border-color 350ms ease, backdrop-filter 350ms ease;
       border-bottom: 1px solid transparent;
     }
     .main-nav.nav-solid {
-      background: rgba(5,5,12,0.94);
+      background: rgba(5,5,12,0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom-color: rgba(255,255,255,0.05);
@@ -61,854 +69,294 @@
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
     .nav-logo img { height: 36px; width: auto; display: block; }
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      list-style: none;
-      flex: 1;
-      justify-content: center;
+      display: flex; align-items: center; list-style: none;
+      flex: 1; justify-content: center; gap: 0;
     }
     .nav-links li { display: flex; align-items: center; }
     .nav-links a {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      padding: 0 20px;
-      transition: color 200ms;
+      font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 10px;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      padding: 0 18px; transition: color 200ms;
     }
     .nav-links a:hover { color: rgba(255,255,255,0.95); }
-    .nav-sep {
-      width: 1px;
-      height: 10px;
-      background: rgba(255,255,255,0.15);
-      display: block;
-      flex-shrink: 0;
-    }
+    .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
     .nav-donate {
-      flex-shrink: 0;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-      border: 1px solid var(--gold);
-      padding: 9px 22px;
-      border-radius: 2px;
+      flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); text-decoration: none;
+      border: 1px solid var(--gold); padding: 9px 22px; border-radius: 2px;
       transition: background 250ms, color 250ms;
     }
     .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
-    .nav-ham {
-      display: none;
-      margin-left: auto;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      flex-direction: column;
-      gap: 5px;
-    }
+    .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
     .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
     #drawer {
-      display: none;
-      position: fixed;
-      inset: 0 0 0 auto;
-      width: 100vw;
-      background: var(--bg-deep);
-      z-index: 910;
-      flex-direction: column;
-      padding: 88px 32px 48px;
-      gap: 28px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(.22,1,.36,1);
-      border-left: 1px solid rgba(255,255,255,0.06);
+      display: none; position: fixed; inset: 0 0 0 auto; width: 100vw;
+      background: var(--bg-deep); z-index: 910; flex-direction: column;
+      padding: 88px 32px 48px; gap: 28px;
+      transform: translateX(100%); transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+      border-left: 1px solid rgba(255,255,255,0.05);
     }
     #drawer.open { transform: none; }
-    #drawer a {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.82);
-      text-decoration: none;
-    }
+    #drawer a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.82); text-decoration: none; }
     #drawer a:hover { color: var(--gold); }
-    #overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 905;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
+    #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 905; opacity: 0; transition: opacity 0.4s; }
 
-    /* ── HERO ────────────────────────────────── */
+    /* ── HERO ────────────────────────────────────── */
     #hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      min-height: 600px;
-      overflow: hidden;
-      background: var(--bg-deep);
+      position: relative; width: 100vw; height: 100vh; min-height: 600px;
+      overflow: hidden; background: var(--bg-deep);
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('images/hero.png');
-      background-size: cover;
-      background-position: center 20%;
-      transition: opacity 400ms ease, background-image 0ms;
+      background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=85&fit=crop');
+      background-size: cover; background-position: center 20%;
+      transition: opacity 400ms ease;
     }
     .hero-grad-lr {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(5,5,12,0.90) 0%, rgba(5,5,12,0.45) 52%, rgba(5,5,12,0.82) 100%);
+      background: linear-gradient(to right, rgba(5,5,12,0.90) 0%, rgba(5,5,12,0.45) 52%, rgba(5,5,12,0.80) 100%);
     }
     .hero-grad-bt {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(5,5,12,1) 0%, rgba(5,5,12,0.35) 38%, transparent 65%);
+      background: linear-gradient(to top, rgba(5,5,12,1) 0%, rgba(5,5,12,0.3) 38%, transparent 65%);
     }
 
     /* Metadata strip */
-    .meta-strip {
-      position: absolute;
-      top: 84px; left: 56px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .meta-year {
-      background: var(--gold);
-      color: var(--bg-deep);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 800;
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 2px;
-    }
+    .meta-strip { position: absolute; top: 84px; left: 56px; z-index: 10; display: flex; align-items: center; gap: 14px; }
+    .meta-year { background: var(--gold); color: var(--bg-deep); font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
     .meta-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.2); display: block; }
-    .meta-genre {
-      border: 1px solid rgba(255,255,255,0.25);
-      color: rgba(255,255,255,0.55);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 2px;
-    }
-    .meta-truth {
-      color: rgba(255,255,255,0.35);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 400;
-      font-size: 9px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
+    .meta-genre { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.55); font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+    .meta-truth { color: rgba(255,255,255,0.35); font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; }
 
     /* Award badge */
-    .award-badges {
-      position: absolute;
-      top: 84px; right: 56px;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-end;
-    }
-    .award-badge {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 2px;
-      padding: 8px 14px;
-      text-align: center;
-    }
-    .award-badge-line1 {
-      display: block;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 8px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 3px;
-    }
-    .award-badge-line2 {
-      display: block;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 400;
-      font-size: 8px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-    }
+    .award-badges { position: absolute; top: 84px; right: 300px; z-index: 10; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .award-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; padding: 8px 14px; text-align: center; }
+    .award-badge-line1 { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
+    .award-badge-line2 { display: block; font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
 
-    /* Title block (Dune-style, bottom-left) */
-    .hero-title-block {
-      position: absolute;
-      bottom: 80px; left: 56px;
-      max-width: 580px;
-      z-index: 10;
-      will-change: transform, opacity;
-    }
-    .hero-kicker {
-      display: block;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: 108px;
-      line-height: 0.92;
-      color: #FFFFFF;
-      letter-spacing: -0.01em;
-      margin-bottom: 20px;
-      display: block;
-    }
-    .hero-rule {
-      width: 52px; height: 2px;
-      background: var(--gold);
-      border: none; display: block;
-      margin-bottom: 18px;
-    }
-    .hero-synopsis {
-      font-family: 'Lora', Georgia, serif;
-      font-weight: 400;
-      font-style: italic;
-      font-size: 16px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 26px;
-    }
-    .hero-runtime {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 400;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.38);
-      margin-bottom: 30px;
-    }
+    /* Title block */
+    .hero-title-block { position: absolute; bottom: 80px; left: 56px; max-width: 560px; z-index: 10; will-change: transform, opacity; }
+    .hero-kicker { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .hero-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: 108px; line-height: 0.92; color: #FFFFFF; letter-spacing: -0.01em; margin-bottom: 20px; display: block; }
+    .hero-rule { width: 52px; height: 2px; background: var(--gold); border: none; display: block; margin-bottom: 18px; }
+    .hero-synopsis { font-family: 'Lora', Georgia, serif; font-weight: 400; font-style: italic; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); margin-bottom: 26px; }
+    .hero-runtime { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.38); margin-bottom: 30px; }
     .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-    .hero-cta-1 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      text-decoration: none;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.28);
-      padding: 13px 26px;
-      border-radius: 2px;
-      transition: background 200ms;
-      display: inline-block;
-    }
-    .hero-cta-1:hover { background: rgba(255,255,255,0.18); }
-    .hero-cta-2 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-      background: transparent;
-      border: 1px solid rgba(201,169,110,0.45);
-      padding: 13px 26px;
-      border-radius: 2px;
-      transition: background 200ms;
-      display: inline-block;
-    }
-    .hero-cta-2:hover { background: rgba(201,169,110,0.10); }
 
-    /* Stills panel (Dune-style, right) */
+    /* Outlined pill CTAs */
+    .cta-primary {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); color: var(--off-white);
+      font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; padding: 14px 28px;
+      border-radius: 2px; cursor: pointer; transition: all 220ms ease; text-decoration: none; display: inline-block;
+    }
+    .cta-primary:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.6); }
+    .cta-secondary {
+      background: transparent; border: 1px solid rgba(201,169,110,0.5); color: var(--gold);
+      font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; padding: 14px 28px;
+      border-radius: 2px; cursor: pointer; transition: all 220ms ease; text-decoration: none; display: inline-block;
+    }
+    .cta-secondary:hover { background: rgba(201,169,110,0.1); }
+
+    /* Stills panel */
     .hero-stills {
-      position: absolute;
-      top: 68px; right: 0; bottom: 0;
-      width: 280px;
-      z-index: 10;
-      padding: 20px 24px 80px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      position: absolute; top: 68px; right: 0; bottom: 0; width: 280px; z-index: 10;
+      padding: 20px 24px 80px 0; display: flex; flex-direction: column; gap: 10px;
       background: linear-gradient(to left, rgba(5,5,12,0.72) 0%, transparent 100%);
       will-change: transform;
     }
-    .stills-label {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 9px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-      margin-bottom: 14px;
-      padding-right: 4px;
-      text-align: right;
-    }
-    .still-thumb {
-      width: 100%;
-      height: 80px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 2px;
-      cursor: pointer;
-    }
-    .still-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.6;
-      transition: opacity 300ms, transform 400ms;
-    }
+    .stills-label { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 14px; padding-right: 4px; text-align: right; }
+    .still-thumb { width: 100%; height: 80px; position: relative; overflow: hidden; border-radius: 2px; cursor: pointer; }
+    .still-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 300ms, transform 400ms; }
     .still-thumb:hover img { opacity: 1; transform: scale(1.06); }
-    .still-caption {
-      position: absolute;
-      bottom: 6px; left: 8px;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 400;
-      font-size: 9px;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.45);
-      transition: color 300ms;
-      pointer-events: none;
-    }
+    .still-caption { position: absolute; bottom: 6px; left: 8px; font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); transition: color 300ms; pointer-events: none; }
     .still-thumb:hover .still-caption { color: rgba(255,255,255,0.82); }
 
-    /* ── HER STORY ───────────────────────────── */
+    /* ── SECTION LABELS + HEADINGS (reusable) ── */
+    .section-label-gold { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .section-label-muted { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+    .section-rule { width: 44px; height: 2px; background: var(--gold); border: none; display: block; margin-bottom: 28px; opacity: 0.8; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 2: HER STORY   CREAM
+    ═══════════════════════════════════════════ */
     #opening {
-      background: var(--bg-dark);
-      padding: 120px 56px;
+      background: var(--cream);
+      padding: 120px 0;
       position: relative;
       overflow: hidden;
     }
     .opening-grid {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 55% 45%;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
+      max-width: var(--max); margin: 0 auto; padding: 0 56px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
-    .opening-img-texture {
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 45%;
-      object-fit: cover;
-      opacity: 0.10;
-      pointer-events: none;
+    .opening-heading {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(34px, 3.8vw, 52px); color: var(--ink); line-height: 1.15; margin-bottom: 28px;
     }
-    .section-label {
-      display: block;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .section-heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(36px, 4vw, 52px);
-      color: #FFFFFF;
-      line-height: 1.15;
-      margin-bottom: 28px;
-    }
-    .section-rule {
-      width: 44px; height: 2px;
-      background: var(--gold);
-      border: none; display: block;
-      margin-bottom: 28px;
-      opacity: 0.7;
-    }
-    .section-body {
-      font-family: 'Lora', serif;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.9;
-      color: rgba(255,255,255,0.68);
-    }
-    .section-body p + p { margin-top: 20px; }
-    .opening-photo {
-      border-radius: 1px;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-    }
-    .opening-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      opacity: 0.85;
-    }
+    .opening-body { font-family: 'Lora', serif; font-size: 17px; font-weight: 400; line-height: 1.9; color: var(--warm-ink); }
+    .opening-body p + p { margin-top: 20px; }
+    .opening-img-wrap { position: relative; overflow: hidden; border-radius: 2px; }
+    .opening-img-wrap img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .opening-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(245,240,232,0.08), rgba(245,240,232,0)); pointer-events: none; }
 
-    /* ── INTERLUDE ───────────────────────────── */
-    #interlude {
-      position: relative;
-      height: 60vh;
-      min-height: 440px;
-      overflow: hidden;
-    }
-    .interlude-img {
-      position: absolute; inset: 0;
-      background-image: url('images/leah-young.png');
-      background-size: cover;
-      background-position: center 15%;
-    }
-    .interlude-scrim {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(5,5,12,0.90) 0%, rgba(5,5,12,0.55) 48%, rgba(5,5,12,0.15) 100%);
-    }
-    .interlude-text {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 56px;
-      max-width: 560px;
-    }
-    .interlude-text blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(22px, 2.8vw, 34px);
-      line-height: 1.45;
-      color: rgba(255,255,255,0.90);
-      margin-top: 14px;
-    }
-
-    /* ── TIMELINE ───────────────────────────── */
+    /* ═══════════════════════════════════════════
+       SECTION 3: TIMELINE "HER ROAD"   DARK
+    ═══════════════════════════════════════════ */
     #timeline {
       background: var(--bg-dark);
-      padding: 120px 56px;
+      padding: 120px 0;
     }
-    .tl-head {
-      max-width: var(--max);
-      margin: 0 auto 80px;
-      text-align: center;
-    }
-    .tl-head h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: clamp(40px, 5vw, 64px);
-      color: #FFFFFF;
-      line-height: 1.05;
-    }
-    .tl-wrap { max-width: 860px; margin: 0 auto; position: relative; }
-    .tl-spine {
-      position: absolute;
-      left: 50%; top: 8px; bottom: 8px;
-      width: 1px;
-      background: rgba(201,169,110,0.35);
-      transform: translateX(-50%);
-    }
-    .tl-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 52px;
-      margin-bottom: 72px;
-      align-items: start;
-      position: relative;
-    }
-    .tl-dot {
-      position: absolute;
-      left: 50%; top: 8px;
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      transform: translateX(-50%);
-      border: 2px solid var(--bg-dark);
-      box-shadow: 0 0 10px rgba(201,169,110,0.6);
-    }
+    .tl-head { max-width: var(--max); margin: 0 auto 80px; padding: 0 56px; text-align: center; }
+    .tl-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(38px, 5vw, 60px); color: var(--off-white); line-height: 1.05; }
+    .tl-wrap { max-width: 860px; margin: 0 auto; padding: 0 56px; position: relative; }
+    .tl-spine { position: absolute; left: calc(50% + 56px); top: 8px; bottom: 8px; width: 1px; background: var(--gold); opacity: 0.35; transform: translateX(-50%); }
+    .tl-item { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-bottom: 72px; align-items: start; position: relative; }
+    .tl-dot { position: absolute; left: 50%; top: 8px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; transform: translateX(-50%); border: 2px solid var(--bg-dark); box-shadow: 0 0 12px rgba(201,169,110,0.55); }
     .tl-content { position: relative; }
-    .tl-num {
-      position: absolute;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 120px;
-      line-height: 1;
-      color: var(--gold);
-      opacity: 0.04;
-      top: -14px; right: -6px;
-      pointer-events: none;
-    }
+    .tl-num { position: absolute; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 100px; line-height: 1; color: var(--gold); opacity: 0.04; top: -14px; right: -6px; pointer-events: none; }
     .tl-item:nth-child(even) .tl-num { left: -6px; right: auto; }
     .tl-inner { position: relative; z-index: 1; }
-    .tl-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: 21px;
-      color: #FFFFFF;
-      margin-bottom: 10px;
-      line-height: 1.28;
-    }
-    .tl-body {
-      font-family: 'Lora', serif;
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.82;
-      color: rgba(255,255,255,0.60);
-    }
+    .tl-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; color: var(--off-white); margin-bottom: 10px; line-height: 1.28; }
+    .tl-body { font-family: 'Lora', serif; font-size: 15px; font-weight: 400; line-height: 1.88; color: rgba(250,250,247,0.65); }
     .tl-spacer { display: block; }
 
-    /* ── TEASER ─────────────────────────────── */
-    #teaser {
-      position: relative;
-      padding: 120px 56px;
-      text-align: center;
-      background: var(--bg-deep);
-      overflow: hidden;
-    }
-    .teaser-img-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/hands.png');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.08;
-    }
-    .teaser-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .teaser-inner h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(38px, 5.5vw, 68px);
-      color: #FFFFFF;
-      line-height: 1.1;
-      margin-bottom: 24px;
-    }
-    .teaser-inner p {
-      font-family: 'Lora', serif;
-      font-size: clamp(16px, 1.8vw, 18px);
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.68);
-      margin-bottom: 44px;
-    }
-    .teaser-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .teaser-btn-1 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      text-decoration: none;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.28);
-      padding: 13px 26px;
-      border-radius: 2px;
-      transition: background 200ms;
-    }
-    .teaser-btn-1:hover { background: rgba(255,255,255,0.15); }
-    .teaser-link-2 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.50);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.22);
-      padding-bottom: 2px;
-      display: flex;
-      align-items: center;
-      transition: color 250ms, border-color 250ms;
-    }
-    .teaser-link-2:hover { color: #FFFFFF; border-color: rgba(255,255,255,0.65); }
-
-    /* ── THREE PILLARS ──────────────────────── */
+    /* ═══════════════════════════════════════════
+       SECTION 4: THREE PILLARS   WHITE
+    ═══════════════════════════════════════════ */
     #pillars {
-      background: var(--bg-dark);
-      padding: 120px 56px;
+      background: var(--white);
+      padding: 100px 0;
     }
-    .pillars-head {
-      max-width: var(--max);
-      margin: 0 auto 64px;
-      text-align: center;
+    .pillars-head { max-width: var(--max); margin: 0 auto 16px; padding: 0 56px; text-align: center; }
+    .pillars-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 4vw, 52px); color: var(--ink); line-height: 1.1; margin-bottom: 14px; }
+    .pillars-sub { font-family: 'Lora', serif; font-style: italic; font-size: 18px; color: var(--muted); text-align: center; margin-bottom: 56px; padding: 0 56px; }
+    .pillars-grid { max-width: var(--max); margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pillar-card {
+      background: #F8F8F8; border: 1px solid #E8E8E8; border-radius: 3px; padding: 44px 36px;
+      transition: transform 300ms ease, box-shadow 300ms ease;
     }
-    .pillars-head h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: clamp(30px, 3.8vw, 50px);
-      color: #FFFFFF;
-      line-height: 1.1;
-    }
-    .pillars-grid {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-    .pillar {
-      padding: 52px 40px 56px;
-      background: var(--bg-mid);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-top: 3px solid transparent;
-      transition: border-top-color 0.35s ease, background 0.35s ease;
-    }
-    .pillar:hover { border-top-color: var(--gold); background: #12111A; }
-    .pillar-icon { width: 40px; height: 40px; margin-bottom: 28px; }
-    .pillar h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: 22px;
-      color: #FFFFFF;
-      margin-bottom: 14px;
-    }
-    .pillar p {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.58);
-    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .pillar-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: var(--ink); margin-top: 20px; margin-bottom: 12px; }
+    .pillar-card p { font-family: 'Lora', serif; font-size: 15px; line-height: 1.8; color: #555555; }
 
-    /* ── ABOUT ──────────────────────────────── */
+    /* ═══════════════════════════════════════════
+       SECTION 5: ABOUT FOUNDATION   CREAM
+    ═══════════════════════════════════════════ */
     #about {
-      background: var(--bg-dark);
-      padding: 120px 56px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-    .about-grid {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: center;
-    }
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(22px, 2.8vw, 34px);
-      line-height: 1.45;
-      color: #FFFFFF;
-      margin-bottom: 28px;
-    }
-    .about-body {
-      font-family: 'Lora', serif;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 32px;
-    }
-    .about-link {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: 2px;
-      transition: color 250ms, border-color 250ms;
-    }
-    .about-link:hover { color: var(--gold); border-color: rgba(201,169,110,0.5); }
-    .about-logo-area { display: flex; align-items: center; justify-content: center; }
-    .about-logo-area img { max-width: 100%; max-height: 260px; object-fit: contain; opacity: 0.12; filter: invert(1); }
-
-    /* ── SUPPORT CTA ─────────────────────────── */
-    #support {
-      position: relative;
-      padding: 160px 56px;
-      text-align: center;
-      overflow: hidden;
-    }
-    .support-bg-img {
-      position: absolute; inset: 0;
-      background-image: url('images/hands.png');
-      background-size: cover;
-      background-position: center;
-    }
-    .support-overlay {
-      position: absolute; inset: 0;
-      background: rgba(5,5,12,0.82);
-    }
-    .support-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    .support-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(44px, 6vw, 80px);
-      color: #FFFFFF;
-      line-height: 1.05;
-      margin-bottom: 24px;
-    }
-    .support-body {
-      font-family: 'Lora', serif;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.82;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 48px;
-    }
-    .support-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .support-btn-1 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--bg-deep);
-      text-decoration: none;
-      background: #FFFFFF;
-      border: 1px solid #FFFFFF;
-      padding: 14px 36px;
-      border-radius: 2px;
-      transition: background 250ms, border-color 250ms, color 250ms;
-      display: inline-block;
-    }
-    .support-btn-1:hover { background: var(--gold); border-color: var(--gold); }
-    .support-btn-2 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.35);
-      padding: 14px 36px;
-      border-radius: 2px;
-      transition: background 200ms;
-      cursor: pointer;
-    }
-    .support-btn-2:hover { background: rgba(255,255,255,0.10); }
-
-    /* ── FOOTER ─────────────────────────────── */
-    footer {
-      background: #030308;
+      background: var(--cream);
+      padding: 100px 0;
       border-top: 1px solid rgba(201,169,110,0.12);
-      padding: 80px 56px 56px;
     }
-    .footer-grid {
-      max-width: var(--max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 64px;
+    .about-grid { max-width: var(--max); margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: 55% 45%; gap: 80px; align-items: center; }
+    .about-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(26px, 3vw, 38px); color: var(--ink); line-height: 1.2; margin-bottom: 24px; }
+    .about-body { font-family: 'Lora', serif; font-size: 17px; font-weight: 400; line-height: 1.9; color: var(--warm-ink); margin-bottom: 28px; }
+    .about-link { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.4); padding-bottom: 2px; transition: border-color 0.25s; }
+    .about-link:hover { border-color: var(--gold); }
+    .about-logo-col { display: flex; align-items: center; justify-content: center; }
+    .about-logo-col img { max-height: 180px; width: auto; opacity: 0.75; filter: brightness(0); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 6: EMAIL CAPTURE   DARK
+    ═══════════════════════════════════════════ */
+    #email-band {
+      background: var(--bg-dark);
+      padding: 80px 0;
     }
+    .email-inner { max-width: 640px; margin: 0 auto; padding: 0 24px; text-align: center; }
+    .email-heading { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(30px, 4vw, 42px); color: var(--off-white); line-height: 1.2; margin-bottom: 32px; }
+    .email-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+    .email-form input {
+      flex: 1; height: 48px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,169,110,0.3); border-radius: 2px;
+      color: var(--off-white); font-family: 'Lora', serif; font-size: 14px; padding: 0 16px; outline: none;
+      transition: border-color 0.25s;
+    }
+    .email-form input:focus { border-color: rgba(201,169,110,0.65); }
+    .email-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .email-form button {
+      height: 48px; padding: 0 24px; background: var(--gold); border: none; border-radius: 2px;
+      color: var(--bg-dark); font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; white-space: nowrap;
+      transition: background 250ms;
+    }
+    .email-form button:hover { background: var(--gold-lt); }
+    #capture-confirm { display: none; color: var(--gold); font-family: 'Lora', serif; font-style: italic; font-size: 16px; margin-top: 20px; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 7: FINAL CTA   DARK CINEMATIC
+    ═══════════════════════════════════════════ */
+    #support {
+      position: relative; padding: 160px 0; text-align: center; overflow: hidden;
+    }
+    .support-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1792&q=85&fit=crop'); background-size: cover; background-position: center; }
+    .support-overlay { position: absolute; inset: 0; background: rgba(5,5,12,0.75); }
+    .support-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    .support-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(52px, 7vw, 88px); color: var(--off-white); line-height: 0.95; margin-bottom: 20px; }
+    .support-rule { width: 52px; height: 2px; background: var(--gold); border: none; display: block; margin: 0 auto 24px; }
+    .support-body { font-family: 'Lora', serif; font-style: italic; font-size: 18px; line-height: 1.8; color: rgba(250,250,247,0.72); margin-bottom: 44px; }
+    .support-ctas { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .support-btn-1 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg-deep); background: var(--off-white); border: 1px solid var(--off-white); padding: 16px 40px; border-radius: 2px; text-decoration: none; transition: background 250ms, border-color 250ms; display: inline-block; }
+    .support-btn-1:hover { background: var(--gold); border-color: var(--gold); }
+    .support-btn-2 { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0.14em; color: rgba(250,250,247,0.55); background: none; border: none; cursor: pointer; text-transform: uppercase; transition: color 0.25s; }
+    .support-btn-2:hover { color: var(--off-white); }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer { background: #0A0A0F; border-top: 1px solid rgba(201,169,110,0.12); padding: 64px 56px 44px; }
+    .footer-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 56px; }
     .footer-brand { display: block; margin-bottom: 14px; }
-    .footer-brand img { height: 36px; width: auto; display: block; }
-    .footer-tagline {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: rgba(255,255,255,0.28);
-      line-height: 1.7;
-      max-width: 280px;
-    }
-    .footer-col h4 {
-      font-family: 'Raleway', sans-serif;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 22px;
-    }
+    .footer-brand img { height: 34px; width: auto; display: block; }
+    .footer-tagline { font-family: 'Lora', serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.28); line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a {
-      font-family: 'Lora', serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.38);
-      text-decoration: none;
-      transition: color 0.25s;
-    }
-    .footer-col a:hover { color: rgba(255,255,255,0.80); }
-    .social-row { display: flex; gap: 18px; margin-bottom: 32px; }
+    .footer-col a { font-family: 'Lora', serif; font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.25s; }
+    .footer-col a:hover { color: rgba(255,255,255,0.75); }
+    .social-row { display: flex; gap: 18px; margin-bottom: 28px; }
     .social-row a { color: rgba(255,255,255,0.28); transition: color 0.25s; }
     .social-row a:hover { color: var(--gold); }
-    .footer-copy {
-      font-family: 'Raleway', sans-serif;
-      font-size: 11px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.20);
-      line-height: 1.6;
-    }
+    .footer-copy { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 300; color: rgba(255,255,255,0.18); line-height: 1.6; }
 
-    /* ── RESPONSIVE ─────────────────────────── */
-    @media (max-width: 1100px) {
-      .hero-stills { width: 220px; }
-      .hero-title { font-size: 82px; }
-      .award-badges { right: 236px; }
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .award-badges { right: 240px; }
     }
     @media (max-width: 768px) {
       .main-nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .nav-donate { display: none; }
-      .nav-ham { display: flex; }
-      .hero-stills { display: none !important; }
-      .award-badges { display: none !important; }
+      .nav-links { display: none; } .nav-donate { display: none; } .nav-ham { display: flex; }
+      .hero-stills { display: none !important; } .award-badges { display: none !important; }
       .meta-truth { display: none; }
       .hero-title { font-size: 64px; }
       .hero-title-block { bottom: 48px; left: 24px; right: 24px; max-width: 100%; }
-      .hero-ctas { flex-direction: column; }
-      .hero-cta-1, .hero-cta-2 { text-align: center; }
+      .hero-ctas { flex-direction: column; } .cta-primary, .cta-secondary { text-align: center; }
       .meta-strip { left: 24px; top: 76px; }
-      .opening-grid { grid-template-columns: 1fr; }
-      .opening-photo { display: none; }
-      .opening-img-texture { display: none; }
-      .interlude-text { padding: 0 24px; }
-      .tl-spine { left: 16px; }
-      .tl-item { grid-template-columns: 1fr; padding-left: 40px; gap: 0; margin-bottom: 52px; }
-      .tl-item:nth-child(even) .tl-spacer { display: none; }
-      .tl-dot { left: 16px; }
-      .tl-num { display: none; }
-      .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
+      .opening-grid { grid-template-columns: 1fr; } .opening-img-wrap { display: none; }
+      .container, .tl-wrap, .opening-grid, .pillars-grid, .about-grid, .pillars-head, .pillars-sub, .footer-grid { padding-left: 24px; padding-right: 24px; }
+      #opening, #timeline, #pillars, #about { padding: 80px 0; }
+      #support { padding: 100px 0; } #email-band { padding: 60px 0; }
+      footer { padding: 56px 24px 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .pillars-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
-      .about-logo-area { display: none; }
-      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-      #opening, #timeline, #teaser, #pillars, #about { padding: 80px 24px; }
-      #support { padding: 100px 24px; }
-      footer { padding: 60px 24px 44px; }
+      .about-logo-col { display: none; }
+      .tl-head { padding: 0 24px; } .tl-wrap { padding: 0 24px; }
+      .tl-spine { left: 50%; }
+      .tl-item { grid-template-columns: 1fr; padding-left: 36px; gap: 0; margin-bottom: 48px; }
+      .tl-item:nth-child(even) .tl-spacer { display: none; }
+      .tl-dot { left: 0; transform: none; }
+      .tl-num { display: none; }
+      .email-form { flex-direction: column; } .email-form button { width: 100%; }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 52px; }
       .hero-title-block { bottom: 40px; left: 20px; right: 20px; }
-      .main-nav { padding: 0 20px; }
-      .meta-strip { left: 20px; }
-      #opening, #timeline, #teaser, #pillars, #about { padding: 64px 20px; }
-      #support { padding: 80px 20px; }
-      footer { padding: 48px 20px 36px; }
+      .main-nav { padding: 0 20px; } .meta-strip { left: 20px; }
+      #opening, #timeline, #pillars, #about { padding: 64px 0; }
+      .opening-grid, .pillars-head, .pillars-sub, .pillars-grid, .about-grid, .tl-head, .tl-wrap, .footer-grid { padding-left: 20px; padding-right: 20px; }
+      footer { padding: 44px 20px 32px; }
       .support-ctas { flex-direction: column; align-items: stretch; }
-      .support-btn-1, .support-btn-2 { text-align: center; }
-      .teaser-ctas { flex-direction: column; align-items: stretch; }
-      .teaser-btn-1 { text-align: center; }
+      .support-btn-1 { text-align: center; }
     }
   </style>
 </head>
@@ -916,40 +364,37 @@
 
   <!-- ═══ NAVIGATION ═══ -->
   <nav class="main-nav" id="main-nav">
-    <a href="#" class="nav-logo">
-      <img src="images/logo-dark.svg" alt="StillHer Foundation">
-    </a>
+    <a href="#" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
     <ul class="nav-links">
       <li><a href="#opening">The Story</a></li>
       <li><span class="nav-sep"></span></li>
       <li><a href="#timeline">Her Road</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="#teaser">The Documentary</a></li>
+      <li><a href="#pillars">The Film</a></li>
       <li><span class="nav-sep"></span></li>
       <li><a href="#support">Support</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="press.html">Press</a></li>
     </ul>
     <a href="stillher-donation/index.html" class="nav-donate">Donate Now</a>
-    <button class="nav-ham" id="ham-btn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
-
   <div id="overlay"></div>
   <nav id="drawer">
     <a href="#opening" onclick="closeDrawer()">The Story</a>
     <a href="#timeline" onclick="closeDrawer()">Her Road</a>
-    <a href="#teaser" onclick="closeDrawer()">The Documentary</a>
+    <a href="#pillars" onclick="closeDrawer()">The Film</a>
     <a href="#support" onclick="closeDrawer()">Support</a>
-    <a href="stillher-donation/index.html" onclick="closeDrawer()" style="color:var(--gold); margin-top:8px;">Donate Now</a>
+    <a href="press.html" onclick="closeDrawer()">Press</a>
+    <a href="stillher-donation/index.html" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
 
-  <!-- ═══ HERO ═══ -->
+  <!-- ═══ SECTION 1: HERO (cinematic, dark) ═══ -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-grad-lr"></div>
     <div class="hero-grad-bt"></div>
 
-    <!-- Metadata strip -->
     <div class="meta-strip">
       <span class="meta-year">2026</span>
       <span class="meta-sep"></span>
@@ -958,7 +403,6 @@
       <span class="meta-truth">Based on a True Story</span>
     </div>
 
-    <!-- Award badge -->
     <div class="award-badges">
       <div class="award-badge">
         <span class="award-badge-line1">Official Selection</span>
@@ -966,7 +410,6 @@
       </div>
     </div>
 
-    <!-- Title block (bottom-left, Dune-style) -->
     <div class="hero-title-block">
       <span class="hero-kicker">A StillHer Foundation Documentary</span>
       <span class="hero-title">Road to<br>Her Smile</span>
@@ -974,227 +417,187 @@
       <p class="hero-synopsis">Leah Spriggs left Italy for a promise of love. She was left with nothing. She is still standing.</p>
       <p class="hero-runtime">98 min &nbsp;•&nbsp; 2026 &nbsp;•&nbsp; Documentary &nbsp;•&nbsp; True Story</p>
       <div class="hero-ctas">
-        <a href="#teaser" class="hero-cta-1">Watch the Trailer</a>
-        <a href="#opening" class="hero-cta-2">Read Her Story</a>
+        <a href="#support" class="cta-primary">Watch the Trailer</a>
+        <a href="#opening" class="cta-secondary">Read Her Story</a>
       </div>
     </div>
 
-    <!-- Stills panel (Dune-style, right) -->
     <div class="hero-stills">
       <p class="stills-label">Stills</p>
-      <div class="still-thumb" data-full-src="images/portrait.png">
-        <img src="images/portrait.png" alt="Verona, Italy">
+      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1920&q=85&fit=crop">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=480&q=85&fit=crop" alt="Verona, Italy">
         <span class="still-caption">Verona, Italy</span>
       </div>
-      <div class="still-thumb" data-full-src="images/leah-young.png">
-        <img src="images/leah-young.png" alt="A Life Transformed">
+      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1920&q=85&fit=crop">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=480&q=85&fit=crop" alt="A Life Transformed">
         <span class="still-caption">A Life Transformed</span>
       </div>
-      <div class="still-thumb" data-full-src="images/hands.png">
-        <img src="images/hands.png" alt="Her Road Back">
-        <span class="still-caption">Her Road Back</span>
+      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1920&q=85&fit=crop">
+        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=480&q=85&fit=crop" alt="The Church">
+        <span class="still-caption">The Church</span>
       </div>
-      <div class="still-thumb" data-full-src="images/portrait.png">
-        <img src="images/portrait.png" alt="Johns Hopkins">
+      <div class="still-thumb" data-full-src="https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=1920&q=85&fit=crop">
+        <img src="https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=480&q=85&fit=crop" alt="Johns Hopkins">
         <span class="still-caption">Johns Hopkins</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══ HER STORY ═══ -->
+  <!-- ═══ SECTION 2: HER STORY   CREAM ═══ -->
   <section id="opening">
-    <img src="images/portrait.png" alt="" class="opening-img-texture" aria-hidden="true">
     <div class="opening-grid">
       <div>
-        <span class="section-label fade">Her Story</span>
-        <h2 class="section-heading fade d1">She was not always the woman the world would later overlook.</h2>
+        <span class="section-label-gold fade">Her Story</span>
+        <h2 class="opening-heading fade d1">She was not always the woman the world would later overlook.</h2>
         <hr class="section-rule fade d1">
-        <div class="section-body fade d2">
-          <p>Before the silence. Before the suffering. Before the system failed her, she was a woman of presence. Born in Verona, Italy, she carried a natural elegance that luxury brands spend millions trying to replicate. At the height of her early life, Leah was a model. She stood in rooms where aesthetics mattered, where presence was currency.</p>
-          <p>Then she met a man on a military post in Vicenza. He promised her love, America, a white picket fence. She left everything: her country, her language, her familiarity. And followed him across the ocean. Over the course of their twelve-year marriage, she discovered he had been unfaithful for nearly the entirety of it.</p>
+        <div class="opening-body fade d2">
+          <p>Born in Verona, Italy, Leah Spriggs carried a natural elegance that luxury brands spend millions trying to replicate. She was a model. She stood in rooms where presence was currency, where the future looked expansive.</p>
+          <p>Then she met a man in uniform on a military post in Vicenza. He promised her love, America, and a white picket fence. She left everything she knew and followed him across the ocean. What she walked into was not safety. It was betrayal, layered and relentless, over twelve years.</p>
         </div>
       </div>
-      <div class="opening-photo fade d3">
-        <img src="images/portrait.png" alt="Portrait, Verona, Italy" loading="lazy">
+      <div class="opening-img-wrap fade d3">
+        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=85&fit=crop" alt="Her Story" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- ═══ INTERLUDE ═══ -->
-  <section id="interlude">
-    <div class="interlude-img"></div>
-    <div class="interlude-scrim"></div>
-    <div class="interlude-text">
-      <span class="section-label fade">Verona, Italy</span>
-      <blockquote class="fade d1">"She stood in rooms where presence was currency. And she had both."</blockquote>
-    </div>
-  </section>
-
-  <!-- ═══ TIMELINE ═══ -->
+  <!-- ═══ SECTION 3: TIMELINE   DARK ═══ -->
   <section id="timeline">
     <div class="tl-head">
-      <span class="section-label fade" style="text-align:center; display:block;">A Life Dismantled</span>
+      <span class="section-label-gold fade" style="text-align:center;">A Life Dismantled</span>
       <h2 class="fade d1">Her Road</h2>
     </div>
     <div class="tl-wrap">
       <div class="tl-spine"></div>
 
       <div class="tl-item fade">
-        <div class="tl-content">
-          <div class="tl-num">1</div>
-          <div class="tl-inner">
-            <h3 class="tl-title">Born in Verona, Italy</h3>
-            <p class="tl-body">A woman of natural elegance. A future that looked expansive. She modelled. She stood in rooms where presence was currency and beauty opened doors.</p>
-          </div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-spacer"></div>
+        <div class="tl-content"><div class="tl-num">1</div><div class="tl-inner">
+          <h3 class="tl-title">Born in Verona, Italy</h3>
+          <p class="tl-body">A woman of presence. A future that looked expansive. She modelled. She stood in rooms where presence was currency and beauty opened doors.</p>
+        </div></div>
+        <div class="tl-dot"></div><div class="tl-spacer"></div>
       </div>
 
       <div class="tl-item fade">
-        <div class="tl-spacer"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">2</div>
-          <div class="tl-inner">
-            <h3 class="tl-title">She Met a Man in Uniform</h3>
-            <p class="tl-body">Vicenza military post. A promise of love, America, a white picket fence. She believed him, as people believe those who speak with certainty.</p>
-          </div>
-        </div>
+        <div class="tl-spacer"></div><div class="tl-dot"></div>
+        <div class="tl-content"><div class="tl-num">2</div><div class="tl-inner">
+          <h3 class="tl-title">Vicenza, Italy</h3>
+          <p class="tl-body">She met a man in uniform. A promise of love and America. She believed him, as people believe those who speak with certainty.</p>
+        </div></div>
       </div>
 
       <div class="tl-item fade">
-        <div class="tl-content">
-          <div class="tl-num">3</div>
-          <div class="tl-inner">
-            <h3 class="tl-title">She Left Everything Behind</h3>
-            <p class="tl-body">Crossed an ocean. Left her country, her language, her familiarity. Built a life from scratch in a country that was never quite hers. A twelve-year marriage.</p>
-          </div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-spacer"></div>
+        <div class="tl-content"><div class="tl-num">3</div><div class="tl-inner">
+          <h3 class="tl-title">The Marriage</h3>
+          <p class="tl-body">Twelve years. Infidelity running through almost all of them. A single immigrant mother. Two children. No safety net.</p>
+        </div></div>
+        <div class="tl-dot"></div><div class="tl-spacer"></div>
       </div>
 
       <div class="tl-item fade">
-        <div class="tl-spacer"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">4</div>
-          <div class="tl-inner">
-            <h3 class="tl-title">Betrayal, Layered and Relentless</h3>
-            <p class="tl-body">Infidelity spanning nearly the entirety of their marriage. A single immigrant mother. Two children. No safety net. Then an eviction notice, final.</p>
-          </div>
-        </div>
+        <div class="tl-spacer"></div><div class="tl-dot"></div>
+        <div class="tl-content"><div class="tl-num">4</div><div class="tl-inner">
+          <h3 class="tl-title">Rock Bottom</h3>
+          <p class="tl-body">An eviction notice, final. She dropped to her knees in front of her children. Then she found Grace Covenant Church and placed her trust there.</p>
+        </div></div>
       </div>
 
       <div class="tl-item fade">
-        <div class="tl-content">
-          <div class="tl-num">5</div>
-          <div class="tl-inner">
-            <h3 class="tl-title">A Doctor Removed 13 Teeth</h3>
-            <p class="tl-body">Referred by her church. Trusted the process. Johns Hopkins Hospital. Thirteen teeth extracted. When she returned, the doctor had disappeared. No follow-up. No implants. Left toothless.</p>
-          </div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-spacer"></div>
+        <div class="tl-content"><div class="tl-num">5</div><div class="tl-inner">
+          <h3 class="tl-title">Johns Hopkins</h3>
+          <p class="tl-body">Thirteen teeth removed. A doctor who then disappeared. No follow-up. No implants. No answers. Left toothless, indefinitely. Her body then developed an autoimmune disease.</p>
+        </div></div>
+        <div class="tl-dot"></div><div class="tl-spacer"></div>
       </div>
 
       <div class="tl-item fade">
-        <div class="tl-spacer"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-num">6</div>
-          <div class="tl-inner">
-            <h3 class="tl-title">The Church: $7.2M Renovation</h3>
-            <p class="tl-body">While Leah sat in aftermath, toothless, sick, without recourse, the church gave her a $25 grocery gift card. Days later: a $7.2 million renovation announced from the pulpit.</p>
-          </div>
-        </div>
+        <div class="tl-spacer"></div><div class="tl-dot"></div>
+        <div class="tl-content"><div class="tl-num">6</div><div class="tl-inner">
+          <h3 class="tl-title">The Church</h3>
+          <p class="tl-body">A $25 grocery gift card. Days later from the pulpit: a $7.2 million renovation announcement. This is the story this documentary tells.</p>
+        </div></div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ TEASER ═══ -->
-  <section id="teaser">
-    <div class="teaser-img-bg"></div>
-    <div class="teaser-inner">
-      <span class="section-label fade" style="display:block; text-align:center;">Road to Her Smile</span>
-      <h2 class="fade d1">This is not<br>just a story.</h2>
-      <p class="fade d2">This is what happens when vulnerable women, especially immigrant mothers, fall through the cracks of systems that were never built to protect them.</p>
-      <div class="teaser-ctas fade d3">
-        <a href="#support" class="teaser-btn-1">Join the Movement</a>
-        <a href="#about" class="teaser-link-2">About the Foundation</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ THREE PILLARS ═══ -->
+  <!-- ═══ SECTION 4: THREE PILLARS   WHITE ═══ -->
   <section id="pillars">
-    <div class="pillars-head">
-      <span class="section-label fade" style="text-align:center; display:block;">What We Stand For</span>
-      <h2 class="fade d1">Why This Documentary Matters</h2>
+    <div class="pillars-head fade">
+      <span class="section-label-muted">Why This Documentary Matters</span>
+      <h2>Because this is not just one woman's story.</h2>
     </div>
-    <div class="pillars-grid fade d1">
-      <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 5 C14 5 10 10 10 16 C10 21 12 25 16 27 L20 36 L24 27 C28 25 30 21 30 16 C30 10 26 5 20 5Z"/>
-          <path d="M16 12 C16 12 18 8 20 8 C22 8 24 12 24 12"/>
-          <line x1="20" y1="36" x2="20" y2="39"/><line x1="16" y1="39" x2="24" y2="39"/>
+    <p class="pillars-sub fade d1">"Because this is not just one woman's story."</p>
+    <div class="pillars-grid">
+      <div class="pillar-card fade d1">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="#C9A96E" stroke-width="1.5"/>
+          <circle cx="14" cy="10" r="3" stroke="#C9A96E" stroke-width="1.5"/>
+          <path d="M8 22c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Dignity</h3>
-        <p>This is about more than teeth. When systems strip a woman of her ability to eat, speak, and smile, they strip her identity. Dignity is not a luxury. It is the baseline.</p>
+        <p>This is about more than teeth. When systems strip a woman of her ability to eat, to speak, to smile, they strip her identity. This documentary names that.</p>
       </div>
-      <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="20" y1="3" x2="20" y2="37"/>
-          <line x1="11" y1="7" x2="29" y2="7"/>
-          <line x1="11" y1="7" x2="4" y2="19"/><line x1="4" y1="19" x2="18" y2="19"/>
-          <path d="M4 19 C4 24 11 26 11 26 C11 26 18 24 18 19"/>
-          <line x1="29" y1="7" x2="22" y2="19"/><line x1="22" y1="19" x2="36" y2="19"/>
-          <path d="M22 19 C22 24 29 26 29 26 C29 26 36 24 36 19"/>
-          <line x1="14" y1="37" x2="26" y2="37"/>
+      <div class="pillar-card fade d2">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M14 4v20M6 4h16" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7 8L4 16h6L7 8z" stroke="#C9A96E" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M21 8l-3 8h6l-3-8z" stroke="#C9A96E" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
-        <h3>Justice</h3>
-        <p>A doctor disappeared. A church stayed silent. This documentary names what happened and demands accountability for the systems that failed Leah, and women like her.</p>
+        <h3>Accountability</h3>
+        <p>A doctor disappeared. A church stayed silent. This film documents what happened and demands the accountability that every vulnerable person deserves.</p>
       </div>
-      <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 25 C8 21 7 14 11 10 C15 6 20 9 20 9"/>
-          <path d="M28 25 C32 21 33 14 29 10 C25 6 20 9 20 9"/>
-          <path d="M6 27 C6 27 12 22 20 28 C28 22 34 27 34 27"/>
-          <path d="M10 32 C10 32 14 28 20 33 C26 28 30 32 30 32"/>
-          <circle cx="20" cy="5" r="3"/>
+      <div class="pillar-card fade d3">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M4 14c0-2 1.5-3.5 3.5-3.5S11 12 11 14v4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M24 14c0-2-1.5-3.5-3.5-3.5S17 12 17 14v4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M11 16h6" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Restoration</h3>
-        <p>Road to Her Smile is Leah's road back. And with your support, she will not walk it alone. We believe in restoration: not just of health, but of dignity, voice, and belonging.</p>
+        <p>Road to Her Smile is Leah's road back. And with your support, she will not have to walk it alone. Every gift brings her closer to her smile.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ ABOUT ═══ -->
+  <!-- ═══ SECTION 5: ABOUT FOUNDATION   CREAM ═══ -->
   <section id="about">
     <div class="about-grid">
       <div class="fade">
-        <span class="section-label">The Foundation</span>
-        <p class="about-quote">"StillHer Foundation exists to restore dignity to women who have been abandoned by the systems meant to protect them."</p>
-        <p class="about-body">We document, advocate, and fund the restoration of women failed by medical institutions, religious organizations, and family structures. Our work begins with Leah. It will not end with her.</p>
-        <a href="#support" class="about-link">Learn More</a>
+        <span class="section-label-gold">StillHer Foundation</span>
+        <p class="about-quote">"StillHer Foundation exists to restore dignity to women abandoned by the systems meant to protect them."</p>
+        <hr class="section-rule">
+        <p class="about-body">We document the stories the world was never supposed to hear. We build the communities that make sure they are heard anyway. Road to Her Smile is our first documentary, and Leah's story is only the beginning.</p>
+        <a href="stillher-donation/index.html" class="about-link">Support the Foundation</a>
       </div>
-      <div class="about-logo-area fade d2">
-        <img src="images/logo-generated.png" alt="StillHer Foundation" loading="lazy">
+      <div class="about-logo-col fade d2">
+        <img src="images/logo-generated.png" alt="StillHer Foundation">
       </div>
     </div>
   </section>
 
-  <!-- ═══ SUPPORT CTA ═══ -->
+  <!-- ═══ SECTION 6: EMAIL CAPTURE   DARK ═══ -->
+  <section id="email-band">
+    <div class="email-inner">
+      <span class="section-label-gold fade" style="text-align:center; display:block;">Follow Leah's Road</span>
+      <p class="email-heading fade d1">Be the first to know when Road to Her Smile premieres.</p>
+      <form id="email-capture" class="email-form fade d2">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Notify Me</button>
+      </form>
+      <p id="capture-confirm"></p>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 7: FINAL CTA   DARK CINEMATIC ═══ -->
   <section id="support">
-    <div class="support-bg-img"></div>
+    <div class="support-bg"></div>
     <div class="support-overlay"></div>
     <div class="support-inner">
-      <span class="section-label fade" style="text-align:center; display:block;">Support the Documentary</span>
+      <span class="section-label-gold fade" style="text-align:center; display:block;">Support the Documentary</span>
       <h2 class="support-title fade d1">Help us tell<br>this story.</h2>
+      <hr class="support-rule fade d2">
       <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution. This is how we make sure Leah's voice is finally heard.</p>
       <div class="support-ctas fade d3">
-        <a href="stillher-donation/index.html" class="support-btn-1">Donate Now</a>
+        <a href="stillher-donation/index.html" class="support-btn-1">Donate to Road to Her Smile</a>
         <button class="support-btn-2" onclick="shareStory()">Share Her Story</button>
       </div>
     </div>
@@ -1204,9 +607,7 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <a href="#" class="footer-brand">
-          <img src="images/logo-dark.svg" alt="StillHer Foundation">
-        </a>
+        <a href="#" class="footer-brand"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
         <p class="footer-tagline">A nonprofit dedicated to restoring dignity to women who have been abandoned by the systems meant to protect them.</p>
       </div>
       <div class="footer-col">
@@ -1214,31 +615,25 @@
         <ul>
           <li><a href="#opening">The Story</a></li>
           <li><a href="#timeline">Her Road</a></li>
-          <li><a href="#teaser">The Documentary</a></li>
+          <li><a href="#pillars">The Film</a></li>
           <li><a href="#support">Donate</a></li>
-          <li><a href="#about">Contact</a></li>
+          <li><a href="press.html">Press</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Follow</h4>
         <div class="social-row">
-          <a href="#" aria-label="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" aria-label="X / Twitter">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         </div>
-        <p class="footer-copy">2025 StillHer Foundation.<br>All rights reserved.</p>
+        <p class="footer-copy">2026 StillHer Foundation.<br>All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // ── NAV + PARALLAX ────────────────────────────────
+    // ── NAV + PARALLAX ─────────────────────────────
     const mainNav = document.getElementById('main-nav');
     const titleBlock = document.querySelector('.hero-title-block');
     const stillsPanel = document.querySelector('.hero-stills');
@@ -1246,81 +641,63 @@
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       const vh = window.innerHeight;
-
-      // Nav solidifies
-      if (y > vh * 0.75) {
-        mainNav.classList.add('nav-solid');
-      } else {
-        mainNav.classList.remove('nav-solid');
-      }
-
-      // Title block parallax + fade
+      mainNav.classList.toggle('nav-solid', y > vh * 0.75);
       if (titleBlock && y < vh) {
         titleBlock.style.transform = `translateY(${y * 0.22}px)`;
         titleBlock.style.opacity = Math.max(0, 1 - y / (vh * 0.65));
       }
-
-      // Stills panel slower parallax
       if (stillsPanel && y < vh) {
         stillsPanel.style.transform = `translateY(${y * 0.10}px)`;
       }
     }, { passive: true });
 
-    // ── STILLS HOVER CROSS-FADE ───────────────────────
+    // ── STILLS HOVER CROSS-FADE ─────────────────────
     const heroBg = document.querySelector('.hero-bg');
-
     document.querySelectorAll('.still-thumb').forEach(thumb => {
       thumb.addEventListener('mouseenter', () => {
-        const src = thumb.dataset.fullSrc;
         heroBg.style.opacity = '0';
-        setTimeout(() => {
-          heroBg.style.backgroundImage = `url('${src}')`;
-          heroBg.style.opacity = '1';
-        }, 200);
+        setTimeout(() => { heroBg.style.backgroundImage = `url('${thumb.dataset.fullSrc}')`; heroBg.style.opacity = '1'; }, 200);
       });
       thumb.addEventListener('mouseleave', () => {
         heroBg.style.opacity = '0';
-        setTimeout(() => {
-          heroBg.style.backgroundImage = "url('images/hero.png')";
-          heroBg.style.opacity = '1';
-        }, 200);
+        setTimeout(() => { heroBg.style.backgroundImage = "url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=85&fit=crop')"; heroBg.style.opacity = '1'; }, 200);
       });
     });
 
-    // ── MOBILE DRAWER ─────────────────────────────────
+    // ── MOBILE DRAWER ───────────────────────────────
     const hamBtn = document.getElementById('ham-btn');
     const drawer = document.getElementById('drawer');
     const overlay = document.getElementById('overlay');
     overlay.style.transition = 'opacity 0.4s ease';
-
-    function openDrawer() {
-      drawer.style.display = 'flex';
-      overlay.style.display = 'block';
-      requestAnimationFrame(() => {
-        drawer.classList.add('open');
-        overlay.style.opacity = '1';
-      });
-    }
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      overlay.style.opacity = '0';
-      setTimeout(() => {
-        drawer.style.display = 'none';
-        overlay.style.display = 'none';
-      }, 400);
-    }
+    function openDrawer() { drawer.style.display = 'flex'; overlay.style.display = 'block'; requestAnimationFrame(() => { drawer.classList.add('open'); overlay.style.opacity = '1'; }); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.style.opacity = '0'; setTimeout(() => { drawer.style.display = 'none'; overlay.style.display = 'none'; }, 400); }
     if (hamBtn) hamBtn.addEventListener('click', openDrawer);
     if (overlay) overlay.addEventListener('click', closeDrawer);
 
-    // ── SCROLL FADE ANIMATIONS ────────────────────────
+    // ── SCROLL FADE ─────────────────────────────────
     const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.10 });
     document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
-    // ── SHARE ─────────────────────────────────────────
+    // ── EMAIL CAPTURE ───────────────────────────────
+    document.getElementById('email-capture').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type=email]').value;
+      try {
+        await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'documentary_site' }) });
+      } catch {
+        const list = JSON.parse(localStorage.getItem('sh_emails') || '[]');
+        list.push({ email, ts: Date.now() });
+        localStorage.setItem('sh_emails', JSON.stringify(list));
+      }
+      e.target.style.display = 'none';
+      const confirm = document.getElementById('capture-confirm');
+      confirm.textContent = 'You are on the list. Thank you.';
+      confirm.style.display = 'block';
+    });
+
+    // ── SHARE ───────────────────────────────────────
     function shareStory() {
       if (navigator.share) {
         navigator.share({ title: 'Road to Her Smile', text: 'A story the world was never supposed to hear.', url: location.href });
