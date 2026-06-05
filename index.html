@@ -3,270 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Road to Her Smile | StillHer Foundation</title>
-  <meta name="description" content="A documentary about Leah Spriggs. Produced by the StillHer Foundation.">
+  <title>Road to Her Smile | StillHer Foundation Documentary</title>
+  <meta name="description" content="A cinematic documentary about Leah Spriggs. Produced by the StillHer Foundation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Playfair Display: high-contrast editorial serif, Vogue/Hilton level -->
-  <!-- Barlow: geometric humanist sans, premium, clean -->
-  <!-- Source Serif 4: refined body serif, editorial readability -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* ── COLOUR SYSTEM: White · Navy · Green ──────────── */
-      --navy:      #0B1D33;   /* Deep navy - hero, dark sections */
-      --navy-mid:  #122640;   /* Mid navy - about section */
-      --white:     #FFFFFF;   /* Pure white - light sections */
-      --offwhite:  #F5F8FA;   /* Pale blue-white - alternate light */
-      --green:     #00553A;   /* Forest green - Rolex-heritage accent */
-      --green-lt:  #006B4A;   /* Hover green */
-      --blue:      #003F7F;   /* Royal blue - CTA primary */
-      --blue-lt:   #0052A3;   /* Hover blue */
-      --gold:      #B89550;   /* Restrained gold - thin rules only */
-      --text-dark: #0F1923;   /* Near-black body text on light */
-      --text-mid:  #3D5166;   /* Mid-tone text, captions */
-      --text-muted:#7A8EA0;   /* Muted - labels on light bg */
-      --border-lt: rgba(0,63,127,0.12);   /* Blue-tinted border on white */
-      --border-dk: rgba(255,255,255,0.12);/* Light border on navy */
-      --max:       1280px;
-      --pad-v:     120px;
+      --bg-deep:  #05050C;
+      --bg-dark:  #080810;
+      --bg-mid:   #0D0D12;
+      --gold:     #C9A96E;
+      --gold-lt:  #E8D5A3;
+      --white:    #FFFFFF;
+      --max:      1280px;
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      font-family: 'Source Serif 4', Georgia, serif;
-      background: var(--white);
-      color: var(--text-dark);
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg-deep);
+      color: var(--white);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── SCROLL ANIMATIONS ──────────────────────────────── */
-    .fade {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.85s cubic-bezier(.22,1,.36,1),
-                  transform 0.85s cubic-bezier(.22,1,.36,1);
-    }
+    /* ── FADE ANIMATIONS ─────────────────────── */
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.85s cubic-bezier(.22,1,.36,1), transform 0.85s cubic-bezier(.22,1,.36,1); }
     .fade.in { opacity: 1; transform: none; }
     .d1 { transition-delay: 0.10s; }
     .d2 { transition-delay: 0.22s; }
     .d3 { transition-delay: 0.34s; }
     .d4 { transition-delay: 0.46s; }
 
-    /* ── TYPOGRAPHY SCALE ───────────────────────────────── */
-    /* Display - Playfair Display, italic, large */
-    .t-display {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-    }
-    /* Heading - Playfair Display, upright */
-    .t-heading {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: normal;
-    }
-    /* Label - Barlow, uppercase, tracked */
-    .t-label {
-      font-family: 'Barlow', system-ui, sans-serif;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-    }
-    /* UI - Barlow for buttons, nav */
-    .t-ui {
-      font-family: 'Barlow', system-ui, sans-serif;
-    }
-
-    /* ── UTILITY ────────────────────────────────────────── */
-    .label-green {
-      display: block;
-      font-family: 'Barlow', sans-serif;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 18px;
-    }
-    .label-blue {
-      display: block;
-      font-family: 'Barlow', sans-serif;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--blue-lt);
-      margin-bottom: 18px;
-    }
-    .label-white {
-      display: block;
-      font-family: 'Barlow', sans-serif;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 18px;
-    }
-    .rule-green {
-      width: 48px; height: 2px;
-      background: var(--green);
-      border: none;
-      display: block;
-      margin: 28px 0;
-    }
-    .rule-gold {
-      width: 100%; height: 1px;
-      background: rgba(184,149,80,0.25);
-      border: none;
-      display: block;
-    }
-
-    /* ── BUTTONS ────────────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      font-family: 'Barlow', sans-serif;
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    /* Primary: solid green */
-    .btn-primary {
-      padding: 14px 36px;
-      height: 50px;
-      background: var(--green);
-      border: 1.5px solid var(--green);
-      color: #FFFFFF;
-    }
-    .btn-primary:hover { background: var(--green-lt); border-color: var(--green-lt); }
-    /* Secondary: outline blue */
-    .btn-outline-blue {
-      padding: 14px 36px;
-      height: 50px;
-      background: transparent;
-      border: 1.5px solid var(--blue);
-      color: var(--blue);
-    }
-    .btn-outline-blue:hover { background: var(--blue); color: #FFFFFF; }
-    /* Ghost white (on dark) */
-    .btn-ghost-white {
-      padding: 13px 34px;
-      height: 48px;
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,0.6);
-      color: #FFFFFF;
-    }
-    .btn-ghost-white:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: #FFFFFF;
-    }
-    /* Solid blue */
-    .btn-solid-blue {
-      padding: 0 40px;
-      height: 50px;
-      background: var(--blue);
-      border: 1.5px solid var(--blue);
-      color: #FFFFFF;
-    }
-    .btn-solid-blue:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
-    /* Text link */
-    .link-arrow {
-      font-family: 'Barlow', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(255,255,255,0.75);
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 2px;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .link-arrow:hover { color: #FFFFFF; border-color: rgba(255,255,255,0.8); }
-    .link-arrow.dark {
-      color: var(--text-mid);
-      border-color: rgba(61,81,102,0.3);
-    }
-    .link-arrow.dark:hover { color: var(--text-dark); border-color: var(--text-mid); }
-
-    /* ════════════════════════════════════════════
-       NAVIGATION
-    ════════════════════════════════════════════ */
-    #nav {
+    /* ── NAV ─────────────────────────────────── */
+    .main-nav {
       position: fixed;
-      inset: 0 0 auto 0;
+      top: 0; left: 0; right: 0;
       z-index: 900;
+      height: 68px;
+      padding: 0 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      transition: background 350ms ease, border-color 350ms ease, backdrop-filter 350ms ease;
+      border-bottom: 1px solid transparent;
+    }
+    .main-nav.nav-solid {
+      background: rgba(5,5,12,0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: rgba(255,255,255,0.05);
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 0;
-      padding: 0 56px;
-      height: 72px;
-      transition: background 0.4s ease, height 0.3s ease, border-color 0.4s ease;
-      border-bottom: 1px solid transparent;
-    }
-    #nav.solid {
-      background: rgba(11,29,51,0.97);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom-color: var(--border-dk);
-      height: 64px;
-    }
-    /* Brand */
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nav-brand-logo {
-      height: 38px;
-      width: auto;
-      flex-shrink: 0;
-      display: block;
-    }
-    .nav-brand-text {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      white-space: nowrap;
-    }
-    /* Nav centre links */
-    .nav-links {
       list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 44px;
-      margin: 0 auto;
+      flex: 1;
+      justify-content: center;
     }
+    .nav-links li { display: flex; align-items: center; }
     .nav-links a {
-      font-family: 'Barlow', sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.2em;
+      font-size: 10px;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
-      transition: color 0.25s;
+      padding: 0 20px;
+      transition: color 200ms;
     }
-    .nav-links a:hover { color: #FFFFFF; }
-    /* Nav CTA */
-    .nav-cta {
+    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-sep {
+      width: 1px;
+      height: 10px;
+      background: rgba(255,255,255,0.15);
+      display: block;
       flex-shrink: 0;
     }
-    /* Hamburger */
+    .nav-donate {
+      flex-shrink: 0;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 9px 22px;
+      border-radius: 2px;
+      transition: background 250ms, color 250ms;
+    }
+    .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
     .nav-ham {
       display: none;
       margin-left: auto;
@@ -277,211 +113,369 @@
       flex-direction: column;
       gap: 5px;
     }
-    .nav-ham span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: #FFFFFF;
-      transition: 0.3s;
-    }
-    /* Mobile drawer */
+    .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
     #drawer {
       display: none;
       position: fixed;
       inset: 0 0 0 auto;
-      width: 320px;
-      background: var(--navy);
+      width: 100vw;
+      background: var(--bg-deep);
       z-index: 910;
       flex-direction: column;
-      padding: 96px 48px 48px;
-      gap: 32px;
+      padding: 88px 32px 48px;
+      gap: 28px;
       transform: translateX(100%);
       transition: transform 0.4s cubic-bezier(.22,1,.36,1);
-      border-left: 1px solid var(--border-dk);
+      border-left: 1px solid rgba(255,255,255,0.06);
     }
     #drawer.open { transform: none; }
     #drawer a {
-      font-family: 'Barlow', sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-weight: 500;
       font-size: 13px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.82);
       text-decoration: none;
-      transition: color 0.25s;
     }
-    #drawer a:hover { color: #FFFFFF; }
+    #drawer a:hover { color: var(--gold); }
     #overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       z-index: 905;
       opacity: 0;
       transition: opacity 0.4s;
     }
 
-    /* ════════════════════════════════════════════
-       HERO
-    ════════════════════════════════════════════ */
+    /* ── HERO ────────────────────────────────── */
     #hero {
       position: relative;
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      min-height: 600px;
       overflow: hidden;
-      background: var(--navy);
+      background: var(--bg-deep);
     }
-    .hero-img {
-      position: absolute;
-      inset: 0;
+    .hero-bg {
+      position: absolute; inset: 0;
       background-image: url('images/hero.png');
       background-size: cover;
       background-position: center 20%;
-      transform: scale(1.05);
-      transition: transform 9s ease-out;
+      transition: opacity 400ms ease, background-image 0ms;
     }
-    #hero.loaded .hero-img { transform: scale(1); }
-    .hero-scrim {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(11,29,51,0.92) 0%,
-        rgba(11,29,51,0.70) 45%,
-        rgba(11,29,51,0.30) 100%
-      );
+    .hero-grad-lr {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(5,5,12,0.90) 0%, rgba(5,5,12,0.45) 52%, rgba(5,5,12,0.82) 100%);
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 56px;
-      max-width: 780px;
-      margin-top: 72px;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(52px, 7vw, 96px);
-      line-height: 1.05;
-      color: #FFFFFF;
-      margin-bottom: 24px;
-      letter-spacing: -0.01em;
-    }
-    .hero-sub {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(17px, 2vw, 21px);
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.65;
-      margin-bottom: 48px;
-      max-width: 540px;
-    }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-    /* Scroll line */
-    .scroll-line {
-      position: absolute;
-      bottom: 48px;
-      left: 56px;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .scroll-line::before {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 56px;
-      background: rgba(255,255,255,0.35);
-      animation: linepulse 2.5s ease-in-out infinite;
-    }
-    .scroll-line span {
-      font-family: 'Barlow', sans-serif;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      writing-mode: vertical-lr;
-      transform: rotate(180deg);
-    }
-    @keyframes linepulse {
-      0%,100% { opacity: 0.35; }
-      50% { opacity: 0.75; }
+    .hero-grad-bt {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,5,12,1) 0%, rgba(5,5,12,0.35) 38%, transparent 65%);
     }
 
-    /* ════════════════════════════════════════════
-       OPENING - NAVY + WHITE SPLIT
-    ════════════════════════════════════════════ */
+    /* Metadata strip */
+    .meta-strip {
+      position: absolute;
+      top: 84px; left: 56px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .meta-year {
+      background: var(--gold);
+      color: var(--bg-deep);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .meta-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.2); display: block; }
+    .meta-genre {
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.55);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .meta-truth {
+      color: rgba(255,255,255,0.35);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Award badge */
+    .award-badges {
+      position: absolute;
+      top: 84px; right: 56px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .award-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2px;
+      padding: 8px 14px;
+      text-align: center;
+    }
+    .award-badge-line1 {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 3px;
+    }
+    .award-badge-line2 {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* Title block (Dune-style, bottom-left) */
+    .hero-title-block {
+      position: absolute;
+      bottom: 80px; left: 56px;
+      max-width: 580px;
+      z-index: 10;
+      will-change: transform, opacity;
+    }
+    .hero-kicker {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 108px;
+      line-height: 0.92;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .hero-rule {
+      width: 52px; height: 2px;
+      background: var(--gold);
+      border: none; display: block;
+      margin-bottom: 18px;
+    }
+    .hero-synopsis {
+      font-family: 'Lora', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 26px;
+    }
+    .hero-runtime {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 30px;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-cta-1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      text-decoration: none;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 13px 26px;
+      border-radius: 2px;
+      transition: background 200ms;
+      display: inline-block;
+    }
+    .hero-cta-1:hover { background: rgba(255,255,255,0.18); }
+    .hero-cta-2 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid rgba(201,169,110,0.45);
+      padding: 13px 26px;
+      border-radius: 2px;
+      transition: background 200ms;
+      display: inline-block;
+    }
+    .hero-cta-2:hover { background: rgba(201,169,110,0.10); }
+
+    /* Stills panel (Dune-style, right) */
+    .hero-stills {
+      position: absolute;
+      top: 68px; right: 0; bottom: 0;
+      width: 280px;
+      z-index: 10;
+      padding: 20px 24px 80px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: linear-gradient(to left, rgba(5,5,12,0.72) 0%, transparent 100%);
+      will-change: transform;
+    }
+    .stills-label {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 14px;
+      padding-right: 4px;
+      text-align: right;
+    }
+    .still-thumb {
+      width: 100%;
+      height: 80px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .still-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: opacity 300ms, transform 400ms;
+    }
+    .still-thumb:hover img { opacity: 1; transform: scale(1.06); }
+    .still-caption {
+      position: absolute;
+      bottom: 6px; left: 8px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.45);
+      transition: color 300ms;
+      pointer-events: none;
+    }
+    .still-thumb:hover .still-caption { color: rgba(255,255,255,0.82); }
+
+    /* ── HER STORY ───────────────────────────── */
     #opening {
-      background: var(--white);
-      padding: var(--pad-v) 56px;
+      background: var(--bg-dark);
+      padding: 120px 56px;
+      position: relative;
+      overflow: hidden;
     }
     .opening-grid {
       max-width: var(--max);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 96px;
+      grid-template-columns: 55% 45%;
+      gap: 80px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
-    .opening-quote {
-      font-family: 'Playfair Display', serif;
+    .opening-img-texture {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+      object-fit: cover;
+      opacity: 0.10;
+      pointer-events: none;
+    }
+    .section-label {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: clamp(28px, 3.2vw, 44px);
-      line-height: 1.35;
-      color: var(--navy);
-      margin-bottom: 32px;
-    }
-    .opening-body {
-      font-size: 18px;
       font-weight: 300;
-      line-height: 1.88;
-      color: var(--text-mid);
+      font-size: clamp(36px, 4vw, 52px);
+      color: #FFFFFF;
+      line-height: 1.15;
+      margin-bottom: 28px;
     }
-    .opening-body p + p { margin-top: 20px; }
+    .section-rule {
+      width: 44px; height: 2px;
+      background: var(--gold);
+      border: none; display: block;
+      margin-bottom: 28px;
+      opacity: 0.7;
+    }
+    .section-body {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.68);
+    }
+    .section-body p + p { margin-top: 20px; }
     .opening-photo {
       border-radius: 1px;
       overflow: hidden;
       aspect-ratio: 3/4;
-      box-shadow: 0 24px 80px rgba(11,29,51,0.16);
     }
     .opening-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      opacity: 0.85;
     }
 
-    /* ════════════════════════════════════════════
-       LEAH-YOUNG - FULL-BLEED INTERLUDE
-    ════════════════════════════════════════════ */
+    /* ── INTERLUDE ───────────────────────────── */
     #interlude {
       position: relative;
-      height: 65vh;
-      min-height: 480px;
+      height: 60vh;
+      min-height: 440px;
       overflow: hidden;
     }
     .interlude-img {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image: url('images/leah-young.png');
       background-size: cover;
       background-position: center 15%;
     }
     .interlude-scrim {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(11,29,51,0.92) 0%,
-        rgba(11,29,51,0.55) 45%,
-        rgba(11,29,51,0.1) 100%
-      );
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(5,5,12,0.90) 0%, rgba(5,5,12,0.55) 48%, rgba(5,5,12,0.15) 100%);
     }
     .interlude-text {
       position: relative;
@@ -494,21 +488,19 @@
       max-width: 560px;
     }
     .interlude-text blockquote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 400;
       font-size: clamp(22px, 2.8vw, 34px);
       line-height: 1.45;
-      color: #FFFFFF;
+      color: rgba(255,255,255,0.90);
       margin-top: 14px;
     }
 
-    /* ════════════════════════════════════════════
-       TIMELINE - OFF-WHITE
-    ════════════════════════════════════════════ */
+    /* ── TIMELINE ───────────────────────────── */
     #timeline {
-      background: var(--offwhite);
-      padding: var(--pad-v) 56px;
+      background: var(--bg-dark);
+      padding: 120px 56px;
     }
     .tl-head {
       max-width: var(--max);
@@ -516,24 +508,18 @@
       text-align: center;
     }
     .tl-head h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: clamp(44px, 5vw, 64px);
-      color: var(--navy);
+      font-size: clamp(40px, 5vw, 64px);
+      color: #FFFFFF;
       line-height: 1.05;
     }
-    .tl-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      position: relative;
-    }
+    .tl-wrap { max-width: 860px; margin: 0 auto; position: relative; }
     .tl-spine {
       position: absolute;
-      left: 50%;
-      top: 8px;
-      bottom: 8px;
+      left: 50%; top: 8px; bottom: 8px;
       width: 1px;
-      background: rgba(0,85,58,0.22);
+      background: rgba(201,169,110,0.35);
       transform: translateX(-50%);
     }
     .tl-item {
@@ -546,98 +532,119 @@
     }
     .tl-dot {
       position: absolute;
-      left: 50%;
-      top: 8px;
-      width: 10px;
-      height: 10px;
-      background: var(--green);
+      left: 50%; top: 8px;
+      width: 10px; height: 10px;
+      background: var(--gold);
       border-radius: 50%;
       transform: translateX(-50%);
-      border: 2px solid var(--offwhite);
-      box-shadow: 0 0 0 4px rgba(0,85,58,0.15);
+      border: 2px solid var(--bg-dark);
+      box-shadow: 0 0 10px rgba(201,169,110,0.6);
     }
     .tl-content { position: relative; }
     .tl-num {
       position: absolute;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 700;
-      font-size: 100px;
+      font-size: 120px;
       line-height: 1;
-      color: rgba(0,63,127,0.05);
+      color: var(--gold);
+      opacity: 0.04;
       top: -14px; right: -6px;
       pointer-events: none;
     }
     .tl-item:nth-child(even) .tl-num { left: -6px; right: auto; }
     .tl-inner { position: relative; z-index: 1; }
     .tl-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       font-size: 21px;
-      color: var(--navy);
+      color: #FFFFFF;
       margin-bottom: 10px;
       line-height: 1.28;
     }
     .tl-body {
+      font-family: 'Lora', serif;
       font-size: 15px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.82;
-      color: var(--text-mid);
+      color: rgba(255,255,255,0.60);
     }
     .tl-spacer { display: block; }
 
-    /* ════════════════════════════════════════════
-       TEASER - DARK NAVY + HANDS IMAGE
-    ════════════════════════════════════════════ */
+    /* ── TEASER ─────────────────────────────── */
     #teaser {
       position: relative;
-      padding: var(--pad-v) 56px;
+      padding: 120px 56px;
       text-align: center;
-      background: var(--navy);
+      background: var(--bg-deep);
       overflow: hidden;
     }
-    .teaser-img {
-      position: absolute;
-      inset: 0;
+    .teaser-img-bg {
+      position: absolute; inset: 0;
       background-image: url('images/hands.png');
       background-size: cover;
       background-position: center;
-    }
-    .teaser-scrim {
-      position: absolute;
-      inset: 0;
-      background: rgba(11,29,51,0.78);
+      opacity: 0.08;
     }
     .teaser-inner {
       position: relative;
       z-index: 2;
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
     }
     .teaser-inner h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 300;
+      font-size: clamp(38px, 5.5vw, 68px);
       color: #FFFFFF;
       line-height: 1.1;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
     .teaser-inner p {
-      font-size: clamp(16px, 1.8vw, 20px);
-      font-weight: 300;
+      font-family: 'Lora', serif;
+      font-size: clamp(16px, 1.8vw, 18px);
+      font-weight: 400;
       font-style: italic;
-      line-height: 1.72;
-      color: rgba(255,255,255,0.76);
-      margin-bottom: 48px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 44px;
     }
-    .teaser-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .teaser-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .teaser-btn-1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      text-decoration: none;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 13px 26px;
+      border-radius: 2px;
+      transition: background 200ms;
+    }
+    .teaser-btn-1:hover { background: rgba(255,255,255,0.15); }
+    .teaser-link-2 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.50);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.22);
+      padding-bottom: 2px;
+      display: flex;
+      align-items: center;
+      transition: color 250ms, border-color 250ms;
+    }
+    .teaser-link-2:hover { color: #FFFFFF; border-color: rgba(255,255,255,0.65); }
 
-    /* ════════════════════════════════════════════
-       THREE PILLARS - WHITE
-    ════════════════════════════════════════════ */
+    /* ── THREE PILLARS ──────────────────────── */
     #pillars {
-      background: var(--white);
-      padding: var(--pad-v) 56px;
+      background: var(--bg-dark);
+      padding: 120px 56px;
     }
     .pillars-head {
       max-width: var(--max);
@@ -645,10 +652,10 @@
       text-align: center;
     }
     .pillars-head h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: clamp(32px, 3.8vw, 52px);
-      color: var(--navy);
+      font-size: clamp(30px, 3.8vw, 50px);
+      color: #FFFFFF;
       line-height: 1.1;
     }
     .pillars-grid {
@@ -657,43 +664,36 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
-      border: 1px solid var(--border-lt);
     }
     .pillar {
-      padding: 52px 44px 56px;
-      background: var(--white);
-      border-right: 1px solid var(--border-lt);
-      transition: background 0.35s ease;
+      padding: 52px 40px 56px;
+      background: var(--bg-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-top: 3px solid transparent;
+      transition: border-top-color 0.35s ease, background 0.35s ease;
     }
-    .pillar:last-child { border-right: none; }
-    .pillar:hover { background: var(--offwhite); }
+    .pillar:hover { border-top-color: var(--gold); background: #12111A; }
     .pillar-icon { width: 40px; height: 40px; margin-bottom: 28px; }
     .pillar h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       font-size: 22px;
-      color: var(--navy);
+      color: #FFFFFF;
       margin-bottom: 14px;
     }
     .pillar p {
+      font-family: 'Lora', serif;
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: var(--text-mid);
+      color: rgba(255,255,255,0.58);
     }
-    /* Green accent bar at top on hover */
-    .pillar {
-      border-top: 3px solid transparent;
-      transition: background 0.35s ease, border-top-color 0.35s ease;
-    }
-    .pillar:hover { border-top-color: var(--green); }
 
-    /* ════════════════════════════════════════════
-       ABOUT - NAVY
-    ════════════════════════════════════════════ */
+    /* ── ABOUT ──────────────────────────────── */
     #about {
-      background: var(--navy-mid);
-      padding: var(--pad-v) 56px;
+      background: var(--bg-dark);
+      padding: 120px 56px;
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
     .about-grid {
       max-width: var(--max);
@@ -704,64 +704,53 @@
       align-items: center;
     }
     .about-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: clamp(24px, 2.8vw, 36px);
+      font-weight: 300;
+      font-size: clamp(22px, 2.8vw, 34px);
       line-height: 1.45;
       color: #FFFFFF;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
     .about-body {
+      font-family: 'Lora', serif;
       font-size: 17px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.85;
-      color: rgba(255,255,255,0.58);
-      margin-bottom: 36px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 32px;
     }
-    .about-logo-area {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .about-link {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 2px;
+      transition: color 250ms, border-color 250ms;
     }
-    .about-logo-area img {
-      max-width: 100%;
-      max-height: 240px;
-      object-fit: contain;
-      border-radius: 4px;
-      opacity: 0.82;
-    }
+    .about-link:hover { color: var(--gold); border-color: rgba(201,169,110,0.5); }
+    .about-logo-area { display: flex; align-items: center; justify-content: center; }
+    .about-logo-area img { max-width: 100%; max-height: 260px; object-fit: contain; opacity: 0.12; filter: invert(1); }
 
-    /* ════════════════════════════════════════════
-       SUPPORT CTA - OFF-WHITE
-    ════════════════════════════════════════════ */
+    /* ── SUPPORT CTA ─────────────────────────── */
     #support {
-      background: var(--offwhite);
+      position: relative;
       padding: 160px 56px;
       text-align: center;
-      position: relative;
       overflow: hidden;
     }
-    /* Decorative ring */
-    #support::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 800px; height: 800px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,85,58,0.08);
-      pointer-events: none;
+    .support-bg-img {
+      position: absolute; inset: 0;
+      background-image: url('images/hands.png');
+      background-size: cover;
+      background-position: center;
     }
-    #support::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 560px; height: 560px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,85,58,0.06);
-      pointer-events: none;
+    .support-overlay {
+      position: absolute; inset: 0;
+      background: rgba(5,5,12,0.82);
     }
     .support-inner {
       position: relative;
@@ -770,29 +759,59 @@
       margin: 0 auto;
     }
     .support-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
       font-style: italic;
       font-size: clamp(44px, 6vw, 80px);
-      color: var(--navy);
+      color: #FFFFFF;
       line-height: 1.05;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
     .support-body {
+      font-family: 'Lora', serif;
       font-size: 18px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.82;
-      color: var(--text-mid);
-      margin-bottom: 52px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 48px;
     }
-    .support-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+    .support-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .support-btn-1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg-deep);
+      text-decoration: none;
+      background: #FFFFFF;
+      border: 1px solid #FFFFFF;
+      padding: 14px 36px;
+      border-radius: 2px;
+      transition: background 250ms, border-color 250ms, color 250ms;
+      display: inline-block;
+    }
+    .support-btn-1:hover { background: var(--gold); border-color: var(--gold); }
+    .support-btn-2 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 14px 36px;
+      border-radius: 2px;
+      transition: background 200ms;
+      cursor: pointer;
+    }
+    .support-btn-2:hover { background: rgba(255,255,255,0.10); }
 
-    /* ════════════════════════════════════════════
-       FOOTER - DEEP NAVY
-    ════════════════════════════════════════════ */
+    /* ── FOOTER ─────────────────────────────── */
     footer {
-      background: var(--navy);
-      border-top: 1px solid var(--border-dk);
+      background: #030308;
+      border-top: 1px solid rgba(201,169,110,0.12);
       padding: 80px 56px 56px;
     }
     .footer-grid {
@@ -802,169 +821,115 @@
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 64px;
     }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      text-decoration: none;
-    }
+    .footer-brand { display: block; margin-bottom: 14px; }
+    .footer-brand img { height: 36px; width: auto; display: block; }
     .footer-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
       font-size: 14px;
-      font-weight: 300;
-      line-height: 1.72;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.28);
+      line-height: 1.7;
       max-width: 280px;
     }
     .footer-col h4 {
-      font-family: 'Barlow', sans-serif;
-      font-size: 10px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
       font-weight: 600;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--gold);
       margin-bottom: 22px;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .footer-col a {
+      font-family: 'Lora', serif;
       font-size: 14px;
       font-weight: 300;
-      color: rgba(255,255,255,0.48);
+      color: rgba(255,255,255,0.38);
       text-decoration: none;
       transition: color 0.25s;
     }
-    .footer-col a:hover { color: rgba(255,255,255,0.88); }
-    .social-row { display: flex; gap: 18px; margin-bottom: 40px; }
-    .social-row a { color: rgba(255,255,255,0.38); transition: color 0.25s; }
-    .social-row a:hover { color: rgba(255,255,255,0.88); }
+    .footer-col a:hover { color: rgba(255,255,255,0.80); }
+    .social-row { display: flex; gap: 18px; margin-bottom: 32px; }
+    .social-row a { color: rgba(255,255,255,0.28); transition: color 0.25s; }
+    .social-row a:hover { color: var(--gold); }
     .footer-copy {
-      font-family: 'Barlow', sans-serif;
-      font-size: 12px;
-      color: rgba(255,255,255,0.24);
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.20);
       line-height: 1.6;
     }
 
-    /* ════════════════════════════════════════════
-       RESPONSIVE — FULL BREAKPOINT SYSTEM
-    ════════════════════════════════════════════ */
-
-    /* Large tablet */
+    /* ── RESPONSIVE ─────────────────────────── */
     @media (max-width: 1100px) {
-      .opening-grid { grid-template-columns: 1fr 300px; gap: 64px; }
-      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; }
+      .hero-stills { width: 220px; }
+      .hero-title { font-size: 82px; }
+      .award-badges { right: 236px; }
     }
-
-    /* Tablet */
-    @media (max-width: 1024px) {
-      :root { --pad-v: 96px; }
-      .opening-grid { grid-template-columns: 1fr 260px; gap: 48px; }
-      .about-grid { grid-template-columns: 1fr; gap: 56px; }
-      .about-logo-area { display: flex; justify-content: flex-start; max-width: 200px; }
-      .about-logo-area img { max-height: 160px; }
-      .pillars-head h2 { font-size: clamp(28px, 3.5vw, 46px); }
-    }
-
-    /* Mobile landscape / large phone */
-    @media (max-width: 840px) {
-      :root { --pad-v: 80px; }
-      #nav { padding: 0 24px; }
-      #drawer { width: min(320px, 100vw); }
-      .nav-links, .nav-cta { display: none; }
+    @media (max-width: 768px) {
+      .main-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-donate { display: none; }
       .nav-ham { display: flex; }
-      .hero-content { padding: 0 24px; max-width: 100%; }
-      .scroll-line { left: 24px; }
+      .hero-stills { display: none !important; }
+      .award-badges { display: none !important; }
+      .meta-truth { display: none; }
+      .hero-title { font-size: 64px; }
+      .hero-title-block { bottom: 48px; left: 24px; right: 24px; max-width: 100%; }
+      .hero-ctas { flex-direction: column; }
+      .hero-cta-1, .hero-cta-2 { text-align: center; }
+      .meta-strip { left: 24px; top: 76px; }
       .opening-grid { grid-template-columns: 1fr; }
       .opening-photo { display: none; }
-      .opening-body { font-size: 17px; }
-      .interlude-text { padding: 0 24px; max-width: 100%; }
+      .opening-img-texture { display: none; }
+      .interlude-text { padding: 0 24px; }
       .tl-spine { left: 16px; }
-      .tl-item { grid-template-columns: 1fr; padding-left: 44px; gap: 0; margin-bottom: 52px; }
+      .tl-item { grid-template-columns: 1fr; padding-left: 40px; gap: 0; margin-bottom: 52px; }
       .tl-item:nth-child(even) .tl-spacer { display: none; }
       .tl-dot { left: 16px; }
       .tl-num { display: none; }
-      .pillars-grid { grid-template-columns: 1fr; border: none; gap: 12px; }
-      .pillar { border: 1px solid var(--border-lt); border-top: 3px solid transparent; }
+      .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
+      .about-grid { grid-template-columns: 1fr; }
       .about-logo-area { display: none; }
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-      #opening, #timeline, #teaser, #pillars, #about { padding: var(--pad-v) 24px; }
+      #opening, #timeline, #teaser, #pillars, #about { padding: 80px 24px; }
       #support { padding: 100px 24px; }
       footer { padding: 60px 24px 44px; }
     }
-
-    /* Mobile portrait */
-    @media (max-width: 600px) {
-      :root { --pad-v: 72px; }
-      .hero-title { font-size: clamp(40px, 11vw, 64px); line-height: 1.08; }
-      .hero-sub { font-size: 16px; margin-bottom: 36px; }
-      .opening-quote { font-size: clamp(22px, 6vw, 34px); }
-      .opening-body { font-size: 16px; line-height: 1.78; }
-      .tl-head h2 { font-size: clamp(32px, 8vw, 48px); }
-      .teaser-inner h2 { font-size: clamp(32px, 9vw, 52px); }
-      .teaser-inner p { font-size: 16px; }
-      .about-quote { font-size: clamp(20px, 5.5vw, 28px); }
-      .about-body { font-size: 16px; }
-      .support-title { font-size: clamp(36px, 9.5vw, 56px); }
-      .support-body { font-size: 16px; }
-      #support::before { width: 90vw; height: 90vw; }
-      #support::after { width: 65vw; height: 65vw; }
-      .interlude-text blockquote { font-size: clamp(18px, 5vw, 26px); }
-    }
-
-    /* Small phone */
     @media (max-width: 480px) {
-      :root { --pad-v: 64px; }
-      #nav { padding: 0 16px; height: 64px; }
-      #nav.solid { height: 56px; }
-      .nav-brand-logo { height: 32px; }
-      #drawer { width: 100vw; border-left: none; padding: 80px 32px 48px; }
-      .hero-content { padding: 0 20px; margin-top: 64px; }
-      .hero-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
-      .hero-ctas .btn { justify-content: center; width: 100%; }
-      .scroll-line { display: none; }
-      #opening, #timeline, #teaser, #pillars, #about { padding: var(--pad-v) 20px; }
-      #support { padding: 72px 20px; }
+      .hero-title { font-size: 52px; }
+      .hero-title-block { bottom: 40px; left: 20px; right: 20px; }
+      .main-nav { padding: 0 20px; }
+      .meta-strip { left: 20px; }
+      #opening, #timeline, #teaser, #pillars, #about { padding: 64px 20px; }
+      #support { padding: 80px 20px; }
       footer { padding: 48px 20px 36px; }
-      .teaser-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
-      .teaser-ctas .btn { text-align: center; justify-content: center; width: 100%; }
-      .teaser-ctas .link-arrow { text-align: center; display: block; }
-      .support-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
-      .support-ctas .btn, .support-ctas button { width: 100%; justify-content: center; }
-      .pillar { padding: 36px 24px 40px; }
-      .pillar h3 { font-size: 20px; }
-      .pillar p { font-size: 15px; }
-      .tl-item { padding-left: 36px; margin-bottom: 44px; }
-      .tl-spine { left: 12px; }
-      .tl-dot { left: 12px; width: 8px; height: 8px; }
-      .tl-title { font-size: 18px; }
-      .tl-body { font-size: 14px; }
-      .interlude-text { padding: 0 20px; }
-      #interlude { height: 72vh; min-height: 400px; }
-      .interlude-text blockquote { font-size: clamp(17px, 4.8vw, 24px); }
-      .about-body { font-size: 15px; }
-      .support-body { font-size: 15px; }
-      .footer-tagline { font-size: 13px; max-width: 100%; }
-      .footer-copy { font-size: 11px; }
-      .opening-body { font-size: 15px; }
-      .pillars-head h2 { font-size: clamp(24px, 7vw, 36px); }
-      .tl-head { margin-bottom: 52px; }
+      .support-ctas { flex-direction: column; align-items: stretch; }
+      .support-btn-1, .support-btn-2 { text-align: center; }
+      .teaser-ctas { flex-direction: column; align-items: stretch; }
+      .teaser-btn-1 { text-align: center; }
     }
   </style>
 </head>
 <body>
 
   <!-- ═══ NAVIGATION ═══ -->
-  <nav id="nav">
-    <a href="#" class="nav-brand">
-      <img src="images/logo-dark.svg" alt="StillHer Foundation" class="nav-brand-logo">
+  <nav class="main-nav" id="main-nav">
+    <a href="#" class="nav-logo">
+      <img src="images/logo-dark.svg" alt="StillHer Foundation">
     </a>
     <ul class="nav-links">
       <li><a href="#opening">The Story</a></li>
+      <li><span class="nav-sep"></span></li>
       <li><a href="#timeline">Her Road</a></li>
+      <li><span class="nav-sep"></span></li>
       <li><a href="#teaser">The Documentary</a></li>
+      <li><span class="nav-sep"></span></li>
       <li><a href="#support">Support</a></li>
     </ul>
-    <a href="#support" class="btn btn-primary nav-cta" style="font-size:10px; height:40px; padding:0 24px;">Donate Now</a>
-    <button class="nav-ham" id="ham" aria-label="Open menu">
+    <a href="stillher-donation/index.html" class="nav-donate">Donate Now</a>
+    <button class="nav-ham" id="ham-btn" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -975,40 +940,76 @@
     <a href="#timeline" onclick="closeDrawer()">Her Road</a>
     <a href="#teaser" onclick="closeDrawer()">The Documentary</a>
     <a href="#support" onclick="closeDrawer()">Support</a>
-    <a href="#support" onclick="closeDrawer()" class="btn btn-primary" style="margin-top:8px; justify-content:center;">Donate Now</a>
+    <a href="stillher-donation/index.html" onclick="closeDrawer()" style="color:var(--gold); margin-top:8px;">Donate Now</a>
   </nav>
 
   <!-- ═══ HERO ═══ -->
   <section id="hero">
-    <div class="hero-img"></div>
-    <div class="hero-scrim"></div>
-    <div class="hero-content">
-      <span class="label-white fade">A StillHer Foundation Documentary</span>
-      <h1 class="hero-title fade d1">Road to<br>Her Smile</h1>
-      <hr class="rule-green fade d2">
-      <p class="hero-sub fade d2">A story the world was never supposed to hear.</p>
-      <div class="hero-ctas fade d3">
-        <a href="#teaser" class="btn btn-primary">Watch the Trailer</a>
-        <a href="#opening" class="btn btn-ghost-white">Read Her Story</a>
+    <div class="hero-bg"></div>
+    <div class="hero-grad-lr"></div>
+    <div class="hero-grad-bt"></div>
+
+    <!-- Metadata strip -->
+    <div class="meta-strip">
+      <span class="meta-year">2025</span>
+      <span class="meta-sep"></span>
+      <span class="meta-genre">Documentary</span>
+      <span class="meta-sep"></span>
+      <span class="meta-truth">Based on a True Story</span>
+    </div>
+
+    <!-- Award badge -->
+    <div class="award-badges">
+      <div class="award-badge">
+        <span class="award-badge-line1">Official Selection</span>
+        <span class="award-badge-line2">StillHer 2025</span>
       </div>
     </div>
-    <div class="scroll-line">
-      <span>Scroll</span>
+
+    <!-- Title block (bottom-left, Dune-style) -->
+    <div class="hero-title-block">
+      <span class="hero-kicker">A StillHer Foundation Documentary</span>
+      <span class="hero-title">Road to<br>Her Smile</span>
+      <hr class="hero-rule">
+      <p class="hero-synopsis">Leah Spriggs left Italy for a promise of love. She was left with nothing. She is still standing.</p>
+      <p class="hero-runtime">98 min &nbsp;•&nbsp; 2025 &nbsp;•&nbsp; Documentary &nbsp;•&nbsp; True Story</p>
+      <div class="hero-ctas">
+        <a href="#teaser" class="hero-cta-1">Watch the Trailer</a>
+        <a href="#opening" class="hero-cta-2">Read Her Story</a>
+      </div>
+    </div>
+
+    <!-- Stills panel (Dune-style, right) -->
+    <div class="hero-stills">
+      <p class="stills-label">Stills</p>
+      <div class="still-thumb" data-full-src="images/portrait.png">
+        <img src="images/portrait.png" alt="Verona, Italy">
+        <span class="still-caption">Verona, Italy</span>
+      </div>
+      <div class="still-thumb" data-full-src="images/leah-young.png">
+        <img src="images/leah-young.png" alt="A Life Transformed">
+        <span class="still-caption">A Life Transformed</span>
+      </div>
+      <div class="still-thumb" data-full-src="images/hands.png">
+        <img src="images/hands.png" alt="Her Road Back">
+        <span class="still-caption">Her Road Back</span>
+      </div>
+      <div class="still-thumb" data-full-src="images/portrait.png">
+        <img src="images/portrait.png" alt="Johns Hopkins">
+        <span class="still-caption">Johns Hopkins</span>
+      </div>
     </div>
   </section>
 
-  <hr class="rule-gold">
-
-  <!-- ═══ OPENING STATEMENT ═══ -->
+  <!-- ═══ HER STORY ═══ -->
   <section id="opening">
+    <img src="images/portrait.png" alt="" class="opening-img-texture" aria-hidden="true">
     <div class="opening-grid">
       <div>
-        <span class="label-green fade">Her Story</span>
-        <blockquote class="opening-quote fade d1">
-          "Leah Spriggs was not always the woman the world would later overlook."
-        </blockquote>
-        <hr class="rule-green fade d1" style="margin-bottom: 30px;">
-        <div class="opening-body fade d2">
+        <span class="section-label fade">Her Story</span>
+        <h2 class="section-heading fade d1">She was not always the woman the world would later overlook.</h2>
+        <hr class="section-rule fade d1">
+        <div class="section-body fade d2">
           <p>Before the silence. Before the suffering. Before the system failed her, she was a woman of presence. Born in Verona, Italy, she carried a natural elegance that luxury brands spend millions trying to replicate. At the height of her early life, Leah was a model. She stood in rooms where aesthetics mattered, where presence was currency.</p>
           <p>Then she met a man on a military post in Vicenza. He promised her love, America, a white picket fence. She left everything: her country, her language, her familiarity. And followed him across the ocean. Over the course of their twelve-year marriage, she discovered he had been unfaithful for nearly the entirety of it.</p>
         </div>
@@ -1019,22 +1020,20 @@
     </div>
   </section>
 
-  <!-- ═══ LEAH YOUNG INTERLUDE ═══ -->
+  <!-- ═══ INTERLUDE ═══ -->
   <section id="interlude">
     <div class="interlude-img"></div>
     <div class="interlude-scrim"></div>
     <div class="interlude-text">
-      <span class="label-white fade">Verona · Italy</span>
+      <span class="section-label fade">Verona, Italy</span>
       <blockquote class="fade d1">"She stood in rooms where presence was currency. And she had both."</blockquote>
     </div>
   </section>
 
-  <hr class="rule-gold">
-
   <!-- ═══ TIMELINE ═══ -->
   <section id="timeline">
     <div class="tl-head">
-      <span class="label-blue fade" style="display:block; text-align:center;">A Life Dismantled</span>
+      <span class="section-label fade" style="text-align:center; display:block;">A Life Dismantled</span>
       <h2 class="fade d1">Her Road</h2>
     </div>
     <div class="tl-wrap">
@@ -1114,49 +1113,43 @@
     </div>
   </section>
 
-  <hr class="rule-gold">
-
   <!-- ═══ TEASER ═══ -->
   <section id="teaser">
-    <div class="teaser-img"></div>
-    <div class="teaser-scrim"></div>
+    <div class="teaser-img-bg"></div>
     <div class="teaser-inner">
-      <span class="label-white fade">Road to Her Smile</span>
+      <span class="section-label fade" style="display:block; text-align:center;">Road to Her Smile</span>
       <h2 class="fade d1">This is not<br>just a story.</h2>
       <p class="fade d2">This is what happens when vulnerable women, especially immigrant mothers, fall through the cracks of systems that were never built to protect them.</p>
       <div class="teaser-ctas fade d3">
-        <a href="#support" class="btn btn-primary">Join the Movement</a>
-        <a href="#about" class="link-arrow">About the Foundation</a>
+        <a href="#support" class="teaser-btn-1">Join the Movement</a>
+        <a href="#about" class="teaser-link-2">About the Foundation</a>
       </div>
     </div>
   </section>
 
-  <hr class="rule-gold">
-
   <!-- ═══ THREE PILLARS ═══ -->
   <section id="pillars">
     <div class="pillars-head">
-      <span class="label-blue fade">What We Stand For</span>
+      <span class="section-label fade" style="text-align:center; display:block;">What We Stand For</span>
       <h2 class="fade d1">Why This Documentary Matters</h2>
     </div>
     <div class="pillars-grid fade d1">
       <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#00553A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 5 C14 5 10 10 10 16 C10 21 12 25 16 27 L20 36 L24 27 C28 25 30 21 30 16 C30 10 26 5 20 5Z"/>
           <path d="M16 12 C16 12 18 8 20 8 C22 8 24 12 24 12"/>
-          <line x1="20" y1="36" x2="20" y2="39"/>
-          <line x1="16" y1="39" x2="24" y2="39"/>
+          <line x1="20" y1="36" x2="20" y2="39"/><line x1="16" y1="39" x2="24" y2="39"/>
         </svg>
         <h3>Dignity</h3>
         <p>This is about more than teeth. When systems strip a woman of her ability to eat, speak, and smile, they strip her identity. Dignity is not a luxury. It is the baseline.</p>
       </div>
       <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#00553A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="20" y1="3" x2="20" y2="37"/>
           <line x1="11" y1="7" x2="29" y2="7"/>
-          <line x1="11" y1="7" x2="4" y2="19"/> <line x1="4" y1="19" x2="18" y2="19"/>
+          <line x1="11" y1="7" x2="4" y2="19"/><line x1="4" y1="19" x2="18" y2="19"/>
           <path d="M4 19 C4 24 11 26 11 26 C11 26 18 24 18 19"/>
-          <line x1="29" y1="7" x2="22" y2="19"/> <line x1="22" y1="19" x2="36" y2="19"/>
+          <line x1="29" y1="7" x2="22" y2="19"/><line x1="22" y1="19" x2="36" y2="19"/>
           <path d="M22 19 C22 24 29 26 29 26 C29 26 36 24 36 19"/>
           <line x1="14" y1="37" x2="26" y2="37"/>
         </svg>
@@ -1164,7 +1157,7 @@
         <p>A doctor disappeared. A church stayed silent. This documentary names what happened and demands accountability for the systems that failed Leah, and women like her.</p>
       </div>
       <div class="pillar">
-        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#00553A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="pillar-icon" viewBox="0 0 40 40" fill="none" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 25 C8 21 7 14 11 10 C15 6 20 9 20 9"/>
           <path d="M28 25 C32 21 33 14 29 10 C25 6 20 9 20 9"/>
           <path d="M6 27 C6 27 12 22 20 28 C28 22 34 27 34 27"/>
@@ -1172,40 +1165,37 @@
           <circle cx="20" cy="5" r="3"/>
         </svg>
         <h3>Restoration</h3>
-        <p>Road to Her Smile is Leah's road back. And with your support, she won't walk it alone. We believe in restoration not just of health, but of dignity, voice, and belonging.</p>
+        <p>Road to Her Smile is Leah's road back. And with your support, she will not walk it alone. We believe in restoration: not just of health, but of dignity, voice, and belonging.</p>
       </div>
     </div>
   </section>
-
-  <hr class="rule-gold">
 
   <!-- ═══ ABOUT ═══ -->
   <section id="about">
     <div class="about-grid">
       <div class="fade">
-        <span class="label-white">The Foundation</span>
-        <p class="about-quote">"Still Her Foundation exists to restore dignity to women who have been abandoned by the systems meant to protect them."</p>
+        <span class="section-label">The Foundation</span>
+        <p class="about-quote">"StillHer Foundation exists to restore dignity to women who have been abandoned by the systems meant to protect them."</p>
         <p class="about-body">We document, advocate, and fund the restoration of women failed by medical institutions, religious organizations, and family structures. Our work begins with Leah. It will not end with her.</p>
-        <a href="#support" class="link-arrow">Learn More →</a>
+        <a href="#support" class="about-link">Learn More</a>
       </div>
       <div class="about-logo-area fade d2">
-        <img src="images/logo-generated.png" alt="StillHer Foundation" loading="lazy"
-          style="mix-blend-mode: screen; opacity: 0.75;">
+        <img src="images/logo-generated.png" alt="StillHer Foundation" loading="lazy">
       </div>
     </div>
   </section>
 
-  <hr class="rule-gold">
-
   <!-- ═══ SUPPORT CTA ═══ -->
   <section id="support">
+    <div class="support-bg-img"></div>
+    <div class="support-overlay"></div>
     <div class="support-inner">
-      <span class="label-blue fade">Support the Documentary</span>
+      <span class="section-label fade" style="text-align:center; display:block;">Support the Documentary</span>
       <h2 class="support-title fade d1">Help us tell<br>this story.</h2>
-      <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution.<br>This is how we make sure Leah's voice is finally heard.</p>
+      <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution. This is how we make sure Leah's voice is finally heard.</p>
       <div class="support-ctas fade d3">
-        <a href="https://stillherfoundation.org/donate" class="btn btn-solid-blue">Donate to Road to Her Smile</a>
-        <button class="btn btn-outline-blue" onclick="shareStory()">Share Her Story</button>
+        <a href="stillher-donation/index.html" class="support-btn-1">Donate Now</a>
+        <button class="support-btn-2" onclick="shareStory()">Share Her Story</button>
       </div>
     </div>
   </section>
@@ -1215,7 +1205,7 @@
     <div class="footer-grid">
       <div>
         <a href="#" class="footer-brand">
-          <img src="images/logo-dark.svg" alt="StillHer Foundation" style="height:36px; width:auto; display:block; margin-bottom:4px;">
+          <img src="images/logo-dark.svg" alt="StillHer Foundation">
         </a>
         <p class="footer-tagline">A nonprofit dedicated to restoring dignity to women who have been abandoned by the systems meant to protect them.</p>
       </div>
@@ -1242,21 +1232,63 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
         </div>
-        <p class="footer-copy">© 2025 StillHer Foundation.<br>All rights reserved.</p>
+        <p class="footer-copy">2025 StillHer Foundation.<br>All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // ── NAV SCROLL ──
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('solid', window.scrollY > 60);
-    }, { passive: true });
-    window.addEventListener('load', () => document.getElementById('hero').classList.add('loaded'));
+    // ── NAV + PARALLAX ────────────────────────────────
+    const mainNav = document.getElementById('main-nav');
+    const titleBlock = document.querySelector('.hero-title-block');
+    const stillsPanel = document.querySelector('.hero-stills');
 
-    // ── MOBILE DRAWER ──
-    const ham = document.getElementById('ham');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+
+      // Nav solidifies
+      if (y > vh * 0.75) {
+        mainNav.classList.add('nav-solid');
+      } else {
+        mainNav.classList.remove('nav-solid');
+      }
+
+      // Title block parallax + fade
+      if (titleBlock && y < vh) {
+        titleBlock.style.transform = `translateY(${y * 0.22}px)`;
+        titleBlock.style.opacity = Math.max(0, 1 - y / (vh * 0.65));
+      }
+
+      // Stills panel slower parallax
+      if (stillsPanel && y < vh) {
+        stillsPanel.style.transform = `translateY(${y * 0.10}px)`;
+      }
+    }, { passive: true });
+
+    // ── STILLS HOVER CROSS-FADE ───────────────────────
+    const heroBg = document.querySelector('.hero-bg');
+
+    document.querySelectorAll('.still-thumb').forEach(thumb => {
+      thumb.addEventListener('mouseenter', () => {
+        const src = thumb.dataset.fullSrc;
+        heroBg.style.opacity = '0';
+        setTimeout(() => {
+          heroBg.style.backgroundImage = `url('${src}')`;
+          heroBg.style.opacity = '1';
+        }, 200);
+      });
+      thumb.addEventListener('mouseleave', () => {
+        heroBg.style.opacity = '0';
+        setTimeout(() => {
+          heroBg.style.backgroundImage = "url('images/hero.png')";
+          heroBg.style.opacity = '1';
+        }, 200);
+      });
+    });
+
+    // ── MOBILE DRAWER ─────────────────────────────────
+    const hamBtn = document.getElementById('ham-btn');
     const drawer = document.getElementById('drawer');
     const overlay = document.getElementById('overlay');
     overlay.style.transition = 'opacity 0.4s ease';
@@ -1264,17 +1296,23 @@
     function openDrawer() {
       drawer.style.display = 'flex';
       overlay.style.display = 'block';
-      requestAnimationFrame(() => { drawer.classList.add('open'); overlay.style.opacity = '1'; });
+      requestAnimationFrame(() => {
+        drawer.classList.add('open');
+        overlay.style.opacity = '1';
+      });
     }
     function closeDrawer() {
       drawer.classList.remove('open');
       overlay.style.opacity = '0';
-      setTimeout(() => { drawer.style.display = 'none'; overlay.style.display = 'none'; }, 400);
+      setTimeout(() => {
+        drawer.style.display = 'none';
+        overlay.style.display = 'none';
+      }, 400);
     }
-    ham.addEventListener('click', openDrawer);
-    overlay.addEventListener('click', closeDrawer);
+    if (hamBtn) hamBtn.addEventListener('click', openDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
 
-    // ── INTERSECTION OBSERVER ──
+    // ── SCROLL FADE ANIMATIONS ────────────────────────
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -1282,12 +1320,12 @@
     }, { threshold: 0.10 });
     document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
-    // ── SHARE ──
+    // ── SHARE ─────────────────────────────────────────
     function shareStory() {
       if (navigator.share) {
         navigator.share({ title: 'Road to Her Smile', text: 'A story the world was never supposed to hear.', url: location.href });
       } else {
-        navigator.clipboard.writeText(location.href).then(() => alert('Link copied. Share Leah\'s story.'));
+        navigator.clipboard.writeText(location.href).then(() => alert("Link copied. Share Leah's story."));
       }
     }
   </script>
