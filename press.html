@@ -15,10 +15,48 @@
     html { font-size: 16px; scroll-behavior: smooth; }
     body { font-family: 'Lora', Georgia, serif; background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; height: 68px; padding: 0 56px; display: flex; align-items: center; justify-content: space-between; background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 100; }
-    .nav-logo img { height: 34px; display: block; }
-    .nav-back { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-    .nav-back:hover { color: var(--gold); }
+    .main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 68px; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-links {
+      display: flex; align-items: center; list-style: none;
+      flex: 1; justify-content: center; gap: 0;
+    }
+    .nav-links li { display: flex; align-items: center; }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 10px;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      padding: 0 18px; transition: color 200ms;
+    }
+    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
+    .nav-donate {
+      flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); text-decoration: none;
+      border: 1px solid var(--gold); padding: 9px 22px; border-radius: 2px;
+      transition: background 250ms, color 250ms;
+    }
+    .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
+    .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
+    #drawer {
+      display: none; position: fixed; inset: 0 0 0 auto; width: 100vw;
+      background: #05050C; z-index: 910; flex-direction: column;
+      padding: 88px 32px 48px; gap: 28px;
+      transform: translateX(100%); transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+    #drawer.open { transform: none; }
+    #drawer a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.82); text-decoration: none; }
+    #drawer a:hover { color: var(--gold); }
+    #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 905; opacity: 0; transition: opacity 0.4s; }
 
     .hero { background: var(--dark); padding: 160px 56px 100px; text-align: center; }
     .hero-kicker { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 20px; }
@@ -74,7 +112,10 @@
     footer { background: #0A0A0F; border-top: 1px solid rgba(201,169,110,0.12); padding: 40px 56px; text-align: center; font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 10px; color: #444; }
 
     @media (max-width: 768px) {
-      nav { padding: 0 24px; }
+      .main-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-donate { display: none; }
+      .nav-ham { display: flex; }
       .hero { padding: 120px 24px 72px; }
       .section { padding: 60px 24px; }
       .overview-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -86,12 +127,32 @@
 </head>
 <body>
 
-  <nav>
-    <a href="index.html"><img src="images/logo-dark.svg" alt="StillHer Foundation" style="height:34px;display:block;"></a>
-    <a href="index.html" class="nav-back">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Back to Film
-    </a>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#opening">Her Road</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="index.html#about">Our Mission</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="strategy.html">The Strategy</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="film.html">The Film</a></li>
+    </ul>
+    <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
+    <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div id="overlay"></div>
+  <nav id="drawer">
+    <button onclick="closeDrawer()" aria-label="Close menu" style="position:absolute;top:20px;right:20px;background:none;border:1px solid rgba(255,255,255,0.18);border-radius:2px;cursor:pointer;padding:10px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px;">
+      <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(45deg) translate(0,3px);"></span>
+      <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
+    </button>
+    <a href="index.html#opening" onclick="closeDrawer()">Her Road</a>
+    <a href="index.html#about" onclick="closeDrawer()">Our Mission</a>
+    <a href="strategy.html" onclick="closeDrawer()">The Strategy</a>
+    <a href="film.html" onclick="closeDrawer()">The Film</a>
+    <a href="press.html" onclick="closeDrawer()">Press</a>
+    <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
 
   <div class="hero">
@@ -223,6 +284,18 @@
   </div>
 
   <footer>2026 StillHer Foundation. All rights reserved.</footer>
+
+  <script>
+    // Mobile drawer
+    const hamBtn = document.getElementById('ham-btn');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    if (overlay) overlay.style.transition = 'opacity 0.4s ease';
+    function openDrawer() { drawer.style.display = 'flex'; overlay.style.display = 'block'; requestAnimationFrame(() => { drawer.classList.add('open'); overlay.style.opacity = '1'; }); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.style.opacity = '0'; setTimeout(() => { drawer.style.display = 'none'; overlay.style.display = 'none'; }, 400); }
+    if (hamBtn) hamBtn.addEventListener('click', openDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+  </script>
 
   <script>
     // QR Code generator (minimal inline implementation)
