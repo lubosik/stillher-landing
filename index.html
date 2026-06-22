@@ -297,30 +297,123 @@
     .about-logo-col { position: relative; overflow: hidden; border-radius: 2px; }
     .about-logo-col img { width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block; opacity: 0.88; }
 
-    /* ═══ SECTION: EMAIL CAPTURE — DARK ═══ */
-    #email-band {
-      background: var(--bg-dark);
-      padding: 80px 0;
+    /* ═══ SECTION: SPONSORS BANNER ═══ */
+    #sponsors-banner {
+      position: relative;
+      padding: 120px 0;
+      overflow: hidden;
+      background: var(--bg-deep);
     }
-    .email-inner { max-width: 640px; margin: 0 auto; padding: 0 24px; text-align: center; }
-    .email-heading { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(30px, 4vw, 42px); color: var(--off-white); line-height: 1.2; margin-bottom: 32px; }
-    .email-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
-    .email-form input {
-      flex: 1; height: 48px; background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(201,169,110,0.3); border-radius: 2px;
-      color: var(--off-white); font-family: 'Lora', serif; font-size: 14px; padding: 0 16px; outline: none;
-      transition: border-color 0.25s;
+    .sponsors-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #05050C 0%, #1a1422 25%, #0f1a2a 50%, #1a1422 75%, #05050C 100%);
+      background-size: 300% 300%;
+      animation: sponsorGradient 12s ease infinite;
     }
-    .email-form input:focus { border-color: rgba(201,169,110,0.65); }
-    .email-form input::placeholder { color: rgba(255,255,255,0.3); }
-    .email-form button {
-      height: 48px; padding: 0 24px; background: var(--gold); border: none; border-radius: 2px;
-      color: var(--bg-dark); font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px;
-      letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; white-space: nowrap;
-      transition: background 250ms;
+    @keyframes sponsorGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    .email-form button:hover { background: var(--gold-lt); }
-    #capture-confirm { display: none; color: var(--gold); font-family: 'Lora', serif; font-style: italic; font-size: 16px; margin-top: 20px; }
+    .sponsors-glow {
+      position: absolute; inset: 0; opacity: 0.4;
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 50%, rgba(201,169,110,0.15), transparent),
+        radial-gradient(ellipse 500px 350px at 80% 40%, rgba(201,169,110,0.1), transparent);
+      animation: sponsorPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes sponsorPulse {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 0.6; transform: scale(1.05); }
+    }
+    .sponsors-line-top, .sponsors-line-bottom {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,0.4), transparent);
+      animation: lineExpand 2s ease forwards;
+    }
+    .sponsors-line-top { top: 0; width: 0; }
+    .sponsors-line-bottom { bottom: 0; width: 0; }
+    .sponsors-line-top.in, .sponsors-line-bottom.in { width: 80%; }
+    @keyframes lineExpand { from { width: 0; } to { width: 80%; } }
+
+    .sponsors-content {
+      position: relative; z-index: 2;
+      max-width: var(--max); margin: 0 auto; padding: 0 56px; text-align: center;
+    }
+    .sponsors-kicker {
+      font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px;
+      letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: block;
+    }
+    .sponsors-heading {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(36px, 5vw, 60px); color: var(--off-white);
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .sponsors-sub {
+      font-family: 'Lora', serif; font-style: italic; font-size: 17px;
+      color: rgba(250,250,247,0.5); line-height: 1.7; margin-bottom: 56px;
+      max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+    .sponsors-cards {
+      display: flex; justify-content: center; gap: 36px; flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .sponsor-card {
+      width: 200px; padding: 36px 24px 28px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,169,110,0.15);
+      border-radius: 4px;
+      transition: transform 400ms, border-color 400ms, box-shadow 400ms;
+      text-align: center;
+    }
+    .sponsor-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,169,110,0.4);
+      box-shadow: 0 20px 60px rgba(201,169,110,0.08);
+    }
+    .sponsor-card .sc-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(201,169,110,0.04));
+      border: 1.5px solid rgba(201,169,110,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px;
+      color: var(--gold); margin: 0 auto 16px;
+    }
+    .sponsor-card .sc-name {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px;
+      color: var(--off-white); margin-bottom: 6px;
+    }
+    .sponsor-card .sc-role {
+      font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,169,110,0.5);
+    }
+    .sponsor-card-empty {
+      border-style: dashed; border-color: rgba(201,169,110,0.1);
+    }
+    .sponsor-card-empty .sc-avatar {
+      border-style: dashed; opacity: 0.5;
+    }
+    .sponsor-card-empty .sc-name {
+      color: rgba(250,250,247,0.25); font-style: italic;
+    }
+    .sponsor-card-empty .sc-role { opacity: 0.4; }
+    .sponsors-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .sponsors-cta {
+      font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase; padding: 16px 36px;
+      border-radius: 2px; text-decoration: none; display: inline-block;
+      transition: all 250ms;
+    }
+    .sponsors-cta-gold {
+      background: var(--gold); color: var(--bg-deep); border: 1px solid var(--gold);
+    }
+    .sponsors-cta-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+    .sponsors-cta-outline {
+      background: transparent; color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.4);
+    }
+    .sponsors-cta-outline:hover { background: rgba(201,169,110,0.08); }
 
     /* ═══ SECTION: FINAL CTA — DARK CINEMATIC ═══ */
     #support {
@@ -338,43 +431,6 @@
     .support-btn-2 { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0.14em; color: rgba(250,250,247,0.55); background: none; border: none; cursor: pointer; text-transform: uppercase; transition: color 0.25s; }
     .support-btn-2:hover { color: var(--off-white); }
 
-    /* ═══ SPONSOR SECTION ═══ */
-    .sponsors-section {
-      background: #0A0A0F;
-      padding: 56px 56px 0;
-      border-top: 1px solid rgba(201,169,110,0.08);
-    }
-    .sponsors-inner { max-width: var(--max); margin: 0 auto; text-align: center; }
-    .sponsors-label {
-      font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 9px;
-      letter-spacing: 0.35em; text-transform: uppercase; color: rgba(201,169,110,0.5);
-      margin-bottom: 28px; display: block;
-    }
-    .sponsors-grid {
-      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .sponsor-slot {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      min-width: 120px;
-    }
-    .sponsor-avatar {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px;
-      color: var(--gold); opacity: 0.7;
-    }
-    .sponsor-name {
-      font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px;
-      letter-spacing: 0.08em; color: rgba(255,255,255,0.35);
-    }
-    .sponsor-slot-empty .sponsor-avatar {
-      border-style: dashed; opacity: 0.4;
-    }
-    .sponsor-slot-empty .sponsor-name {
-      opacity: 0.3; font-style: italic;
-    }
 
     /* ── FOOTER ─────────────────────────────────── */
     footer { background: #0A0A0F; padding: 48px 56px 44px; }
@@ -422,7 +478,6 @@
       .tl-head { padding: 0 24px; margin-bottom: 48px; }
       #opening, #timeline, #pillars, #about { padding: 80px 0; }
       #support { padding: 100px 0; }
-      #email-band { padding: 56px 0; }
       footer { padding: 56px 24px 40px; }
       .footer-grid { grid-template-columns: 1fr; gap: 36px; }
       .pillars-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -432,15 +487,17 @@
       .tl-content { padding-bottom: 32px; }
       .tl-chapter { font-size: 56px; }
       .tl-connector { min-height: 28px; }
-      .email-form { flex-direction: column; }
-      .email-form button { width: 100%; }
       .support-title { font-size: clamp(40px, 8vw, 64px); }
       .support-ctas { flex-direction: column; align-items: stretch; }
       .support-btn-1, .support-btn-2 { text-align: center; width: 100%; }
       .pillars-sub { font-size: 16px; }
-      .sponsors-section { padding: 40px 24px 0; }
-      .sponsors-grid { gap: 28px; }
       .hero-indicators { bottom: 20px; }
+      #sponsors-banner { padding: 80px 0; }
+      .sponsors-content { padding: 0 24px; }
+      .sponsors-cards { gap: 20px; }
+      .sponsor-card { width: 160px; padding: 28px 16px 22px; }
+      .sponsors-cta-row { flex-direction: column; align-items: stretch; }
+      .sponsors-cta { text-align: center; }
     }
 
     @media (max-width: 480px) {
@@ -470,11 +527,15 @@
       .tl-title { font-size: 19px; }
       .tl-body { font-size: 14px; line-height: 1.8; }
       .tl-item { gap: 12px; }
-      .email-heading { font-size: clamp(24px, 7vw, 34px); }
       .pillars-head h2 { font-size: clamp(28px, 7vw, 40px); }
       .footer-tagline { font-size: 12px; }
-      .sponsors-section { padding: 32px 16px 0; }
-      .sponsors-grid { gap: 20px; }
+      #sponsors-banner { padding: 60px 0; }
+      .sponsors-content { padding: 0 16px; }
+      .sponsors-heading { font-size: clamp(28px, 7vw, 40px); }
+      .sponsors-cards { gap: 14px; }
+      .sponsor-card { width: 140px; padding: 24px 12px 18px; }
+      .sponsor-card .sc-avatar { width: 52px; height: 52px; font-size: 18px; }
+      .sponsor-card .sc-name { font-size: 17px; }
     }
   </style>
 </head>
@@ -697,16 +758,44 @@
     </div>
   </section>
 
-  <!-- ═══ EMAIL CAPTURE — DARK ═══ -->
-  <section id="email-band">
-    <div class="email-inner">
-      <span class="section-label-gold fade" style="text-align:center; display:block;">Follow Her Road</span>
-      <p class="email-heading fade d1">Be the first to know when Road to Her Smile premieres.</p>
-      <form id="email-capture" class="email-form fade d2">
-        <input type="email" placeholder="your@email.com" required>
-        <button type="submit">Notify Me</button>
-      </form>
-      <p id="capture-confirm"></p>
+  <!-- ═══ SPONSORS BANNER ═══ -->
+  <section id="sponsors-banner">
+    <div class="sponsors-bg"></div>
+    <div class="sponsors-glow"></div>
+    <div class="sponsors-line-top" id="sp-line-top"></div>
+    <div class="sponsors-line-bottom" id="sp-line-bottom"></div>
+    <div class="sponsors-content">
+      <span class="sponsors-kicker fade">Our Sponsors</span>
+      <h2 class="sponsors-heading fade d1">The people standing<br>behind her story.</h2>
+      <p class="sponsors-sub fade d2">These individuals and organizations have committed their support to Road to Her Smile. Their belief in this project makes every frame possible.</p>
+
+      <div class="sponsors-cards fade d3">
+        <div class="sponsor-card">
+          <div class="sc-avatar">JV</div>
+          <div class="sc-name">John Victoria</div>
+          <div class="sc-role">Sponsor</div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sc-avatar">J</div>
+          <div class="sc-name">Juliana</div>
+          <div class="sc-role">Sponsor</div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sc-avatar">P</div>
+          <div class="sc-name">Pollyanna</div>
+          <div class="sc-role">In-Kind Support</div>
+        </div>
+        <div class="sponsor-card sponsor-card-empty">
+          <div class="sc-avatar">+</div>
+          <div class="sc-name">Your Name Here</div>
+          <div class="sc-role">Become a Sponsor</div>
+        </div>
+      </div>
+
+      <div class="sponsors-cta-row fade d3">
+        <a href="https://stillher-donation-production.up.railway.app/" class="sponsors-cta sponsors-cta-gold">Become a Sponsor</a>
+        <a href="film.html" class="sponsors-cta sponsors-cta-outline">View Sponsorship Deck</a>
+      </div>
     </div>
   </section>
 
@@ -725,35 +814,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ═══ SPONSORS ═══ -->
-  <div class="sponsors-section">
-    <div class="sponsors-inner">
-      <span class="sponsors-label">Our Sponsors</span>
-      <div class="sponsors-grid">
-        <div class="sponsor-slot">
-          <div class="sponsor-avatar">JV</div>
-          <span class="sponsor-name">John Victoria</span>
-        </div>
-        <div class="sponsor-slot">
-          <div class="sponsor-avatar">J</div>
-          <span class="sponsor-name">Juliana</span>
-        </div>
-        <div class="sponsor-slot">
-          <div class="sponsor-avatar">P</div>
-          <span class="sponsor-name">Pollyanna</span>
-        </div>
-        <div class="sponsor-slot sponsor-slot-empty">
-          <div class="sponsor-avatar">+</div>
-          <span class="sponsor-name">Your Name Here</span>
-        </div>
-        <div class="sponsor-slot sponsor-slot-empty">
-          <div class="sponsor-avatar">+</div>
-          <span class="sponsor-name">Your Name Here</span>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ═══ FOOTER ═══ -->
   <footer>
@@ -859,22 +919,18 @@
     }, { threshold: 0.10 });
     document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
-    // ── EMAIL CAPTURE ───────────────────────────────
-    document.getElementById('email-capture').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.querySelector('input[type=email]').value;
-      try {
-        await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'documentary_site' }) });
-      } catch {
-        const list = JSON.parse(localStorage.getItem('sh_emails') || '[]');
-        list.push({ email, ts: Date.now() });
-        localStorage.setItem('sh_emails', JSON.stringify(list));
-      }
-      e.target.style.display = 'none';
-      const confirm = document.getElementById('capture-confirm');
-      confirm.textContent = 'You are on the list. Thank you.';
-      confirm.style.display = 'block';
-    });
+    // ── SPONSOR BANNER LINES ──────────────────────────
+    const spObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.getElementById('sp-line-top').classList.add('in');
+          document.getElementById('sp-line-bottom').classList.add('in');
+          spObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    const spBanner = document.getElementById('sponsors-banner');
+    if (spBanner) spObserver.observe(spBanner);
 
     // ── SHARE ───────────────────────────────────────
     function shareStory() {
