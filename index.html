@@ -6,23 +6,21 @@
   <title>Road to Her Smile | StillHer Foundation Documentary</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="shortcut icon" href="images/favicon.svg">
-  <meta name="description" content="Road to Her Smile is a cinematic documentary about Leah Spriggs. An Italian immigrant failed by a husband, a doctor, and a church. A StillHer Foundation film.">
-  <!-- Open Graph (WhatsApp, iMessage, Facebook, LinkedIn) -->
+  <meta name="description" content="Road to Her Smile is a cinematic documentary about Lia Spriggs. An Italian immigrant failed by a husband, a doctor, and a trusted community. A StillHer Foundation film.">
   <meta property="og:type" content="video.movie">
   <meta property="og:site_name" content="StillHer Foundation">
   <meta property="og:title" content="Road to Her Smile | StillHer Foundation Documentary">
-  <meta property="og:description" content="An Italian immigrant. A broken promise. A doctor who disappeared. A church that stayed silent. This is Road to Her Smile.">
+  <meta property="og:description" content="An Italian immigrant. A broken promise. A doctor who disappeared. A community that stayed silent. This is Road to Her Smile.">
   <meta property="og:url" content="https://stillher-landing.vercel.app">
   <meta property="og:image" content="https://stillher-landing.vercel.app/images/leah-young.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
-  <meta property="og:image:alt" content="Leah Spriggs - Road to Her Smile Documentary">
-  <!-- Twitter / X card -->
+  <meta property="og:image:alt" content="Lia Spriggs - Road to Her Smile Documentary">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Road to Her Smile | StillHer Foundation Documentary">
-  <meta name="twitter:description" content="An Italian immigrant. A broken promise. A doctor who disappeared. A church that stayed silent. This is Road to Her Smile.">
+  <meta name="twitter:description" content="An Italian immigrant. A broken promise. A doctor who disappeared. A community that stayed silent. This is Road to Her Smile.">
   <meta name="twitter:image" content="https://stillher-landing.vercel.app/images/leah-young.png">
-  <meta name="twitter:image:alt" content="Leah Spriggs - Road to Her Smile Documentary">
+  <meta name="twitter:image:alt" content="Lia Spriggs - Road to Her Smile Documentary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,10 +50,8 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── SHARED LAYOUT ──────────────────────────── */
     .container { max-width: var(--max); margin: 0 auto; padding: 0 56px; }
 
-    /* ── FADE ANIMATIONS ────────────────────────── */
     .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.85s cubic-bezier(.22,1,.36,1), transform 0.85s cubic-bezier(.22,1,.36,1); }
     .fade.in { opacity: 1; transform: none; }
     .d1 { transition-delay: 0.10s; }
@@ -113,24 +109,53 @@
     #drawer a:hover { color: var(--gold); }
     #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 905; opacity: 0; transition: opacity 0.4s; }
 
-    /* ── HERO ────────────────────────────────────── */
+    /* ── HERO CAROUSEL ──────────────────────────── */
     #hero {
       position: relative; width: 100vw; height: 100vh; min-height: 600px;
       overflow: hidden; background: var(--bg-deep);
     }
-    .hero-bg {
+    .hero-slide {
       position: absolute; inset: 0;
-      background-image: url('images/leah-young.png');
       background-size: cover; background-position: center 20%;
-      transition: opacity 400ms ease;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 1.8s ease, transform 8s ease;
+      will-change: opacity, transform;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1.0);
+    }
+    .hero-slide:nth-child(1) { background-image: url('images/leah-young.png'); }
+    .hero-slide:nth-child(2) {
+      background-image: url('images/still-johns-hopkins.png');
+      background-position: center center;
+    }
+    .hero-slide:nth-child(3) {
+      background-image: url('images/lia-italy.jpg');
+      background-position: center 15%;
     }
     .hero-grad-lr {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       background: linear-gradient(to right, rgba(5,5,12,0.90) 0%, rgba(5,5,12,0.45) 52%, rgba(5,5,12,0.80) 100%);
     }
     .hero-grad-bt {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       background: linear-gradient(to top, rgba(5,5,12,1) 0%, rgba(5,5,12,0.3) 38%, transparent 65%);
+    }
+
+    /* Slide indicators */
+    .hero-indicators {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      z-index: 12; display: flex; gap: 12px;
+    }
+    .hero-indicator {
+      width: 32px; height: 2px; background: rgba(255,255,255,0.25);
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.4s, width 0.4s;
+    }
+    .hero-indicator.active {
+      background: var(--gold); width: 48px;
     }
 
     /* Metadata strip */
@@ -140,22 +165,18 @@
     .meta-genre { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.55); font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
     .meta-truth { color: rgba(255,255,255,0.35); font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; }
 
-    /* Award badge */
-    .award-badges { position: absolute; top: 84px; right: 300px; z-index: 10; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-    .award-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; padding: 8px 14px; text-align: center; }
-    .award-badge-line1 { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
-    .award-badge-line2 { display: block; font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
-
-    /* Title block */
-    .hero-title-block { position: absolute; bottom: 80px; left: 56px; max-width: 560px; z-index: 10; will-change: transform, opacity; }
+    /* Title block — persistent over carousel */
+    .hero-title-block { position: absolute; bottom: 80px; left: 56px; max-width: 620px; z-index: 10; will-change: transform, opacity; }
     .hero-kicker { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
     .hero-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: 108px; line-height: 0.92; color: #FFFFFF; letter-spacing: -0.01em; margin-bottom: 20px; display: block; }
     .hero-rule { width: 52px; height: 2px; background: var(--gold); border: none; display: block; margin-bottom: 18px; }
-    .hero-synopsis { font-family: 'Lora', Georgia, serif; font-weight: 400; font-style: italic; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); margin-bottom: 26px; }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: 24px; line-height: 1.5; color: rgba(255,255,255,0.82); margin-bottom: 26px;
+    }
     .hero-runtime { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.38); margin-bottom: 30px; }
     .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    /* Outlined pill CTAs */
     .cta-primary {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); color: var(--off-white);
       font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
@@ -171,28 +192,12 @@
     }
     .cta-secondary:hover { background: rgba(201,169,110,0.1); }
 
-    /* Stills panel */
-    .hero-stills {
-      position: absolute; top: 68px; right: 0; bottom: 0; width: 280px; z-index: 10;
-      padding: 20px 24px 80px 0; display: flex; flex-direction: column; gap: 10px;
-      background: linear-gradient(to left, rgba(5,5,12,0.72) 0%, transparent 100%);
-      will-change: transform;
-    }
-    .stills-label { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 14px; padding-right: 4px; text-align: right; }
-    .still-thumb { width: 100%; height: 80px; position: relative; overflow: hidden; border-radius: 2px; cursor: pointer; }
-    .still-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 300ms, transform 400ms; }
-    .still-thumb:hover img { opacity: 1; transform: scale(1.06); }
-    .still-caption { position: absolute; bottom: 6px; left: 8px; font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); transition: color 300ms; pointer-events: none; }
-    .still-thumb:hover .still-caption { color: rgba(255,255,255,0.82); }
-
-    /* ── SECTION LABELS + HEADINGS (reusable) ── */
+    /* ── SECTION LABELS ──────────────────────────── */
     .section-label-gold { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
     .section-label-muted { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
     .section-rule { width: 44px; height: 2px; background: var(--gold); border: none; display: block; margin-bottom: 28px; opacity: 0.8; }
 
-    /* ═══════════════════════════════════════════
-       SECTION 2: HER STORY   CREAM
-    ═══════════════════════════════════════════ */
+    /* ═══ SECTION: HER STORY — CREAM ═══ */
     #opening {
       background: var(--cream);
       padding: 120px 0;
@@ -213,27 +218,18 @@
     .opening-img-wrap img { width: 100%; height: 480px; object-fit: cover; display: block; }
     .opening-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(245,240,232,0.08), rgba(245,240,232,0)); pointer-events: none; }
 
-    /* ═══════════════════════════════════════════
-       SECTION 3: TIMELINE "HER ROAD"   DARK
-    ═══════════════════════════════════════════ */
+    /* ═══ SECTION: TIMELINE — DARK ═══ */
     #timeline {
       background: var(--bg-dark);
       padding: 120px 0;
     }
     .tl-head { max-width: var(--max); margin: 0 auto 80px; padding: 0 56px; text-align: center; }
     .tl-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(38px, 5vw, 60px); color: var(--off-white); line-height: 1.05; }
-
-    /* Left-aligned single-column timeline   no overlap possible */
     .tl-wrap { max-width: 680px; margin: 0 auto; padding: 0 56px; }
-
     .tl-item {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 28px;
-      margin-bottom: 0;
-      position: relative;
-      opacity: 0;
-      transform: translateX(-16px);
+      display: grid; grid-template-columns: 48px 1fr; gap: 28px;
+      margin-bottom: 0; position: relative;
+      opacity: 0; transform: translateX(-16px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
     .tl-item.in { opacity: 1; transform: none; }
@@ -242,70 +238,27 @@
     .tl-item.d3 { transition-delay: 0.24s; }
     .tl-item.d4 { transition-delay: 0.32s; }
     .tl-item.d5 { transition-delay: 0.40s; }
-
-    /* Left column: dot + connector line */
-    .tl-marker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
+    .tl-marker { display: flex; flex-direction: column; align-items: center; gap: 0; }
     .tl-dot {
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      border: 2px solid var(--bg-dark);
-      box-shadow: 0 0 14px rgba(201,169,110,0.7);
-      flex-shrink: 0;
-      margin-top: 6px;
-      transform: scale(0);
-      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
-      z-index: 2;
+      width: 10px; height: 10px; background: var(--gold); border-radius: 50%;
+      border: 2px solid var(--bg-dark); box-shadow: 0 0 14px rgba(201,169,110,0.7);
+      flex-shrink: 0; margin-top: 6px;
+      transform: scale(0); transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s; z-index: 2;
     }
     .tl-item.in .tl-dot { transform: scale(1); }
-    .tl-connector {
-      flex: 1;
-      width: 1px;
-      min-height: 48px;
-      background: linear-gradient(to bottom, rgba(201,169,110,0.45), rgba(201,169,110,0.15));
-      margin-top: 8px;
-    }
+    .tl-connector { flex: 1; width: 1px; min-height: 48px; background: linear-gradient(to bottom, rgba(201,169,110,0.45), rgba(201,169,110,0.15)); margin-top: 8px; }
     .tl-item:last-child .tl-connector { display: none; }
-
-    /* Right column: content */
-    .tl-content {
-      padding-bottom: 52px;
-      position: relative;
-    }
+    .tl-content { padding-bottom: 52px; position: relative; }
     .tl-chapter {
-      position: absolute;
-      right: 0; top: -16px;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 88px;
-      line-height: 1;
-      color: var(--gold);
-      opacity: 0.05;
-      pointer-events: none;
-      user-select: none;
+      position: absolute; right: 0; top: -16px;
+      font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 88px; line-height: 1;
+      color: var(--gold); opacity: 0.05; pointer-events: none; user-select: none;
     }
-    .tl-tag {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      font-size: 9px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-      display: block;
-      margin-bottom: 8px;
-    }
+    .tl-tag { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.7; display: block; margin-bottom: 8px; }
     .tl-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: var(--off-white); margin-bottom: 12px; line-height: 1.2; }
     .tl-body { font-family: 'Lora', serif; font-size: 15px; font-weight: 400; line-height: 1.9; color: rgba(250,250,247,0.62); }
 
-    /* ═══════════════════════════════════════════
-       SECTION 4: THREE PILLARS   WHITE
-    ═══════════════════════════════════════════ */
+    /* ═══ SECTION: THREE PILLARS — WHITE ═══ */
     #pillars {
       background: var(--white);
       padding: 100px 0;
@@ -322,9 +275,7 @@
     .pillar-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: var(--ink); margin-top: 20px; margin-bottom: 12px; }
     .pillar-card p { font-family: 'Lora', serif; font-size: 15px; line-height: 1.8; color: #555555; }
 
-    /* ═══════════════════════════════════════════
-       SECTION 5: ABOUT FOUNDATION   CREAM
-    ═══════════════════════════════════════════ */
+    /* ═══ SECTION: ABOUT FOUNDATION — CREAM ═══ */
     #about {
       background: var(--cream);
       padding: 100px 0;
@@ -338,9 +289,7 @@
     .about-logo-col { position: relative; overflow: hidden; border-radius: 2px; }
     .about-logo-col img { width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block; opacity: 0.88; }
 
-    /* ═══════════════════════════════════════════
-       SECTION 6: EMAIL CAPTURE   DARK
-    ═══════════════════════════════════════════ */
+    /* ═══ SECTION: EMAIL CAPTURE — DARK ═══ */
     #email-band {
       background: var(--bg-dark);
       padding: 80px 0;
@@ -365,14 +314,12 @@
     .email-form button:hover { background: var(--gold-lt); }
     #capture-confirm { display: none; color: var(--gold); font-family: 'Lora', serif; font-style: italic; font-size: 16px; margin-top: 20px; }
 
-    /* ═══════════════════════════════════════════
-       SECTION 7: FINAL CTA   DARK CINEMATIC
-    ═══════════════════════════════════════════ */
+    /* ═══ SECTION: FINAL CTA — DARK CINEMATIC ═══ */
     #support {
       position: relative; padding: 160px 0; text-align: center; overflow: hidden;
     }
-    .support-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1792&q=85&fit=crop'); background-size: cover; background-position: center; }
-    .support-overlay { position: absolute; inset: 0; background: rgba(5,5,12,0.75); }
+    .support-bg { position: absolute; inset: 0; background-image: url('images/portrait.png'); background-size: cover; background-position: center; }
+    .support-overlay { position: absolute; inset: 0; background: rgba(5,5,12,0.78); }
     .support-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 24px; }
     .support-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(52px, 7vw, 88px); color: var(--off-white); line-height: 0.95; margin-bottom: 20px; }
     .support-rule { width: 52px; height: 2px; background: var(--gold); border: none; display: block; margin: 0 auto 24px; }
@@ -383,8 +330,46 @@
     .support-btn-2 { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0.14em; color: rgba(250,250,247,0.55); background: none; border: none; cursor: pointer; text-transform: uppercase; transition: color 0.25s; }
     .support-btn-2:hover { color: var(--off-white); }
 
+    /* ═══ SPONSOR SECTION ═══ */
+    .sponsors-section {
+      background: #0A0A0F;
+      padding: 56px 56px 0;
+      border-top: 1px solid rgba(201,169,110,0.08);
+    }
+    .sponsors-inner { max-width: var(--max); margin: 0 auto; text-align: center; }
+    .sponsors-label {
+      font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 9px;
+      letter-spacing: 0.35em; text-transform: uppercase; color: rgba(201,169,110,0.5);
+      margin-bottom: 28px; display: block;
+    }
+    .sponsors-grid {
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .sponsor-slot {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      min-width: 120px;
+    }
+    .sponsor-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px;
+      color: var(--gold); opacity: 0.7;
+    }
+    .sponsor-name {
+      font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px;
+      letter-spacing: 0.08em; color: rgba(255,255,255,0.35);
+    }
+    .sponsor-slot-empty .sponsor-avatar {
+      border-style: dashed; opacity: 0.4;
+    }
+    .sponsor-slot-empty .sponsor-name {
+      opacity: 0.3; font-style: italic;
+    }
+
     /* ── FOOTER ─────────────────────────────────── */
-    footer { background: #0A0A0F; border-top: 1px solid rgba(201,169,110,0.12); padding: 64px 56px 44px; }
+    footer { background: #0A0A0F; padding: 48px 56px 44px; }
     .footer-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 56px; }
     .footer-brand { display: block; margin-bottom: 14px; }
     .footer-brand img { height: 34px; width: auto; display: block; }
@@ -399,36 +384,29 @@
     .footer-copy { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 300; color: rgba(255,255,255,0.18); line-height: 1.6; }
 
     /* ── RESPONSIVE ─────────────────────────────── */
-
-    /* Large tablet */
     @media (max-width: 1100px) {
-      .award-badges { right: 296px; }
       .hero-title { font-size: 88px; }
     }
 
-    /* Tablet */
     @media (max-width: 900px) {
-      .award-badges { right: 240px; }
       .hero-title { font-size: 76px; }
       .about-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
       .about-logo-col img { height: 340px; }
       .opening-grid { gap: 48px; }
     }
 
-    /* Mobile landscape */
     @media (max-width: 768px) {
       .main-nav { padding: 0 24px; }
       .nav-links { display: none; }
       .nav-donate { display: none; }
       .nav-ham { display: flex; }
-      .hero-stills { display: none !important; }
-      .award-badges { display: none !important; }
-      .meta-truth { display: none; }
       .hero-title { font-size: 60px; }
       .hero-title-block { bottom: 48px; left: 24px; right: 24px; max-width: 100%; }
+      .hero-tagline { font-size: 19px; }
       .hero-ctas { flex-direction: column; align-items: stretch; }
       .cta-primary, .cta-secondary { text-align: center; display: block; }
       .meta-strip { left: 24px; top: 76px; }
+      .meta-truth { display: none; }
       .opening-grid { grid-template-columns: 1fr; gap: 36px; }
       .opening-img-wrap img { height: 300px; }
       .container, .opening-grid, .pillars-grid, .about-grid, .pillars-head, .pillars-sub, .footer-grid { padding-left: 24px; padding-right: 24px; }
@@ -452,15 +430,17 @@
       .support-ctas { flex-direction: column; align-items: stretch; }
       .support-btn-1, .support-btn-2 { text-align: center; width: 100%; }
       .pillars-sub { font-size: 16px; }
+      .sponsors-section { padding: 40px 24px 0; }
+      .sponsors-grid { gap: 28px; }
+      .hero-indicators { bottom: 20px; }
     }
 
-    /* Small phone */
     @media (max-width: 480px) {
       .main-nav { padding: 0 16px; height: 60px; }
       .hero-title { font-size: 46px; line-height: 0.96; }
       .hero-title-block { bottom: 32px; left: 16px; right: 16px; }
       .hero-kicker { font-size: 9px; letter-spacing: 0.24em; margin-bottom: 12px; }
-      .hero-synopsis { font-size: 14px; margin-bottom: 18px; }
+      .hero-tagline { font-size: 16px; margin-bottom: 14px; }
       .hero-runtime { display: none; }
       .cta-primary, .cta-secondary { padding: 12px 18px; font-size: 10px; }
       .meta-strip { left: 16px; gap: 8px; }
@@ -485,6 +465,8 @@
       .email-heading { font-size: clamp(24px, 7vw, 34px); }
       .pillars-head h2 { font-size: clamp(28px, 7vw, 40px); }
       .footer-tagline { font-size: 12px; }
+      .sponsors-section { padding: 32px 16px 0; }
+      .sponsors-grid { gap: 20px; }
     }
   </style>
 </head>
@@ -494,15 +476,13 @@
   <nav class="main-nav" id="main-nav">
     <a href="#" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
     <ul class="nav-links">
-      <li><a href="#opening">The Story</a></li>
+      <li><a href="#opening">Her Road</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="#timeline">Her Road</a></li>
+      <li><a href="#about">Our Mission</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="#pillars">The Film</a></li>
+      <li><a href="strategy.html">The Strategy</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="#support">Support</a></li>
-      <li><span class="nav-sep"></span></li>
-      <li><a href="press.html">Press</a></li>
+      <li><a href="film.html">The Film</a></li>
     </ul>
     <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -513,17 +493,19 @@
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(45deg) translate(0,3px);"></span>
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
     </button>
-    <a href="#opening" onclick="closeDrawer()">The Story</a>
-    <a href="#timeline" onclick="closeDrawer()">Her Road</a>
-    <a href="#pillars" onclick="closeDrawer()">The Film</a>
-    <a href="#support" onclick="closeDrawer()">Support</a>
+    <a href="#opening" onclick="closeDrawer()">Her Road</a>
+    <a href="#about" onclick="closeDrawer()">Our Mission</a>
+    <a href="strategy.html" onclick="closeDrawer()">The Strategy</a>
+    <a href="film.html" onclick="closeDrawer()">The Film</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
     <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
 
-  <!-- ═══ SECTION 1: HERO (cinematic, dark) ═══ -->
+  <!-- ═══ HERO: CINEMATIC AUTO-ROTATING CAROUSEL ═══ -->
   <section id="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-slide active" id="slide-0"></div>
+    <div class="hero-slide" id="slide-1"></div>
+    <div class="hero-slide" id="slide-2"></div>
     <div class="hero-grad-lr"></div>
     <div class="hero-grad-bt"></div>
 
@@ -535,61 +517,44 @@
       <span class="meta-truth">Based on a True Story</span>
     </div>
 
-    <div class="award-badges">
-      <div class="award-badge">
-        <span class="award-badge-line1">Official Selection</span>
-        <span class="award-badge-line2">StillHer 2026</span>
-      </div>
-    </div>
-
     <div class="hero-title-block">
       <span class="hero-kicker">A StillHer Foundation Documentary</span>
       <span class="hero-title">Road to<br>Her Smile</span>
       <hr class="hero-rule">
-      <p class="hero-synopsis">Leah Spriggs left Italy for a promise of love. She was left with nothing. She is still standing.</p>
-      <p class="hero-runtime">98 min &nbsp;•&nbsp; 2026 &nbsp;•&nbsp; Documentary &nbsp;•&nbsp; True Story</p>
+      <p class="hero-tagline">She was left to fight for her life.<br>And still, she remained standing.</p>
+      <p class="hero-runtime">2026 &nbsp;&bull;&nbsp; Documentary &nbsp;&bull;&nbsp; True Story</p>
       <div class="hero-ctas">
-        <a href="#support" class="cta-primary">Watch the Trailer</a>
+        <a href="film.html" class="cta-primary">View the Film</a>
         <a href="#opening" class="cta-secondary">Read Her Story</a>
       </div>
     </div>
 
-    <div class="hero-stills">
-      <p class="stills-label">Stills</p>
-      <div class="still-thumb" data-full-src="images/portrait.png">
-        <img src="images/portrait.png" alt="Leah   Verona, Italy">
-        <span class="still-caption">Verona, Italy</span>
-      </div>
-      <div class="still-thumb" data-full-src="images/leah-young.png">
-        <img src="images/leah-young.png" alt="Leah   Young">
-        <span class="still-caption">Young Leah</span>
-      </div>
-<div class="still-thumb" data-full-src="images/still-johns-hopkins.png">
-        <img src="images/still-johns-hopkins.png" alt="The Procedure">
-        <span class="still-caption">The Procedure</span>
-      </div>
+    <div class="hero-indicators">
+      <button class="hero-indicator active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="hero-indicator" data-slide="1" aria-label="Slide 2"></button>
+      <button class="hero-indicator" data-slide="2" aria-label="Slide 3"></button>
     </div>
   </section>
 
-  <!-- ═══ SECTION 2: HER STORY   CREAM ═══ -->
+  <!-- ═══ HER STORY — CREAM ═══ -->
   <section id="opening">
     <div class="opening-grid">
       <div>
-        <span class="section-label-gold fade">Her Story</span>
+        <span class="section-label-gold fade">Her Road</span>
         <h2 class="opening-heading fade d1">She was not always the woman the world would later overlook.</h2>
         <hr class="section-rule fade d1">
         <div class="opening-body fade d2">
-          <p>Born in Verona, Italy, Leah Spriggs carried a natural elegance that luxury brands spend millions trying to replicate. She was a model. She stood in rooms where presence was currency, where the future looked expansive.</p>
+          <p>Born in Verona, Italy, Lia Spriggs carried a natural elegance that luxury brands spend millions trying to replicate. She was a model. She stood in rooms where presence was currency, where the future looked expansive.</p>
           <p>Then she met a man in uniform on a military post in Vicenza. He promised her love, America, and a white picket fence. She left everything she knew and followed him across the ocean. What she walked into was not safety. It was betrayal, layered and relentless, over twelve years.</p>
         </div>
       </div>
       <div class="opening-img-wrap fade d3">
-        <img src="images/leah-young.png" alt="Leah Spriggs   Verona, Italy" loading="lazy">
+        <img src="images/leah-young.png" alt="Lia Spriggs in Verona, Italy" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- ═══ SECTION 3: TIMELINE   DARK ═══ -->
+  <!-- ═══ TIMELINE — DARK ═══ -->
   <section id="timeline">
     <div class="tl-head">
       <span class="section-label-gold fade" style="text-align:center;">A Life Dismantled</span>
@@ -633,7 +598,7 @@
           <div class="tl-chapter">4</div>
           <span class="tl-tag">Chapter Four</span>
           <h3 class="tl-title">Rock Bottom</h3>
-          <p class="tl-body">An eviction notice, final. She dropped to her knees in front of her children. Then she found Grace Covenant Church and placed her trust there.</p>
+          <p class="tl-body">An eviction notice, final. She dropped to her knees in front of her children. Then she found a trusted community and placed her trust there.</p>
         </div>
       </div>
 
@@ -642,7 +607,7 @@
         <div class="tl-content">
           <div class="tl-chapter">5</div>
           <span class="tl-tag">Chapter Five</span>
-          <h3 class="tl-title">Johns Hopkins</h3>
+          <h3 class="tl-title">The Procedure</h3>
           <p class="tl-body">Thirteen teeth removed. A doctor who then disappeared. No follow-up. No implants. No answers. Left toothless, indefinitely. Her body then developed an autoimmune disease.</p>
         </div>
       </div>
@@ -652,7 +617,7 @@
         <div class="tl-content">
           <div class="tl-chapter">6</div>
           <span class="tl-tag">Chapter Six</span>
-          <h3 class="tl-title">The Church</h3>
+          <h3 class="tl-title">The Silence</h3>
           <p class="tl-body">A $25 grocery gift card. Days later from the pulpit: a $7.2 million renovation announcement. This is the story this documentary tells.</p>
         </div>
       </div>
@@ -660,13 +625,13 @@
     </div>
   </section>
 
-  <!-- ═══ SECTION 4: THREE PILLARS   WHITE ═══ -->
+  <!-- ═══ THREE PILLARS — WHITE ═══ -->
   <section id="pillars">
     <div class="pillars-head fade">
       <span class="section-label-muted">Why This Documentary Matters</span>
       <h2>Because this is not just one woman's story.</h2>
     </div>
-    <p class="pillars-sub fade d1">"Because this is not just one woman's story."</p>
+    <p class="pillars-sub fade d1">It is the story of every woman abandoned by the systems meant to protect her.</p>
     <div class="pillars-grid">
       <div class="pillar-card fade d1">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -684,7 +649,7 @@
           <path d="M21 8l-3 8h6l-3-8z" stroke="#C9A96E" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
         <h3>Accountability</h3>
-        <p>A doctor disappeared. A church stayed silent. This film documents what happened and demands the accountability that every vulnerable person deserves.</p>
+        <p>A doctor disappeared. A community stayed silent. This film documents what happened and demands the accountability that every vulnerable person deserves.</p>
       </div>
       <div class="pillar-card fade d3">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -693,31 +658,31 @@
           <path d="M11 16h6" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Restoration</h3>
-        <p>Road to Her Smile is Leah's road back. And with your support, she will not have to walk it alone. Every gift brings her closer to her smile.</p>
+        <p>Road to Her Smile is Lia's road back. And with your support, she will not have to walk it alone. Every gift brings her closer to her smile.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SECTION 5: ABOUT FOUNDATION   CREAM ═══ -->
+  <!-- ═══ ABOUT FOUNDATION — CREAM ═══ -->
   <section id="about">
     <div class="about-grid">
       <div class="fade">
-        <span class="section-label-gold">StillHer Foundation</span>
+        <span class="section-label-gold">Our Mission</span>
         <p class="about-quote">"StillHer Foundation exists to restore dignity to women abandoned by the systems meant to protect them."</p>
         <hr class="section-rule">
-        <p class="about-body">We document the stories the world was never supposed to hear. We build the communities that make sure they are heard anyway. Road to Her Smile is our first documentary, and Leah's story is only the beginning.</p>
+        <p class="about-body">We document the stories the world was never supposed to hear. We build the communities that make sure they are heard anyway. Road to Her Smile is our first documentary, and Lia's story is only the beginning.</p>
         <a href="https://stillher-donation-production.up.railway.app/" class="about-link">Support the Foundation</a>
       </div>
       <div class="about-logo-col fade d2">
-        <img src="images/portrait.png" alt="Leah Spriggs" loading="lazy">
+        <img src="images/portrait.png" alt="Lia Spriggs" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- ═══ SECTION 6: EMAIL CAPTURE   DARK ═══ -->
+  <!-- ═══ EMAIL CAPTURE — DARK ═══ -->
   <section id="email-band">
     <div class="email-inner">
-      <span class="section-label-gold fade" style="text-align:center; display:block;">Follow Leah's Road</span>
+      <span class="section-label-gold fade" style="text-align:center; display:block;">Follow Her Road</span>
       <p class="email-heading fade d1">Be the first to know when Road to Her Smile premieres.</p>
       <form id="email-capture" class="email-form fade d2">
         <input type="email" placeholder="your@email.com" required>
@@ -727,7 +692,7 @@
     </div>
   </section>
 
-  <!-- ═══ SECTION 7: FINAL CTA   DARK CINEMATIC ═══ -->
+  <!-- ═══ FINAL CTA — DARK CINEMATIC ═══ -->
   <section id="support">
     <div class="support-bg"></div>
     <div class="support-overlay"></div>
@@ -735,13 +700,42 @@
       <span class="section-label-gold fade" style="text-align:center; display:block;">Support the Documentary</span>
       <h2 class="support-title fade d1">Help us tell<br>this story.</h2>
       <hr class="support-rule fade d2">
-      <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution. This is how we make sure Leah's voice is finally heard.</p>
+      <p class="support-body fade d2">Every contribution funds production, legal advocacy, and distribution. This is how we make sure Lia's voice is finally heard.</p>
       <div class="support-ctas fade d3">
         <a href="https://stillher-donation-production.up.railway.app/" class="support-btn-1">Donate to Road to Her Smile</a>
         <button class="support-btn-2" onclick="shareStory()">Share Her Story</button>
       </div>
     </div>
   </section>
+
+  <!-- ═══ SPONSORS ═══ -->
+  <div class="sponsors-section">
+    <div class="sponsors-inner">
+      <span class="sponsors-label">Our Sponsors</span>
+      <div class="sponsors-grid">
+        <div class="sponsor-slot">
+          <div class="sponsor-avatar">JV</div>
+          <span class="sponsor-name">John Victoria</span>
+        </div>
+        <div class="sponsor-slot">
+          <div class="sponsor-avatar">J</div>
+          <span class="sponsor-name">Juliana</span>
+        </div>
+        <div class="sponsor-slot">
+          <div class="sponsor-avatar">P</div>
+          <span class="sponsor-name">Pollyanna</span>
+        </div>
+        <div class="sponsor-slot sponsor-slot-empty">
+          <div class="sponsor-avatar">+</div>
+          <span class="sponsor-name">Your Name Here</span>
+        </div>
+        <div class="sponsor-slot sponsor-slot-empty">
+          <div class="sponsor-avatar">+</div>
+          <span class="sponsor-name">Your Name Here</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══ FOOTER ═══ -->
   <footer>
@@ -753,10 +747,10 @@
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="#opening">The Story</a></li>
-          <li><a href="#timeline">Her Road</a></li>
-          <li><a href="#pillars">The Film</a></li>
-          <li><a href="#support">Donate</a></li>
+          <li><a href="#opening">Her Road</a></li>
+          <li><a href="#about">Our Mission</a></li>
+          <li><a href="strategy.html">The Strategy</a></li>
+          <li><a href="film.html">The Film</a></li>
           <li><a href="press.html">Press</a></li>
         </ul>
       </div>
@@ -773,10 +767,42 @@
   </footer>
 
   <script>
+    // ── HERO CAROUSEL ────────────────────────────────
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.hero-indicator');
+    let currentSlide = 0;
+    let heroInterval;
+
+    function goToSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      indicators[currentSlide].classList.remove('active');
+      slides[currentSlide].style.transform = 'scale(1.04)';
+      currentSlide = n;
+      slides[currentSlide].classList.add('active');
+      indicators[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function startCarousel() {
+      heroInterval = setInterval(nextSlide, 7000);
+    }
+
+    indicators.forEach(btn => {
+      btn.addEventListener('click', () => {
+        clearInterval(heroInterval);
+        goToSlide(parseInt(btn.dataset.slide));
+        startCarousel();
+      });
+    });
+
+    startCarousel();
+
     // ── NAV + PARALLAX ─────────────────────────────
     const mainNav = document.getElementById('main-nav');
     const titleBlock = document.querySelector('.hero-title-block');
-    const stillsPanel = document.querySelector('.hero-stills');
 
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
@@ -786,31 +812,12 @@
         titleBlock.style.transform = `translateY(${y * 0.22}px)`;
         titleBlock.style.opacity = Math.max(0, 1 - y / (vh * 0.65));
       }
-      if (stillsPanel && y < vh) {
-        stillsPanel.style.transform = `translateY(${y * 0.10}px)`;
-      }
     }, { passive: true });
-
-    // ── STILLS HOVER CROSS-FADE ─────────────────────
-    const heroBg = document.querySelector('.hero-bg');
-    document.querySelectorAll('.still-thumb').forEach(thumb => {
-      thumb.addEventListener('mouseenter', () => {
-        heroBg.style.opacity = '0';
-        setTimeout(() => { heroBg.style.backgroundImage = `url('${thumb.dataset.fullSrc}')`; heroBg.style.opacity = '1'; }, 200);
-      });
-      thumb.addEventListener('mouseleave', () => {
-        heroBg.style.opacity = '0';
-        setTimeout(() => { heroBg.style.backgroundImage = "url('images/leah-young.png')"; heroBg.style.opacity = '1'; }, 200);
-      });
-    });
 
     // ── TIMELINE SCROLL ANIMATION ────────────────────
     const tlObserver = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          tlObserver.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('in'); tlObserver.unobserve(e.target); }
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.tl-item').forEach(el => tlObserver.observe(el));
@@ -853,7 +860,7 @@
       if (navigator.share) {
         navigator.share({ title: 'Road to Her Smile', text: 'A story the world was never supposed to hear.', url: location.href });
       } else {
-        navigator.clipboard.writeText(location.href).then(() => alert("Link copied. Share Leah's story."));
+        navigator.clipboard.writeText(location.href).then(() => alert("Link copied. Share her story."));
       }
     }
   </script>
