@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Her Road | Road to Her Smile | StillHer Foundation</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta name="description" content="The story of Lia Spriggs — from Verona to America, from betrayal to resilience. A StillHer Foundation documentary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-deep: #05050C; --bg-dark: #0D0D12; --cream: #F5F0E8; --white: #FFFFFF;
+      --off-white: #FAFAF7; --gold: #C9A96E; --gold-lt: #E8D5A3; --ink: #1A1A1A;
+      --warm-ink: #3A3530; --muted: #888888; --max: 1100px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Lora', Georgia, serif; background: var(--bg-dark); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    .main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 68px; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; list-style: none; flex: 1; justify-content: center; gap: 0; }
+    .nav-links li { display: flex; align-items: center; }
+    .nav-links a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 18px; transition: color 200ms; }
+    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
+    .nav-donate { flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 9px 22px; border-radius: 2px; transition: background 250ms, color 250ms; }
+    .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
+    .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
+    #drawer { display: none; position: fixed; inset: 0 0 0 auto; width: 100vw; background: var(--bg-deep); z-index: 910; flex-direction: column; padding: 88px 32px 48px; gap: 28px; transform: translateX(100%); transition: transform 0.4s cubic-bezier(.22,1,.36,1); border-left: 1px solid rgba(255,255,255,0.05); }
+    #drawer.open { transform: none; }
+    #drawer a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.82); text-decoration: none; }
+    #drawer a:hover { color: var(--gold); }
+    #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 905; opacity: 0; transition: opacity 0.4s; }
+
+    /* ── HERO ── */
+    .page-hero { background: var(--bg-dark); padding: 160px 56px 100px; text-align: center; }
+    .page-hero-kicker { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 20px; }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(48px, 6vw, 72px); color: var(--off-white); line-height: 1.05; }
+    .page-hero-sub { font-family: 'Lora', serif; font-style: italic; font-size: 18px; color: rgba(250,250,247,0.55); margin-top: 24px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    /* ── OPENING SECTION ── */
+    .opening { background: var(--cream); padding: 120px 0; }
+    .opening-grid { max-width: var(--max); margin: 0 auto; padding: 0 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .opening-heading { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(34px, 3.8vw, 52px); color: var(--ink); line-height: 1.15; margin-bottom: 28px; }
+    .opening-body { font-family: 'Lora', serif; font-size: 17px; font-weight: 400; line-height: 1.9; color: var(--warm-ink); }
+    .opening-body p + p { margin-top: 20px; }
+    .opening-img-wrap { position: relative; overflow: hidden; border-radius: 2px; }
+    .opening-img-wrap img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .section-label-gold { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .section-rule { width: 44px; height: 2px; background: var(--gold); border: none; display: block; margin-bottom: 28px; opacity: 0.8; }
+
+    /* ── TIMELINE ── */
+    .timeline-section { background: var(--bg-dark); padding: 120px 0 160px; }
+    .tl-head { max-width: var(--max); margin: 0 auto 80px; padding: 0 56px; text-align: center; }
+    .tl-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(42px, 5.5vw, 68px); color: var(--off-white); line-height: 1.05; }
+
+    .tl-wrap { max-width: 740px; margin: 0 auto; padding: 0 56px; position: relative; }
+
+    /* Traveling dot */
+    .tl-travel-dot {
+      position: absolute; left: 23px; top: 0;
+      width: 14px; height: 14px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 3px solid var(--bg-dark);
+      box-shadow: 0 0 20px rgba(201,169,110,0.8), 0 0 40px rgba(201,169,110,0.3);
+      z-index: 5;
+      transform: translateY(0);
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .tl-item {
+      display: grid; grid-template-columns: 48px 1fr; gap: 32px;
+      margin-bottom: 0; position: relative;
+      opacity: 0.35;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .tl-item.active { opacity: 1; transform: scale(1.02); transform-origin: left center; }
+    .tl-item.passed { opacity: 0.5; }
+
+    .tl-marker { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .tl-dot {
+      width: 10px; height: 10px; background: rgba(201,169,110,0.3); border-radius: 50%;
+      border: 2px solid var(--bg-dark); flex-shrink: 0; margin-top: 8px; z-index: 2;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    .tl-item.active .tl-dot { background: var(--gold); box-shadow: 0 0 14px rgba(201,169,110,0.7); }
+    .tl-item.passed .tl-dot { background: rgba(201,169,110,0.5); }
+    .tl-connector { flex: 1; width: 1px; min-height: 48px; background: linear-gradient(to bottom, rgba(201,169,110,0.45), rgba(201,169,110,0.15)); margin-top: 8px; }
+    .tl-item:last-child .tl-connector { display: none; }
+
+    .tl-content { padding-bottom: 72px; position: relative; }
+    .tl-chapter {
+      position: absolute; right: 0; top: -20px;
+      font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 100px; line-height: 1;
+      color: var(--gold); opacity: 0.05; pointer-events: none; user-select: none;
+      transition: opacity 0.6s;
+    }
+    .tl-item.active .tl-chapter { opacity: 0.1; }
+    .tl-tag {
+      font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 9px;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+      opacity: 0.5; display: block; margin-bottom: 10px;
+      transition: opacity 0.6s;
+    }
+    .tl-item.active .tl-tag { opacity: 1; }
+    .tl-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px;
+      color: var(--off-white); margin-bottom: 14px; line-height: 1.2;
+    }
+    .tl-body {
+      font-family: 'Lora', serif; font-size: 17px; font-weight: 400;
+      line-height: 1.9; color: rgba(250,250,247,0.62);
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .tl-item { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .tl-dot { background: var(--gold) !important; }
+      .tl-tag { opacity: 1 !important; }
+      .tl-chapter { opacity: 0.08 !important; }
+      .tl-travel-dot { display: none !important; }
+    }
+
+    /* ── FOOTER ── */
+    footer { background: #0A0A0F; border-top: 1px solid rgba(201,169,110,0.12); padding: 48px 56px 44px; }
+    .footer-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 56px; }
+    .footer-brand { display: block; margin-bottom: 14px; }
+    .footer-brand img { height: 34px; width: auto; display: block; }
+    .footer-tagline { font-family: 'Lora', serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.28); line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-family: 'Lora', serif; font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.25s; }
+    .footer-col a:hover { color: rgba(255,255,255,0.75); }
+    .social-row { display: flex; gap: 18px; margin-bottom: 28px; }
+    .social-row a { color: rgba(255,255,255,0.28); transition: color 0.25s; }
+    .social-row a:hover { color: var(--gold); }
+    .footer-copy { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 300; color: rgba(255,255,255,0.18); line-height: 1.6; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .main-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-donate { display: none; }
+      .nav-ham { display: flex; }
+      .page-hero { padding: 120px 24px 72px; }
+      .opening { padding: 80px 0; }
+      .opening-grid { grid-template-columns: 1fr; gap: 36px; padding: 0 24px; }
+      .opening-img-wrap img { height: 300px; }
+      .timeline-section { padding: 80px 0 120px; }
+      .tl-head { padding: 0 24px; margin-bottom: 48px; }
+      .tl-wrap { padding: 0 24px; }
+      .tl-item { gap: 16px; }
+      .tl-content { padding-bottom: 48px; }
+      .tl-chapter { font-size: 64px; }
+      .tl-title { font-size: 22px; }
+      .tl-body { font-size: 15px; }
+      .tl-travel-dot { left: 11px; }
+      footer { padding: 56px 24px 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 480px) {
+      .main-nav { padding: 0 16px; height: 60px; }
+      .page-hero { padding: 100px 16px 56px; }
+      .opening-grid { padding: 0 16px; }
+      .opening-img-wrap img { height: 220px; }
+      .tl-wrap { padding: 0 16px; }
+      .tl-head { padding: 0 16px; }
+      .tl-item { gap: 12px; }
+      .tl-title { font-size: 20px; }
+      .tl-body { font-size: 14px; line-height: 1.8; }
+      .tl-content { padding-bottom: 36px; }
+      .tl-chapter { font-size: 48px; }
+      .tl-travel-dot { left: 7px; width: 12px; height: 12px; }
+      footer { padding: 44px 16px 32px; }
+      .footer-grid { padding-left: 16px; padding-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="main-nav">
+    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
+    <ul class="nav-links">
+      <li><a href="her-road.html">Her Road</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="mission.html">Our Mission</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="strategy.html">The Strategy</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="film.html">The Film</a></li>
+    </ul>
+    <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
+    <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div id="overlay"></div>
+  <nav id="drawer">
+    <button onclick="closeDrawer()" aria-label="Close menu" style="position:absolute;top:20px;right:20px;background:none;border:1px solid rgba(255,255,255,0.18);border-radius:2px;cursor:pointer;padding:10px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:40px;height:40px;">
+      <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(45deg) translate(0,3px);"></span>
+      <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
+    </button>
+    <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
+    <a href="mission.html" onclick="closeDrawer()">Our Mission</a>
+    <a href="strategy.html" onclick="closeDrawer()">The Strategy</a>
+    <a href="film.html" onclick="closeDrawer()">The Film</a>
+    <a href="press.html" onclick="closeDrawer()">Press</a>
+    <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="page-hero-kicker">A StillHer Foundation Documentary</span>
+    <h1>Her Road</h1>
+    <p class="page-hero-sub">A Life Dismantled. A story of what was taken, what endured, and what remains.</p>
+  </div>
+
+  <!-- OPENING -->
+  <section class="opening">
+    <div class="opening-grid">
+      <div>
+        <span class="section-label-gold">Her Story</span>
+        <h2 class="opening-heading">She was not always the woman the world would later overlook.</h2>
+        <hr class="section-rule">
+        <div class="opening-body">
+          <p>Born in Verona, Italy, Lia Spriggs carried a natural elegance that luxury brands spend millions trying to replicate. She was a model. She stood in rooms where presence was currency, where the future looked expansive.</p>
+          <p>Then she met a man in uniform on a military post in Vicenza. He promised her love, America, and a white picket fence. She left everything she knew and followed him across the ocean. What she walked into was not safety. It was betrayal, layered and relentless, over twelve years.</p>
+        </div>
+      </div>
+      <div class="opening-img-wrap">
+        <img src="images/lia-italy.jpg" alt="Lia Spriggs in Verona, Italy" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="tl-head">
+      <span class="section-label-gold" style="text-align:center;">A Life Dismantled</span>
+      <h2>Her Road</h2>
+    </div>
+    <div class="tl-wrap" id="tl-wrap">
+      <div class="tl-travel-dot" id="travel-dot"></div>
+
+      <div class="tl-item" data-chapter="1">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">1</div>
+          <span class="tl-tag">Chapter One</span>
+          <h3 class="tl-title">Born in Verona, Italy</h3>
+          <p class="tl-body">A woman of presence. A future that looked expansive. She modelled. She stood in rooms where presence was currency and beauty opened doors.</p>
+        </div>
+      </div>
+
+      <div class="tl-item" data-chapter="2">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">2</div>
+          <span class="tl-tag">Chapter Two</span>
+          <h3 class="tl-title">Vicenza, Italy</h3>
+          <p class="tl-body">She met a man in uniform. A promise of love and America. She believed him, as people believe those who speak with certainty.</p>
+        </div>
+      </div>
+
+      <div class="tl-item" data-chapter="3">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">3</div>
+          <span class="tl-tag">Chapter Three</span>
+          <h3 class="tl-title">The Marriage</h3>
+          <p class="tl-body">Twelve years. Infidelity running through almost all of them. A single immigrant mother. Two children. No safety net.</p>
+        </div>
+      </div>
+
+      <div class="tl-item" data-chapter="4">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">4</div>
+          <span class="tl-tag">Chapter Four</span>
+          <h3 class="tl-title">Rock Bottom</h3>
+          <p class="tl-body">An eviction notice, final. She dropped to her knees in front of her children. Then she found a trusted community and placed her trust there.</p>
+        </div>
+      </div>
+
+      <div class="tl-item" data-chapter="5">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">5</div>
+          <span class="tl-tag">Chapter Five</span>
+          <h3 class="tl-title">The Procedure</h3>
+          <p class="tl-body">Thirteen teeth removed. A doctor who then disappeared. No follow-up. No implants. No answers. Left toothless, indefinitely. Her body then developed an autoimmune disease.</p>
+        </div>
+      </div>
+
+      <div class="tl-item" data-chapter="6">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-chapter">6</div>
+          <span class="tl-tag">Chapter Six</span>
+          <h3 class="tl-title">The Silence</h3>
+          <p class="tl-body">A $25 grocery gift card. Days later, from that same organization: a $7.2 million renovation announcement. This is the story this documentary tells.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-brand"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
+        <p class="footer-tagline">A nonprofit dedicated to restoring dignity to women who have been abandoned by the systems meant to protect them.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="her-road.html">Her Road</a></li>
+          <li><a href="mission.html">Our Mission</a></li>
+          <li><a href="strategy.html">The Strategy</a></li>
+          <li><a href="film.html">The Film</a></li>
+          <li><a href="press.html">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+        <p class="footer-copy">2026 StillHer Foundation.<br>All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── MOBILE DRAWER ──
+    const hamBtn = document.getElementById('ham-btn');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    if (overlay) overlay.style.transition = 'opacity 0.4s ease';
+    function openDrawer() { drawer.style.display = 'flex'; overlay.style.display = 'block'; requestAnimationFrame(() => { drawer.classList.add('open'); overlay.style.opacity = '1'; }); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.style.opacity = '0'; setTimeout(() => { drawer.style.display = 'none'; overlay.style.display = 'none'; }, 400); }
+    if (hamBtn) hamBtn.addEventListener('click', openDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    // ── SCROLL-DRIVEN TRAVELING DOT + CHAPTER HIGHLIGHTS ──
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const tlWrap = document.getElementById('tl-wrap');
+      const travelDot = document.getElementById('travel-dot');
+      const items = document.querySelectorAll('.tl-item');
+      const dots = Array.from(document.querySelectorAll('.tl-dot'));
+
+      function updateTravelDot() {
+        if (!tlWrap || !travelDot || dots.length === 0) return;
+
+        const wrapRect = tlWrap.getBoundingClientRect();
+        const firstDot = dots[0];
+        const lastDot = dots[dots.length - 1];
+        const firstDotRect = firstDot.getBoundingClientRect();
+        const lastDotRect = lastDot.getBoundingClientRect();
+
+        const startY = firstDotRect.top - wrapRect.top + firstDotRect.height / 2;
+        const endY = lastDotRect.top - wrapRect.top + lastDotRect.height / 2;
+        const range = endY - startY;
+
+        const viewCenter = window.innerHeight * 0.4;
+        const progress = Math.max(0, Math.min(1, (viewCenter - firstDotRect.top) / (lastDotRect.top - firstDotRect.top + 1)));
+
+        const dotY = startY + (range * progress) - 7;
+        travelDot.style.transform = `translateY(${dotY}px)`;
+
+        requestAnimationFrame(updateTravelDot);
+      }
+      requestAnimationFrame(updateTravelDot);
+
+      const chapterObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const item = entry.target;
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+            items.forEach(i => {
+              if (i === item) {
+                i.classList.add('active');
+                i.classList.remove('passed');
+              } else {
+                const itemRect = i.getBoundingClientRect();
+                const entryRect = item.getBoundingClientRect();
+                if (itemRect.top < entryRect.top) {
+                  i.classList.remove('active');
+                  i.classList.add('passed');
+                } else {
+                  i.classList.remove('active');
+                  i.classList.remove('passed');
+                }
+              }
+            });
+          }
+        });
+      }, { threshold: [0.3, 0.6], rootMargin: '-20% 0px -30% 0px' });
+
+      items.forEach(item => chapterObserver.observe(item));
+    }
+  </script>
+</body>
+</html>
