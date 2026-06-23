@@ -59,8 +59,8 @@
     .nav-group-left, .nav-group-right {
       display: flex; align-items: center; list-style: none; gap: 0;
     }
-    .nav-group-left { flex: 1; justify-content: flex-end; }
-    .nav-group-right { flex: 1; }
+    .nav-group-left { flex: 1; justify-content: flex-end; padding-right: 8px; }
+    .nav-group-right { flex: 1; justify-content: flex-start; padding-left: 8px; }
     .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
     .nav-group-left a, .nav-group-right a {
       font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px;
@@ -73,10 +73,11 @@
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; padding: 0 24px; }
     .nav-logo img { height: 36px; width: auto; display: block; }
     .nav-donate {
-      flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 9px;
+      position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
+      font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 9px;
       letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none;
       border: 1px solid var(--gold); padding: 8px 18px; border-radius: 2px;
-      transition: background 250ms, color 250ms; margin-left: 14px;
+      transition: background 250ms, color 250ms;
     }
     .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
     .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
@@ -372,6 +373,29 @@
     </div>
   </section>
 
+  <!-- ═══ SPONSORS ═══ -->
+  <section id="sponsors-banner">
+    <div class="sponsors-bg"></div>
+    <div class="sponsors-glow"></div>
+    <div class="sponsors-line-top" id="sp-line-top"></div>
+    <div class="sponsors-line-bottom" id="sp-line-bottom"></div>
+    <div class="sponsors-content">
+      <span class="sponsors-kicker fade">Our Sponsors</span>
+      <h2 class="sponsors-heading fade d1">The people standing behind her.</h2>
+      <p class="sponsors-sub fade d2">Their belief in this project makes every frame possible.</p>
+      <div class="sponsors-cards fade d3">
+        <div class="sponsor-card"><div class="sc-avatar">JV</div><div class="sc-name">John Victoria</div><div class="sc-role">Sponsor</div></div>
+        <div class="sponsor-card"><div class="sc-avatar">J</div><div class="sc-name">Juliana</div><div class="sc-role">Sponsor</div></div>
+        <div class="sponsor-card"><div class="sc-avatar">P</div><div class="sc-name">Pollyanna</div><div class="sc-role">In-Kind Support</div></div>
+        <div class="sponsor-card sponsor-card-empty"><div class="sc-avatar">+</div><div class="sc-name">Your Name Here</div><div class="sc-role">Become a Sponsor</div></div>
+      </div>
+      <div class="sponsors-cta-row fade d3">
+        <a href="https://stillher-donation-production.up.railway.app/" class="sponsors-cta sponsors-cta-gold">Become a Sponsor</a>
+        <a href="film.html" class="sponsors-cta sponsors-cta-outline">View Sponsorship Deck</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ FOOTER ═══ -->
   <footer>
     <div class="footer-grid">
@@ -421,6 +445,17 @@
     }, { threshold: 0.10 });
     document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
+    const spObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.getElementById('sp-line-top').classList.add('in');
+          document.getElementById('sp-line-bottom').classList.add('in');
+          spObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    const spBanner = document.getElementById('sponsors-banner');
+    if (spBanner) spObserver.observe(spBanner);
   </script>
 </body>
 </html>
