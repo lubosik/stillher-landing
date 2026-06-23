@@ -59,8 +59,8 @@
     .nav-group-left, .nav-group-right {
       display: flex; align-items: center; list-style: none; gap: 0;
     }
-    .nav-group-left { margin-right: auto; }
-    .nav-group-right { margin-left: auto; }
+    .nav-group-left { flex: 1; justify-content: flex-end; }
+    .nav-group-right { flex: 1; }
     .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
     .nav-group-left a, .nav-group-right a {
       font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px;
@@ -336,9 +336,9 @@
         <h2 class="why-heading fade d1">This is not just one woman's story.</h2>
         <hr class="section-rule fade d1">
         <div class="why-body fade d2">
-          <p>Lia Spriggs was a model in Verona, Italy. She followed a man she loved to America. Over twelve years, he betrayed her. She became a single mother with no safety net in a country that was not her own.</p>
-          <p>A trusted community referred her to a doctor. Thirteen teeth were extracted. The doctor disappeared. No follow-up. No implants. No answers. She was left toothless, indefinitely. Her body developed Hashimoto's disease and fibromyalgia.</p>
-          <p>This documentary names what happened. It demands accountability. And it begins the long road to Lia getting her smile back.</p>
+          <p>Lia Spriggs was a model in Verona, Italy, a woman whose natural presence and elegance carried her through the fashion world of northern Italy before she followed a man she loved to America, where over twelve years of marriage she discovered a betrayal so sustained that it left her a single immigrant mother with no safety net in a country that was not her own.</p>
+          <p>A trusted community referred her to a doctor who extracted thirteen of her teeth in a single procedure and then vanished without explanation, leaving behind no implants, no follow-up, and no answers, while her body developed Hashimoto's disease and fibromyalgia in the years that followed.</p>
+          <p>This documentary names what happened to Lia Spriggs, demands accountability from the systems and individuals that failed her, and begins the long road to restoring the dignity and the smile that were taken from her.</p>
         </div>
         <a href="the-tradegy.html" class="why-link fade d3">Read the Full Story</a>
       </div>
@@ -368,29 +368,6 @@
       <p class="support-body fade d2">Every contribution funds production, legal advocacy, and Lia's medical restoration. This is how we make sure her voice is finally heard.</p>
       <div class="support-ctas fade d3">
         <a href="https://stillher-donation-production.up.railway.app/" class="support-btn-1">Donate to Road to Her Smile</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SPONSORS ═══ -->
-  <section id="sponsors-banner">
-    <div class="sponsors-bg"></div>
-    <div class="sponsors-glow"></div>
-    <div class="sponsors-line-top" id="sp-line-top"></div>
-    <div class="sponsors-line-bottom" id="sp-line-bottom"></div>
-    <div class="sponsors-content">
-      <span class="sponsors-kicker fade">Our Sponsors</span>
-      <h2 class="sponsors-heading fade d1">The people standing<br>behind her.</h2>
-      <p class="sponsors-sub fade d2">These individuals and organizations have committed their support to Road to Her Smile. Their belief in this project makes every frame possible.</p>
-      <div class="sponsors-cards fade d3">
-        <div class="sponsor-card"><div class="sc-avatar">JV</div><div class="sc-name">John Victoria</div><div class="sc-role">Sponsor</div></div>
-        <div class="sponsor-card"><div class="sc-avatar">J</div><div class="sc-name">Juliana</div><div class="sc-role">Sponsor</div></div>
-        <div class="sponsor-card"><div class="sc-avatar">P</div><div class="sc-name">Pollyanna</div><div class="sc-role">In-Kind Support</div></div>
-        <div class="sponsor-card sponsor-card-empty"><div class="sc-avatar">+</div><div class="sc-name">Your Name Here</div><div class="sc-role">Become a Sponsor</div></div>
-      </div>
-      <div class="sponsors-cta-row fade d3">
-        <a href="https://stillher-donation-production.up.railway.app/" class="sponsors-cta sponsors-cta-gold">Become a Sponsor</a>
-        <a href="film.html" class="sponsors-cta sponsors-cta-outline">View Sponsorship Deck</a>
       </div>
     </div>
   </section>
@@ -444,17 +421,6 @@
     }, { threshold: 0.10 });
     document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
-    const spObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          document.getElementById('sp-line-top').classList.add('in');
-          document.getElementById('sp-line-bottom').classList.add('in');
-          spObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    const spBanner = document.getElementById('sponsors-banner');
-    if (spBanner) spObserver.observe(spBanner);
   </script>
 </body>
 </html>

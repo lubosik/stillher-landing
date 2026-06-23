@@ -17,7 +17,7 @@
 
     .main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 68px; padding: 0 28px; display: flex; align-items: center; justify-content: center; background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
     .nav-group-left, .nav-group-right { display: flex; align-items: center; list-style: none; gap: 0; }
-    .nav-group-left { margin-right: auto; } .nav-group-right { margin-left: auto; }
+    .nav-group-left { flex: 1; justify-content: flex-end; } .nav-group-right { flex: 1; }
     .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
     .nav-group-left a, .nav-group-right a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 14px; transition: color 200ms; white-space: nowrap; }
     .nav-group-left a:hover, .nav-group-right a:hover { color: rgba(255,255,255,0.95); }
@@ -61,10 +61,10 @@
     .pull-quote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(22px, 3vw, 32px); color: var(--gold); line-height: 1.4; }
     .section.dark .pull-quote p { color: var(--gold); }
 
-    .stat-row { display: flex; gap: 48px; margin-top: 48px; justify-content: center; }
-    .stat-block { text-align: center; }
-    .stat-num { display: block; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 56px; color: var(--gold); line-height: 1; margin-bottom: 8px; }
-    .stat-label { font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 11px; color: rgba(250,250,247,0.5); letter-spacing: 0.08em; }
+    .stat-row { display: flex; gap: 56px; margin-top: 56px; margin-bottom: 16px; justify-content: center; }
+    .stat-block { text-align: center; padding: 0 8px; }
+    .stat-num { display: block; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 56px; color: var(--gold); line-height: 1; margin-bottom: 12px; }
+    .stat-label { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 14px; color: rgba(250,250,247,0.7); letter-spacing: 0.04em; line-height: 1.4; max-width: 200px; margin: 0 auto; }
 
     .cta-row { display: flex; gap: 16px; margin-top: 48px; justify-content: center; flex-wrap: wrap; }
     .cta-btn { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 32px; border-radius: 2px; text-decoration: none; display: inline-block; transition: all 250ms; }
@@ -151,9 +151,9 @@
       <span class="section-label">Before</span>
       <h2>She Was Not Always Invisible</h2>
       <hr class="section-rule">
-      <p>Lia Spriggs was born in Verona, Italy. She was a model. She moved through rooms where presence was currency and beauty opened doors. She had a future that looked expansive, a life that carried the kind of natural elegance luxury brands spend millions trying to replicate.</p>
-      <p>Then she met a man in uniform on a military post in Vicenza. He promised her love, America, and a future together. She left everything she knew and followed him across the ocean.</p>
-      <p>Over twelve years of marriage, she discovered he had been unfaithful for nearly all of them. She became a single mother with two children in a country that was not her own, with no family nearby and no safety net.</p>
+      <p>Lia Spriggs was born in Verona, Italy, into a life that carried the kind of natural, unhurried elegance that luxury brands spend millions trying to manufacture, and she moved through the fashion world of northern Italy as someone whose presence alone could hold a room still, a woman with a future that looked genuinely expansive and entirely her own.</p>
+      <p>On a military post in Vicenza, she met a man in uniform who promised her love, a life in America, and the kind of partnership she had every reason to believe was real, and she left behind everything she had ever known to follow him across the ocean into what she trusted would be a shared future.</p>
+      <p>Over the course of twelve years of marriage, Lia discovered that her husband had been unfaithful for nearly all of them, a sustained betrayal that left her isolated as a single immigrant mother raising two children in a country that was not her own, with no family within reach and no safety net of any kind beneath her.</p>
       <div class="contrast-grid">
         <div class="contrast-card">
           <img src="images/lia-italy.jpg" alt="Lia Spriggs in her modeling years">
@@ -173,9 +173,9 @@
       <span class="section-label">The Betrayal</span>
       <h2>Thirteen Teeth. One Doctor. No Answers.</h2>
       <hr class="section-rule">
-      <p>An eviction notice brought Lia to her knees. She found a trusted community and placed her faith there. Through that community, she was referred to a doctor at Johns Hopkins.</p>
-      <p>Thirteen teeth were extracted. When she returned for follow-up, the doctor had disappeared. No implants. No replacement. No explanation. She was left toothless, indefinitely.</p>
-      <p>She went back to that same community and asked for help. They gave her a $25 grocery gift card. Days later, from that same organization, came a $7.2 million renovation announcement.</p>
+      <p>When an eviction notice brought Lia to her knees in front of her children, she found a trusted community that offered what felt like solid ground, and through that community she was referred to a doctor at Johns Hopkins who she believed would restore what years of hardship had already begun to erode.</p>
+      <p>That doctor extracted thirteen of her teeth in a single procedure, and then he vanished without explanation, leaving behind no implants, no replacement teeth, no follow-up appointment, and no way for Lia to reach him, abandoning her toothless and without recourse in a situation she had no power to reverse on her own.</p>
+      <p>When Lia returned to that same community and asked for help, they gave her a twenty-five dollar grocery gift card, and just days later, from that same organization, came the announcement of a seven point two million dollar renovation project, a contrast so enormous and so quiet that it became the central image this documentary exists to hold up to the light.</p>
       <div class="pull-quote">
         <p>She was not asking for luxury. She was asking for her dignity.</p>
       </div>
@@ -188,20 +188,20 @@
       <span class="section-label">The Medical Reality</span>
       <h2>This Is Not a Production Choice. This Is a Medical Fact.</h2>
       <hr class="section-rule">
-      <p>Following the extraction, Lia's body developed Hashimoto's disease and fibromyalgia. She now lives with an ill-fitting denture that causes daily pain. The bone loss in her jaw is progressive, which means the window for surgical intervention is closing.</p>
-      <p>Without intervention, the bone loss will advance to the point where implants are no longer viable. This is not a cosmetic concern. This is a woman's ability to eat, to speak clearly, to smile without pain. Every month that passes narrows the surgical options available to her.</p>
+      <p>In the years following the extraction, Lia's body developed both Hashimoto's disease and fibromyalgia, and she now lives every day with an ill-fitting denture that causes constant pain, while the bone loss in her jaw continues to progress at a rate that means the window for surgical intervention is actively closing with each month that passes.</p>
+      <p>Without intervention, the bone deterioration will advance to the point where dental implants are no longer a viable option at all, and what is at stake is not a cosmetic concern but a woman's fundamental ability to eat solid food, to speak clearly without discomfort, and to smile without the sharp, grinding pain that has defined her daily reality for nearly two decades.</p>
       <div class="stat-row">
         <div class="stat-block">
           <span class="stat-num">13</span>
-          <span class="stat-label">Teeth removed</span>
+          <span class="stat-label">Teeth removed in a single procedure</span>
         </div>
         <div class="stat-block">
           <span class="stat-num">0</span>
-          <span class="stat-label">Follow-up appointments</span>
+          <span class="stat-label">Follow-up calls received afterward</span>
         </div>
         <div class="stat-block">
           <span class="stat-num">$25</span>
-          <span class="stat-label">The gift card she received</span>
+          <span class="stat-label">What she was given when she asked for help</span>
         </div>
       </div>
       <div class="cta-row">

@@ -30,7 +30,7 @@
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
     .nav-logo img { height: 36px; width: auto; display: block; }
     .nav-group-left, .nav-group-right { display: flex; align-items: center; list-style: none; gap: 0; }
-    .nav-group-left { margin-right: auto; } .nav-group-right { margin-left: auto; }
+    .nav-group-left { flex: 1; justify-content: flex-end; } .nav-group-right { flex: 1; }
     .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
     .nav-group-left a, .nav-group-right a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 14px; transition: color 200ms; white-space: nowrap; }
     .nav-group-left a:hover, .nav-group-right a:hover { color: rgba(255,255,255,0.95); }
@@ -232,24 +232,6 @@
     <p class="page-hero-sub">A Life Dismantled. A story of what was taken, what endured, and what remains.</p>
   </div>
 
-  <!-- OPENING -->
-  <section class="opening">
-    <div class="opening-grid">
-      <div>
-        <span class="section-label-gold">Her Story</span>
-        <h2 class="opening-heading">She was not always the woman the world would later overlook.</h2>
-        <hr class="section-rule">
-        <div class="opening-body">
-          <p>Born in Verona, Italy, Lia Spriggs carried a natural elegance that luxury brands spend millions trying to replicate. She was a model. She stood in rooms where presence was currency, where the future looked expansive.</p>
-          <p>Then she met a man in uniform on a military post in Vicenza. He promised her love, America, and a white picket fence. She left everything she knew and followed him across the ocean. What she walked into was not safety. It was betrayal, layered and relentless, over twelve years.</p>
-        </div>
-      </div>
-      <div class="opening-img-wrap">
-        <img src="images/lia-italy.jpg" alt="Lia Spriggs in Verona, Italy" loading="lazy">
-      </div>
-    </div>
-  </section>
-
   <!-- TIMELINE -->
   <section class="timeline-section">
     <div class="tl-head">
@@ -265,7 +247,7 @@
           <div class="tl-chapter">1</div>
           <span class="tl-tag">Chapter One</span>
           <h3 class="tl-title">Born in Verona, Italy</h3>
-          <p class="tl-body">A woman of presence. A future that looked expansive. She modelled. She stood in rooms where presence was currency and beauty opened doors.</p>
+          <p class="tl-body">Lia Spriggs was born into a world of warmth and beauty in Verona, Italy, where she grew into a woman whose presence commanded every room she entered, a natural elegance that the fashion houses of Milan and northern Italy recognized immediately and invited her to carry on their behalf.</p>
         </div>
       </div>
 
@@ -275,7 +257,7 @@
           <div class="tl-chapter">2</div>
           <span class="tl-tag">Chapter Two</span>
           <h3 class="tl-title">Vicenza, Italy</h3>
-          <p class="tl-body">She met a man in uniform. A promise of love and America. She believed him, as people believe those who speak with certainty.</p>
+          <p class="tl-body">On a military post in Vicenza, she met a man in uniform who spoke to her with the kind of certainty that makes promises sound like guarantees, and she believed every word he said about the life they would build together in America, because she had no reason not to.</p>
         </div>
       </div>
 
@@ -285,7 +267,7 @@
           <div class="tl-chapter">3</div>
           <span class="tl-tag">Chapter Three</span>
           <h3 class="tl-title">The Marriage</h3>
-          <p class="tl-body">Twelve years. Infidelity running through almost all of them. A single immigrant mother. Two children. No safety net.</p>
+          <p class="tl-body">Over the course of twelve years of marriage, Lia discovered that her husband had been unfaithful for nearly the entire duration, a betrayal so layered and sustained that by the time it surfaced fully, she was already a single immigrant mother raising two children in a country that was not her own, with no family nearby and no safety net beneath her.</p>
         </div>
       </div>
 
@@ -295,7 +277,7 @@
           <div class="tl-chapter">4</div>
           <span class="tl-tag">Chapter Four</span>
           <h3 class="tl-title">Rock Bottom</h3>
-          <p class="tl-body">An eviction notice, final. She dropped to her knees in front of her children. Then she found a trusted community and placed her trust there.</p>
+          <p class="tl-body">When the eviction notice arrived, it was final, and Lia dropped to her knees in front of her children with nothing left to shield them from the reality of their situation, until she found a trusted community that offered her what felt like solid ground, and she placed the last of her trust there.</p>
         </div>
       </div>
 
@@ -305,7 +287,7 @@
           <div class="tl-chapter">5</div>
           <span class="tl-tag">Chapter Five</span>
           <h3 class="tl-title">The Procedure</h3>
-          <p class="tl-body">Thirteen teeth removed. A doctor who then disappeared. No follow-up. No implants. No answers. Left toothless, indefinitely. Her body then developed an autoimmune disease.</p>
+          <p class="tl-body">A doctor extracted thirteen of her teeth in a single procedure at Johns Hopkins, and then he vanished without explanation, leaving behind no implants, no follow-up appointment, and no way for Lia to reach him, abandoning her toothless and without recourse while her body, under the weight of what it had endured, developed Hashimoto's disease and fibromyalgia.</p>
         </div>
       </div>
 
@@ -315,41 +297,12 @@
           <div class="tl-chapter">6</div>
           <span class="tl-tag">Chapter Six</span>
           <h3 class="tl-title">The Silence</h3>
-          <p class="tl-body">A $25 grocery gift card. Days later, from that same organization: a $7.2 million renovation announcement. This is the story this documentary tells.</p>
+          <p class="tl-body">When Lia returned to that same community and asked for help, they gave her a twenty-five dollar grocery gift card, and just days later, from that same organization, came the announcement of a seven point two million dollar renovation project, a contrast so stark that it became the single image this documentary exists to hold up to the light.</p>
         </div>
       </div>
 
     </div>
   </section>
-
-  <!-- SPONSORS -->
-  <div style="background:#05050C;padding:80px 56px;text-align:center;border-top:1px solid rgba(201,169,110,0.08);">
-    <div style="max-width:1100px;margin:0 auto;">
-      <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:28px;color:#FAFAF7;margin-bottom:32px;">The people standing behind her.</h3>
-      <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;">
-        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.12);border-radius:4px;text-align:center;">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;">JV</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#FAFAF7;margin-bottom:4px;">John Victoria</div>
-          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.45);">Sponsor</div>
-        </div>
-        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.12);border-radius:4px;text-align:center;">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;">J</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#FAFAF7;margin-bottom:4px;">Juliana</div>
-          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.45);">Sponsor</div>
-        </div>
-        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.12);border-radius:4px;text-align:center;">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;">P</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#FAFAF7;margin-bottom:4px;">Pollyanna</div>
-          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.45);">In-Kind</div>
-        </div>
-        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px dashed rgba(201,169,110,0.08);border-radius:4px;text-align:center;">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px dashed rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;opacity:0.4;">+</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:rgba(250,250,247,0.2);font-style:italic;margin-bottom:4px;">Your Name</div>
-          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.3);">Become a Sponsor</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <footer>
