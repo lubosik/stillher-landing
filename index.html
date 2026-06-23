@@ -94,30 +94,44 @@
     #drawer a:hover { color: var(--gold); }
     #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 905; opacity: 0; transition: opacity 0.4s; }
 
-    /* ── STATIC HERO ──────────────────────────────── */
+    /* ── HERO CAROUSEL ────────────────────────────── */
     #hero {
       position: relative; width: 100%; height: 100vh; min-height: 600px;
       overflow: hidden; background: var(--bg-deep);
       display: flex; align-items: center; justify-content: center; text-align: center;
     }
-    .hero-bg {
+    .hero-slide-bg {
       position: absolute; inset: 0;
-      background-image: url('images/still-johns-hopkins.png');
       background-size: cover; background-position: center center;
+      opacity: 0; transition: opacity 1.5s ease;
     }
+    .hero-slide-bg.active { opacity: 1; }
     .hero-overlay {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse at center, rgba(5,5,12,0.55) 0%, rgba(5,5,12,0.82) 70%, rgba(5,5,12,0.95) 100%);
+      z-index: 1;
     }
-    .hero-content {
-      position: relative; z-index: 2;
-      max-width: 720px; padding: 0 32px;
+    .hero-slide-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 1.2s ease; pointer-events: none;
     }
+    .hero-slide-content.active { opacity: 1; pointer-events: auto; }
+    .hero-inner { max-width: 720px; padding: 0 32px; }
     .hero-kicker { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
     .hero-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(60px, 10vw, 120px); line-height: 0.92; color: #FFFFFF; letter-spacing: -0.01em; margin-bottom: 28px; }
     .hero-rule { width: 52px; height: 2px; background: var(--gold); border: none; margin: 0 auto 28px; }
     .hero-tagline { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2.5vw, 26px); line-height: 1.5; color: rgba(255,255,255,0.78); margin-bottom: 40px; }
     .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-indicators {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      z-index: 10; display: flex; gap: 12px;
+    }
+    .hero-ind {
+      width: 32px; height: 2px; background: rgba(255,255,255,0.25);
+      border: none; cursor: pointer; padding: 0; transition: background 0.4s, width 0.4s;
+    }
+    .hero-ind.active { background: var(--gold); width: 48px; }
     .cta-primary {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); color: var(--off-white);
       font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
@@ -135,7 +149,7 @@
 
     /* ── CATEGORIES GRID (LE ECHELANT) ──────────────── */
     #categories { background: var(--bg-deep); padding: 0; }
-    .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .categories-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
     .cat-card {
       height: 420px; position: relative; overflow: hidden;
       background-size: cover; background-position: center;
@@ -312,6 +326,7 @@
       .hero-ctas { flex-direction: column; align-items: center; }
       .cta-primary, .cta-secondary { text-align: center; width: 100%; max-width: 280px; }
       .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-card:nth-child(5) { grid-column: span 2; }
       .cat-card { height: 280px; }
       .cat-title { font-size: 22px; padding: 20px 16px; }
       #why-matters { padding: 80px 0; }
@@ -361,6 +376,8 @@
       <li><a href="the-tradegy.html">The Tradegy</a></li>
       <li><span class="nav-sep"></span></li>
       <li><a href="her-road.html">Her Road</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="who-is-lia.html">Who is Lia?</a></li>
     </ul>
     <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
     <ul class="nav-group-right">
@@ -379,25 +396,85 @@
     </button>
     <a href="the-tradegy.html" onclick="closeDrawer()">The Tradegy</a>
     <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
+    <a href="who-is-lia.html" onclick="closeDrawer()">Who is Lia?</a>
     <a href="mission.html" onclick="closeDrawer()">Our Mission</a>
-    <a href="film.html" onclick="closeDrawer()">Film Sponsorship + Support</a>
+    <a href="film.html" onclick="closeDrawer()">Film Sponsorship</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
     <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
 
-  <!-- ═══ HERO — SINGLE STATIC DENTAL CHAIR ═══ -->
+  <!-- ═══ HERO — AUTO-ROTATING CAROUSEL ═══ -->
   <section id="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-slide-bg active" style="background-image:url('images/still-johns-hopkins.png');"></div>
+    <div class="hero-slide-bg" style="background-image:url('images/still-johns-hopkins.png');"></div>
+    <div class="hero-slide-bg" style="background-image:url('images/lia-italy.jpg'); background-position:center 15%;"></div>
+    <div class="hero-slide-bg" style="background-image:url('images/still-johns-hopkins.png');"></div>
+    <div class="hero-slide-bg" style="background-image:url('images/lia-italy.jpg'); background-position:center 15%;"></div>
     <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <span class="hero-kicker">A StillHer Foundation Documentary</span>
-      <h1 class="hero-title">Road to<br>Her Smile</h1>
-      <hr class="hero-rule">
-      <p class="hero-tagline">She was left to fight for her life.<br>And still, she remained standing.</p>
-      <div class="hero-ctas">
-        <a href="film.html" class="cta-primary">Film Sponsorship</a>
-        <a href="her-road.html" class="cta-secondary">Read Her Story</a>
+
+    <div class="hero-slide-content active" data-slide="0">
+      <div class="hero-inner">
+        <span class="hero-kicker">A StillHer Foundation Documentary</span>
+        <h1 class="hero-title">Road to<br>Her Smile</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">She was left to fight for her life.<br>And still, she remained standing.</p>
+        <div class="hero-ctas">
+          <a href="film.html" class="cta-primary">Film Sponsorship</a>
+          <a href="her-road.html" class="cta-secondary">Read Her Story</a>
+        </div>
       </div>
+    </div>
+    <div class="hero-slide-content" data-slide="1">
+      <div class="hero-inner">
+        <span class="hero-kicker">Road to Her Smile</span>
+        <h1 class="hero-title">The<br>Tradegy</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">What was done to Lia Spriggs.<br>Thirteen teeth. One doctor. No answers.</p>
+        <div class="hero-ctas">
+          <a href="the-tradegy.html" class="cta-primary">Read the Full Story</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide-content" data-slide="2">
+      <div class="hero-inner">
+        <span class="hero-kicker">Road to Her Smile</span>
+        <h1 class="hero-title">Her<br>Road</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">The road ahead to restoration.<br>Every step matters.</p>
+        <div class="hero-ctas">
+          <a href="her-road.html" class="cta-primary">Follow Her Road</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide-content" data-slide="3">
+      <div class="hero-inner">
+        <span class="hero-kicker">StillHer Foundation</span>
+        <h1 class="hero-title">Our<br>Mission</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">Restoring dignity to women abandoned<br>by the systems meant to protect them.</p>
+        <div class="hero-ctas">
+          <a href="mission.html" class="cta-primary">Our Mission</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide-content" data-slide="4">
+      <div class="hero-inner">
+        <span class="hero-kicker">Road to Her Smile</span>
+        <h1 class="hero-title">Who is<br>Lia?</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">Getting to know the woman<br>at the heart of this story.</p>
+        <div class="hero-ctas">
+          <a href="who-is-lia.html" class="cta-primary">Meet Lia</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-indicators">
+      <button class="hero-ind active" data-slide="0"></button>
+      <button class="hero-ind" data-slide="1"></button>
+      <button class="hero-ind" data-slide="2"></button>
+      <button class="hero-ind" data-slide="3"></button>
+      <button class="hero-ind" data-slide="4"></button>
     </div>
   </section>
 
@@ -419,6 +496,10 @@
       <a href="film.html" class="cat-card" style="background-image:url('images/hands.png');">
         <div class="cat-overlay"></div>
         <span class="cat-title">Film Sponsorship</span>
+      </a>
+      <a href="who-is-lia.html" class="cat-card" style="background-image:url('images/lia-italy.jpg'); background-position:center 15%;">
+        <div class="cat-overlay"></div>
+        <span class="cat-title">Who is Lia?</span>
       </a>
     </div>
   </section>
@@ -516,6 +597,7 @@
         <ul>
           <li><a href="the-tradegy.html">The Tradegy</a></li>
           <li><a href="her-road.html">Her Road</a></li>
+          <li><a href="who-is-lia.html">Who is Lia?</a></li>
           <li><a href="mission.html">Our Mission</a></li>
           <li><a href="film.html">Film Sponsorship</a></li>
           <li><a href="press.html">Press</a></li>
@@ -534,6 +616,32 @@
   </footer>
 
   <script>
+    // ── HERO CAROUSEL ──
+    const slideBgs = document.querySelectorAll('.hero-slide-bg');
+    const slideContents = document.querySelectorAll('.hero-slide-content');
+    const heroInds = document.querySelectorAll('.hero-ind');
+    let curSlide = 0, heroTimer;
+
+    function goSlide(n) {
+      slideBgs[curSlide].classList.remove('active');
+      slideContents[curSlide].classList.remove('active');
+      heroInds[curSlide].classList.remove('active');
+      curSlide = n;
+      slideBgs[curSlide].classList.add('active');
+      slideContents[curSlide].classList.add('active');
+      heroInds[curSlide].classList.add('active');
+    }
+    function nextSlide() { goSlide((curSlide + 1) % slideBgs.length); }
+    function startHero() { heroTimer = setInterval(nextSlide, 6000); }
+    heroInds.forEach(btn => {
+      btn.addEventListener('click', () => {
+        clearInterval(heroTimer);
+        goSlide(parseInt(btn.dataset.slide));
+        startHero();
+      });
+    });
+    startHero();
+
     const mainNav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       mainNav.classList.toggle('nav-solid', window.scrollY > window.innerHeight * 0.75);
