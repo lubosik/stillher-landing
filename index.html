@@ -133,8 +133,32 @@
     }
     .cta-secondary:hover { background: rgba(201,169,110,0.1); }
 
+    /* ── CATEGORIES GRID (LE ECHELANT) ──────────────── */
+    #categories { background: var(--bg-deep); padding: 0; }
+    .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .cat-card {
+      height: 420px; position: relative; overflow: hidden;
+      background-size: cover; background-position: center;
+      text-decoration: none; display: flex; align-items: flex-end;
+      cursor: pointer;
+    }
+    .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,5,12,0.85) 0%, rgba(5,5,12,0.2) 50%, rgba(5,5,12,0.05) 100%);
+      transition: background 400ms;
+    }
+    .cat-card:hover .cat-overlay { background: linear-gradient(to top, rgba(5,5,12,0.7) 0%, rgba(5,5,12,0.1) 50%, transparent 100%); }
+    .cat-card:hover { transform: scale(1.01); }
+    .cat-card img { transition: transform 600ms; }
+    .cat-title {
+      position: relative; z-index: 2; padding: 28px 24px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: 28px; color: var(--off-white); line-height: 1.1;
+    }
+
     /* ── WHY THIS DOCUMENTARY MATTERS ─────────────── */
     .section-label-gold { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .why-sub { font-family: 'Lora', serif; font-style: italic; font-size: 17px; color: var(--muted); margin-bottom: 28px; }
     .section-label-muted { display: block; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
     .section-rule { width: 44px; height: 2px; background: var(--gold); border: none; display: block; margin-bottom: 28px; opacity: 0.8; }
 
@@ -235,6 +259,49 @@
     @media (max-width: 900px) {
       .why-grid { gap: 48px; }
     }
+    /* ── EMAIL POPUP ──────────────────────────────── */
+    .email-popup-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+      z-index: 1000; align-items: center; justify-content: center;
+    }
+    .email-popup-overlay.open { display: flex; }
+    .email-popup {
+      background: var(--bg-dark); border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 4px; padding: 48px 40px; max-width: 480px; width: 90%;
+      text-align: center; position: relative;
+    }
+    .email-popup-close {
+      position: absolute; top: 16px; right: 16px; background: none; border: none;
+      color: rgba(255,255,255,0.4); font-size: 20px; cursor: pointer; padding: 4px;
+      transition: color 200ms;
+    }
+    .email-popup-close:hover { color: var(--off-white); }
+    .email-popup h3 {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: 32px; color: var(--off-white); margin-bottom: 12px;
+    }
+    .email-popup p {
+      font-family: 'Lora', serif; font-style: italic; font-size: 15px;
+      color: rgba(250,250,247,0.55); margin-bottom: 28px; line-height: 1.6;
+    }
+    .email-popup-form { display: flex; gap: 10px; }
+    .email-popup-form input {
+      flex: 1; height: 44px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,169,110,0.3); border-radius: 2px;
+      color: var(--off-white); font-family: 'Lora', serif; font-size: 14px;
+      padding: 0 14px; outline: none;
+    }
+    .email-popup-form input:focus { border-color: rgba(201,169,110,0.65); }
+    .email-popup-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .email-popup-form button {
+      height: 44px; padding: 0 22px; background: var(--gold); border: none; border-radius: 2px;
+      color: var(--bg-deep); font-family: 'Raleway', sans-serif; font-weight: 700;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      white-space: nowrap; transition: background 250ms;
+    }
+    .email-popup-form button:hover { background: var(--gold-lt); }
+    .email-popup-confirm { display: none; color: var(--gold); font-family: 'Lora', serif; font-style: italic; font-size: 16px; }
+
     @media (max-width: 768px) {
       .main-nav { padding: 0 16px; }
       .nav-group-left, .nav-group-right { display: none; }
@@ -244,8 +311,13 @@
       .hero-title { font-size: clamp(44px, 10vw, 64px); }
       .hero-ctas { flex-direction: column; align-items: center; }
       .cta-primary, .cta-secondary { text-align: center; width: 100%; max-width: 280px; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-card { height: 280px; }
+      .cat-title { font-size: 22px; padding: 20px 16px; }
       #why-matters { padding: 80px 0; }
       .why-grid { grid-template-columns: 1fr; gap: 36px; padding: 0 24px; }
+      .email-popup-form { flex-direction: column; }
+      .email-popup-form button { width: 100%; }
       #support { padding: 100px 0; }
       .support-title { font-size: clamp(36px, 8vw, 56px); }
       .support-ctas { flex-direction: column; align-items: center; }
@@ -286,9 +358,9 @@
   <!-- ═══ NAVIGATION — CENTERED LOGO ═══ -->
   <nav class="main-nav" id="main-nav">
     <ul class="nav-group-left">
-      <li><a href="her-road.html">Her Road</a></li>
-      <li><span class="nav-sep"></span></li>
       <li><a href="the-tradegy.html">The Tradegy</a></li>
+      <li><span class="nav-sep"></span></li>
+      <li><a href="her-road.html">Her Road</a></li>
     </ul>
     <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
     <ul class="nav-group-right">
@@ -305,8 +377,8 @@
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(45deg) translate(0,3px);"></span>
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
     </button>
-    <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
     <a href="the-tradegy.html" onclick="closeDrawer()">The Tradegy</a>
+    <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
     <a href="mission.html" onclick="closeDrawer()">Our Mission</a>
     <a href="film.html" onclick="closeDrawer()">Film Sponsorship + Support</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
@@ -329,12 +401,34 @@
     </div>
   </section>
 
+  <!-- ═══ CATEGORIES GRID — LE ECHELANT STYLE ═══ -->
+  <section id="categories">
+    <div class="categories-grid">
+      <a href="the-tradegy.html" class="cat-card" style="background-image:url('images/still-johns-hopkins.png');">
+        <div class="cat-overlay"></div>
+        <span class="cat-title">The Tradegy</span>
+      </a>
+      <a href="her-road.html" class="cat-card" style="background-image:url('images/lia-italy.jpg');">
+        <div class="cat-overlay"></div>
+        <span class="cat-title">Her Road</span>
+      </a>
+      <a href="mission.html" class="cat-card" style="background-image:url('images/portrait.png');">
+        <div class="cat-overlay"></div>
+        <span class="cat-title">Our Mission</span>
+      </a>
+      <a href="film.html" class="cat-card" style="background-image:url('images/hands.png');">
+        <div class="cat-overlay"></div>
+        <span class="cat-title">Film Sponsorship</span>
+      </a>
+    </div>
+  </section>
+
   <!-- ═══ WHY THIS DOCUMENTARY MATTERS ═══ -->
   <section id="why-matters">
     <div class="why-grid">
       <div>
-        <span class="section-label-gold fade">Why This Documentary Matters</span>
-        <h2 class="why-heading fade d1">This is not just one woman's story.</h2>
+        <h2 class="why-heading fade">Why This Documentary Matters</h2>
+        <p class="why-sub fade d1">This is not just one woman's story.</p>
         <hr class="section-rule fade d1">
         <div class="why-body fade d2">
           <p>Lia Spriggs was a model in Verona, Italy, a woman whose natural presence and elegance carried her through the fashion world of northern Italy before she followed a man she loved to America, where over twelve years of marriage she discovered a betrayal so sustained that it left her a single immigrant mother with no safety net in a country that was not her own.</p>
@@ -396,6 +490,20 @@
     </div>
   </section>
 
+  <!-- ═══ EMAIL POPUP ═══ -->
+  <div class="email-popup-overlay" id="email-popup">
+    <div class="email-popup">
+      <button class="email-popup-close" onclick="closeEmailPopup()">&times;</button>
+      <h3>Join Our Mailing List</h3>
+      <p>Be the first to know when Road to Her Smile premieres.</p>
+      <form class="email-popup-form" id="email-popup-form">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Join</button>
+      </form>
+      <p class="email-popup-confirm" id="email-popup-confirm">You're on the list. Thank you.</p>
+    </div>
+  </div>
+
   <!-- ═══ FOOTER ═══ -->
   <footer>
     <div class="footer-grid">
@@ -406,8 +514,8 @@
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="her-road.html">Her Road</a></li>
           <li><a href="the-tradegy.html">The Tradegy</a></li>
+          <li><a href="her-road.html">Her Road</a></li>
           <li><a href="mission.html">Our Mission</a></li>
           <li><a href="film.html">Film Sponsorship</a></li>
           <li><a href="press.html">Press</a></li>
@@ -456,6 +564,31 @@
     }, { threshold: 0.2 });
     const spBanner = document.getElementById('sponsors-banner');
     if (spBanner) spObserver.observe(spBanner);
+
+    // ── EMAIL POPUP (5s delay, once per session) ──
+    function closeEmailPopup() {
+      document.getElementById('email-popup').classList.remove('open');
+      sessionStorage.setItem('sh_popup_shown', '1');
+    }
+    if (!sessionStorage.getItem('sh_popup_shown')) {
+      setTimeout(() => {
+        document.getElementById('email-popup').classList.add('open');
+      }, 5000);
+    }
+    document.getElementById('email-popup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = e.target.querySelector('input').value;
+      try { fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) }); } catch {}
+      const list = JSON.parse(localStorage.getItem('sh_emails') || '[]');
+      list.push({ email, ts: Date.now() });
+      localStorage.setItem('sh_emails', JSON.stringify(list));
+      e.target.style.display = 'none';
+      document.getElementById('email-popup-confirm').style.display = 'block';
+      setTimeout(closeEmailPopup, 2000);
+    });
+    document.getElementById('email-popup').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeEmailPopup();
+    });
   </script>
 </body>
 </html>
