@@ -17,14 +17,14 @@
 
     .main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 68px; padding: 0 28px; display: flex; align-items: center; justify-content: center; background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
     .nav-group-left, .nav-group-right { display: flex; align-items: center; list-style: none; gap: 0; }
-    .nav-group-left { flex: 1; justify-content: flex-end; padding-right: 8px; } .nav-group-right { flex: 1; justify-content: flex-start; padding-left: 8px; }
+    .nav-group-left { flex: 1; justify-content: flex-end; padding-right: 8px; } .nav-group-right { flex: 1; justify-content: flex-start; padding-left: 8px; padding-right: 120px; }
     .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
     .nav-group-left a, .nav-group-right a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 14px; transition: color 200ms; white-space: nowrap; }
     .nav-group-left a:hover, .nav-group-right a:hover { color: rgba(255,255,255,0.95); }
     .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; padding: 0 24px;  }
     .nav-logo img { height: 36px; width: auto; display: block; }
-    .nav-donate { position: absolute; right: 44px; top: 50%; transform: translateY(-50%); font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 18px; border-radius: 2px; transition: background 250ms, color 250ms; }
+    .nav-donate { position: absolute; right: 24px; top: 50%; margin-left: 24px; transform: translateY(-50%); font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 18px; border-radius: 2px; transition: background 250ms, color 250ms; }
     .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
     .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
     .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
