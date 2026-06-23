@@ -22,19 +22,21 @@
     /* ── NAV ── */
     .main-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      height: 68px; padding: 0 56px;
-      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; padding: 0 28px;
+      display: flex; align-items: center; justify-content: center;
       background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
     .nav-logo img { height: 36px; width: auto; display: block; }
-    .nav-links { display: flex; align-items: center; list-style: none; flex: 1; justify-content: center; gap: 0; }
-    .nav-links li { display: flex; align-items: center; }
-    .nav-links a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 18px; transition: color 200ms; }
-    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-group-left, .nav-group-right { display: flex; align-items: center; list-style: none; gap: 0; }
+    .nav-group-left { margin-right: auto; } .nav-group-right { margin-left: auto; }
+    .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
+    .nav-group-left a, .nav-group-right a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 14px; transition: color 200ms; white-space: nowrap; }
+    .nav-group-left a:hover, .nav-group-right a:hover { color: rgba(255,255,255,0.95); }
     .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
-    .nav-donate { flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 9px 22px; border-radius: 2px; transition: background 250ms, color 250ms; }
+    .nav-logo { padding: 0 24px; }
+    .nav-donate { flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 18px; border-radius: 2px; transition: background 250ms, color 250ms; margin-left: 14px; }
     .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
     .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
     .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
@@ -152,10 +154,11 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .main-nav { padding: 0 24px; }
-      .nav-links { display: none; }
+      .main-nav { padding: 0 16px; }
+      .nav-group-left, .nav-group-right { display: none; }
       .nav-donate { display: none; }
       .nav-ham { display: flex; }
+      .nav-logo { margin-right: auto; padding: 0; }
       .page-hero { padding: 120px 24px 72px; }
       .opening { padding: 80px 0; }
       .opening-grid { grid-template-columns: 1fr; gap: 36px; padding: 0 24px; }
@@ -194,15 +197,16 @@
 
   <!-- NAV -->
   <nav class="main-nav">
-    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
-    <ul class="nav-links">
+    <ul class="nav-group-left">
       <li><a href="her-road.html">Her Road</a></li>
       <li><span class="nav-sep"></span></li>
+      <li><a href="the-tradegy.html">The Tradegy</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
+    <ul class="nav-group-right">
       <li><a href="mission.html">Our Mission</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="strategy.html">The Strategy</a></li>
-      <li><span class="nav-sep"></span></li>
-      <li><a href="film.html">The Film</a></li>
+      <li><a href="film.html">Film Sponsorship</a></li>
     </ul>
     <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -214,9 +218,9 @@
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
     </button>
     <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
+    <a href="the-tradegy.html" onclick="closeDrawer()">The Tradegy</a>
     <a href="mission.html" onclick="closeDrawer()">Our Mission</a>
-    <a href="strategy.html" onclick="closeDrawer()">The Strategy</a>
-    <a href="film.html" onclick="closeDrawer()">The Film</a>
+    <a href="film.html" onclick="closeDrawer()">Film Sponsorship + Support</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
     <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
@@ -318,6 +322,35 @@
     </div>
   </section>
 
+  <!-- SPONSORS -->
+  <div style="background:#05050C;padding:80px 56px;text-align:center;border-top:1px solid rgba(201,169,110,0.08);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:28px;color:#FAFAF7;margin-bottom:32px;">The people standing behind her.</h3>
+      <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;">
+        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.12);border-radius:4px;text-align:center;">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;">JV</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#FAFAF7;margin-bottom:4px;">John Victoria</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.45);">Sponsor</div>
+        </div>
+        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.12);border-radius:4px;text-align:center;">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;">J</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#FAFAF7;margin-bottom:4px;">Juliana</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.45);">Sponsor</div>
+        </div>
+        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.12);border-radius:4px;text-align:center;">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;">P</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#FAFAF7;margin-bottom:4px;">Pollyanna</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.45);">In-Kind</div>
+        </div>
+        <div style="width:160px;padding:24px 16px;background:rgba(255,255,255,0.03);border:1px dashed rgba(201,169,110,0.08);border-radius:4px;text-align:center;">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,169,110,0.08);border:1px dashed rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#C9A96E;margin:0 auto 12px;opacity:0.4;">+</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:rgba(250,250,247,0.2);font-style:italic;margin-bottom:4px;">Your Name</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,169,110,0.3);">Become a Sponsor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
@@ -329,9 +362,9 @@
         <h4>Navigate</h4>
         <ul>
           <li><a href="her-road.html">Her Road</a></li>
+          <li><a href="the-tradegy.html">The Tradegy</a></li>
           <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="strategy.html">The Strategy</a></li>
-          <li><a href="film.html">The Film</a></li>
+          <li><a href="film.html">Film Sponsorship</a></li>
           <li><a href="press.html">Press</a></li>
         </ul>
       </div>

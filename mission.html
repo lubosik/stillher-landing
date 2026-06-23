@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Mission | StillHer Foundation</title>
+  <title>Our Mission for This Project | StillHer Foundation</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <meta name="description" content="StillHer Foundation exists to restore dignity to women abandoned by the systems meant to protect them.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,15 +20,16 @@
     body { font-family: 'Lora', Georgia, serif; background: var(--white); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
     /* ── NAV ── */
-    .main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 68px; padding: 0 56px; display: flex; align-items: center; justify-content: space-between; background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 68px; padding: 0 28px; display: flex; align-items: center; justify-content: center; background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; padding: 0 24px; }
     .nav-logo img { height: 36px; width: auto; display: block; }
-    .nav-links { display: flex; align-items: center; list-style: none; flex: 1; justify-content: center; gap: 0; }
-    .nav-links li { display: flex; align-items: center; }
-    .nav-links a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 18px; transition: color 200ms; }
-    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-group-left, .nav-group-right { display: flex; align-items: center; list-style: none; gap: 0; }
+    .nav-group-left { margin-right: auto; } .nav-group-right { margin-left: auto; }
+    .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
+    .nav-group-left a, .nav-group-right a { font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0 14px; transition: color 200ms; white-space: nowrap; }
+    .nav-group-left a:hover, .nav-group-right a:hover { color: rgba(255,255,255,0.95); }
     .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
-    .nav-donate { flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 9px 22px; border-radius: 2px; transition: background 250ms, color 250ms; }
+    .nav-donate { flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 18px; border-radius: 2px; transition: background 250ms, color 250ms; margin-left: 14px; }
     .nav-donate:hover { background: var(--gold); color: var(--bg-deep); }
     .nav-ham { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
     .nav-ham span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; transition: 0.3s; }
@@ -93,10 +94,11 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .main-nav { padding: 0 24px; }
-      .nav-links { display: none; }
+      .main-nav { padding: 0 16px; }
+      .nav-group-left, .nav-group-right { display: none; }
       .nav-donate { display: none; }
       .nav-ham { display: flex; }
+      .nav-logo { margin-right: auto; padding: 0; }
       .page-hero { padding: 120px 24px 72px; }
       .mission-section { padding: 80px 0; }
       .mission-grid { grid-template-columns: 1fr; gap: 36px; padding: 0 24px; }
@@ -124,15 +126,16 @@
 
   <!-- NAV -->
   <nav class="main-nav">
-    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
-    <ul class="nav-links">
+    <ul class="nav-group-left">
       <li><a href="her-road.html">Her Road</a></li>
       <li><span class="nav-sep"></span></li>
+      <li><a href="the-tradegy.html">The Tradegy</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
+    <ul class="nav-group-right">
       <li><a href="mission.html">Our Mission</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="strategy.html">The Strategy</a></li>
-      <li><span class="nav-sep"></span></li>
-      <li><a href="film.html">The Film</a></li>
+      <li><a href="film.html">Film Sponsorship</a></li>
     </ul>
     <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -144,9 +147,9 @@
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
     </button>
     <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
+    <a href="the-tradegy.html" onclick="closeDrawer()">The Tradegy</a>
     <a href="mission.html" onclick="closeDrawer()">Our Mission</a>
-    <a href="strategy.html" onclick="closeDrawer()">The Strategy</a>
-    <a href="film.html" onclick="closeDrawer()">The Film</a>
+    <a href="film.html" onclick="closeDrawer()">Film Sponsorship + Support</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
     <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
@@ -154,7 +157,7 @@
   <!-- HERO -->
   <div class="page-hero">
     <span class="page-hero-kicker">StillHer Foundation</span>
-    <h1>Our Mission</h1>
+    <h1>Our Mission for This Project</h1>
     <p class="page-hero-sub">Restoring dignity to women abandoned by the systems meant to protect them.</p>
   </div>
 
@@ -222,9 +225,9 @@
         <h4>Navigate</h4>
         <ul>
           <li><a href="her-road.html">Her Road</a></li>
+          <li><a href="the-tradegy.html">The Tradegy</a></li>
           <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="strategy.html">The Strategy</a></li>
-          <li><a href="film.html">The Film</a></li>
+          <li><a href="film.html">Film Sponsorship</a></li>
           <li><a href="press.html">Press</a></li>
         </ul>
       </div>

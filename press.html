@@ -17,25 +17,24 @@
 
     .main-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      height: 68px; padding: 0 56px;
-      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; padding: 0 28px;
+      display: flex; align-items: center; justify-content: center;
       background: rgba(5,5,12,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
     .nav-logo img { height: 36px; width: auto; display: block; }
-    .nav-links {
-      display: flex; align-items: center; list-style: none;
-      flex: 1; justify-content: center; gap: 0;
+    .nav-group-left, .nav-group-right {
+      display: flex; align-items: center; list-style: none; gap: 0;
     }
-    .nav-links li { display: flex; align-items: center; }
-    .nav-links a {
+    .nav-group-left li, .nav-group-right li { display: flex; align-items: center; }
+    .nav-group-left a, .nav-group-right a {
       font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 10px;
       letter-spacing: 0.28em; text-transform: uppercase;
       color: rgba(255,255,255,0.55); text-decoration: none;
       padding: 0 18px; transition: color 200ms;
     }
-    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-group-left a:hover, .nav-group-right a:hover { color: rgba(255,255,255,0.95); }
     .nav-sep { width: 1px; height: 10px; background: rgba(255,255,255,0.15); display: block; flex-shrink: 0; }
     .nav-donate {
       flex-shrink: 0; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 10px;
@@ -77,7 +76,7 @@
 
     .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; }
     .meta-row { display: flex; flex-direction: column; gap: 12px; }
-    .meta-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(201,169,110,0.2); font-family: 'Raleway', sans-serif; font-size: 12px; }
+    .meta-item { display: flex; justify-content: center; padding: 12px 0; border-bottom: 1px solid rgba(201,169,110,0.2); font-family: 'Raleway', sans-serif; font-size: 12px; }
     .meta-key { color: var(--muted); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 10px; }
     .meta-val { color: var(--ink); font-weight: 400; }
 
@@ -113,7 +112,7 @@
 
     @media (max-width: 768px) {
       .main-nav { padding: 0 24px; }
-      .nav-links { display: none; }
+      .nav-group-left, .nav-group-right { display: none; }
       .nav-donate { display: none; }
       .nav-ham { display: flex; }
       .hero { padding: 120px 24px 72px; }
@@ -128,15 +127,16 @@
 <body>
 
   <nav class="main-nav">
-    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
-    <ul class="nav-links">
+    <ul class="nav-group-left">
       <li><a href="her-road.html">Her Road</a></li>
       <li><span class="nav-sep"></span></li>
+      <li><a href="the-tradegy.html">The Tradegy</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo"><img src="images/logo-dark.svg" alt="StillHer Foundation"></a>
+    <ul class="nav-group-right">
       <li><a href="mission.html">Our Mission</a></li>
       <li><span class="nav-sep"></span></li>
-      <li><a href="strategy.html">The Strategy</a></li>
-      <li><span class="nav-sep"></span></li>
-      <li><a href="film.html">The Film</a></li>
+      <li><a href="film.html">Film Sponsorship</a></li>
     </ul>
     <a href="https://stillher-donation-production.up.railway.app/" class="nav-donate">Donate Now</a>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -147,10 +147,10 @@
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(45deg) translate(0,3px);"></span>
       <span style="display:block;width:16px;height:1.5px;background:#FFFFFF;transform:rotate(-45deg) translate(0,-3px);"></span>
     </button>
-    <a href="index.html#opening" onclick="closeDrawer()">Her Road</a>
-    <a href="index.html#about" onclick="closeDrawer()">Our Mission</a>
-    <a href="strategy.html" onclick="closeDrawer()">The Strategy</a>
-    <a href="film.html" onclick="closeDrawer()">The Film</a>
+    <a href="her-road.html" onclick="closeDrawer()">Her Road</a>
+    <a href="the-tradegy.html" onclick="closeDrawer()">The Tradegy</a>
+    <a href="mission.html" onclick="closeDrawer()">Our Mission</a>
+    <a href="film.html" onclick="closeDrawer()">Film Sponsorship + Support</a>
     <a href="press.html" onclick="closeDrawer()">Press</a>
     <a href="https://stillher-donation-production.up.railway.app/" style="color:var(--gold);margin-top:8px;">Donate Now</a>
   </nav>
